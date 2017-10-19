@@ -1,0 +1,209 @@
+
+\documentclass[10pt,aps,prc,twocolumn]{revtex4-1}
+
+\usepackage{tabularx} % for 'tabularx' environmen
+\usepackage{graphicx} % figures
+%\usepackage{amssymb}   % math
+%\usepackage{hyperref}  % hyperlinks 
+
+\bibliographystyle{apsrev4-1}
+
+\begin{document}
+
+\title{Bias-Variance Trade-off In Proton Radius Extractions From Electron Scattering Data}
+
+\author{Randall Evan McClellan}
+\affiliation{Jefferson Lab, Newport News, VA 23606}
+\author{David Meekins} 
+\affiliation{Jefferson Lab, Newport News, VA 23606}
+\author{Douglas Weadon Higinbotham}
+\affiliation{Jefferson Lab, Newport News, VA 23606}
+
+\begin{abstract}
+Intuitively, it is often assumed that a truer model will be the better predictive model.
+Herein we revisit this ansatz in the context of extracting the proton radius from idealized
+charge form factor data.
+This is done via a simple Monte Carlo simulation following exactly the conditions as outlined
+in a classic paper that rejected linear model extractions of the proton radius due to bias.
+By taking into account both bias and variance via calculation the root mean square error of
+the various extractions, one in fact finds that at low Q2 the linear model extractions in fact 
+have better predictive power due to significantly lower variance then quadratic models.
+This result provides a simple illustration the trade-off between bias and variance that is at the
+heart of modern machine learning algorithms and the basis for such techniques as ridge regression
+and lasso.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+In the recent literature, you can find a number of extractions of the proton radius ranging from
+simple fits with low order functions~\cite{Horbatsch:2016ilr,Higinbotham:2015rja} to the extremely 
+complex making use of high order along with numerous normalization parameters.
+
+Amusingly, the low order 
+
+The criticism of the proponents of the complex fit is that the simpler models are biased, and thus implying 
+that bias is some fundamental flaw to be avoided at all costs.    We will show in this work that when building 
+a predictive model and/or developing a machine learning regression routines, one needs to in fact consider both 
+bias and variance and, contrary to intuition, we will show that models with high bias can in fact be the better 
+predictive model.
+
+\section{Bias}
+
+A very straight forward example of bias being used to rule out simpler models can be found in a Z. Physik
+article from 1975~\cite{Borkowski:1975}; and while an older paper, its very strong conclusions conclusions are still 
+noted to this day~\cite{Sick:2017aor} and a similar exercises are done with other functions in Kruas$\it{et al.}$~\cite{Kraus:2014qua}.
+
+The example as problem presented Z. Physik in the paper extremely simple reproduce.   
+Randomly generate sets of faux change form factor faux in steps of 0.05~fm$^{-2}$ from 0.1 fm to 0.4, 0.8, 1.2
+and 1.6~fm$^{-2}$ using the standard dipole function:
+\begin{equation}
+\label{sd}
+\mathrm{G_D}(Q^2) = ( 1 + Q^2/(18.27 fm^{-2}))^{-2}.
+\end{equation}
+Preform fits on the resulting sets of faux data with linear and quadratic function.    The entire proceed is
+then repeated many times and the mean results were reported.   Table~\ref{ztable} reproduces the table found in the
+Z. Physik article with a modern 64 bit computer and numpy random number generator with only minor differences.
+As the table clearly shows the mean of 1E6 linear fits is biased and thus the authors immediately conclude that 
+the linear models should be rejected in favor of the less non-biased quadratic function.   In fact, then then proceed to not only
+do two parameters fits; but fits with five parameters: two in the charge form factor and three floating normalizations.
+
+A Python notebook is included in the supplemental material.
+
+\begin{table}
+\label{ztable}
+\caption{The following table shows the mean a$_0$ and radius terms from doing 1E6 Monte Carlo simulations
+for each range
+where Eq.~\ref{sd} was used to generate faux data in 0.05 fm$^{-2}$ steps with each points randomized using
+0.5\% normal distribution.   The results clearly indicate that the linear fits are biased.   The input
+radius was 0.8113 fm (an a1/a0 term of 0.1097 fm$^{-1}$) and an a0 of one.}
+\begin{tabularx}{\columnwidth}{XXXXX} \hline
+interval       & \multicolumn{2}{c|}{linear fit} & \multicolumn{2}{c}{quadratic fit}  \\
+fm$^{-2}$      & a$_0$      & radius          & a$_0$    & radius \\ \hline
+ 0.1 -- 0.4 & 1.000& 0.79& 1.000& 0.81 \\
+ 0.1 -- 0.8 & 0.999& 0.78& 1.000& 0.81 \\
+ 0.1 -- 1.2 & 0.997& 0.77& 1.000& 0.81 \\
+ 0.1 -- 1.6 & 0.996& 0.76& 1.000& 0.81 \\ \hline
+\end{tabularx}
+\end{table}
+
+\section{Variance}
+
+While the mean of the results is indeed correct; when we run an experiment we typically do no get to run it 1E6 times.
+In particular in nuclear physics, the experiments are few and far between thus we need to carefully consider variance as
+well as the bias when picking the predictive model.
+
+Table~\ref{fulltable} shows more complete picture of the simulation results where the variance is shown along with the bias.
+This table in fact shows nearly a textbook illustration of the trade-off between variance and bias with the simple fits
+having a relatively high bias with a low variance while the quadratic fits have a low bias and high variance.
+
+\begin{table*}
+\label{fulltable}
+\caption{The input radius was 0.8113 fm (an a1/a0 of 0.1097 fm$^{-1}$).}
+\begin{tabular}{cc|cccccc|cccccc} \hline
+Data   & Range     & \multicolumn{6}{c|}{linear fit}                       & \multicolumn{6}{c}{quadratic fit}                    \\ 
+Points & fm$^{-2}$ &   a0  & Radius&  a1/a0 &  Bias  & Sigma &  RMSE  &   a0  & Radius& a1/a0  &  Bias  & Sigma &  RMSE \\  \hline
+7      & 0.1 -- 0.4 & 0.9995& 0.7948& -0.1053& -0.0044& 0.0184& 0.0189 & 1.0000& 0.8063& -0.1084& -0.0013& 0.1094& 0.1094\\
+15     & 0.1 -- 0.8 & 0.9987& 0.7828& -0.1021& -0.0076& 0.0057& 0.0095 & 1.0000& 0.8096& -0.1092& -0.0005& 0.0281& 0.0281\\
+22     & 0.1 -- 1.2 & 0.9975& 0.7712& -0.0991& -0.0106& 0.0030& 0.0110 & 0.9999& 0.8089& -0.1090& -0.0007& 0.0138& 0.0138\\
+31     & 0.1 -- 1.6 & 0.9959& 0.7600& -0.0963& -0.0134& 0.0019& 0.0136 & 0.9998& 0.8075& -0.1087& -0.0010& 0.0085& 0.0085\\ \hline
+\end{tabular}
+\end{table*}
+
+\begin{figure}[htbp]
+\includegraphics[width=\columnwidth]{Figure/zresult.png}
+\caption{Bla bla bla.}
+\end{figure}
+
+
+\section{The Goldilocks Solution}
+
+For any given predictive model, the goal is to find the optimal balance between bias and variance.   
+In general, this can be written as:
+\begin{equation}
+\frac{d Bias^2 }{ d Complexity} = \frac{- d Variance }{ d Complexity }
+\end{equation}
+
+Thus going back to Table~\ref{fulltable} and checking the root mean square error, one can see that for the four ranges
+the 0.1 -- 0.8 range is actualy best for the linear model and the 0.1 -- 1.6 range is optimal for the quadratic model. 
+This is in complete contrast to the conclusion one draws when only presented with Table~\ref{ztable}.
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{Figure/biasvariance.pdf}
+\caption{An illistration of the trade-off between bias and variance when selecting a predictive model.   Simple models
+will have low variance but high bias (underfitting) while complex models will have low bias but high variance (overfitting).   
+It is this trade-off that one seeks to balance.   While with repeated  Monte Carlo simulations it is trivial to find the optimal
+predictive model; in the real world the true model is typically unknown and one only gets preform a very limited number
+of experiments.}
+\end{figure}
+
+It is interesting to repeat the Monte Carlo simulation for equal number of data points within each range.
+Especially since, for any given beam energy, the experimental cross sections are significantly higher as lower values
+of Q2.
+
+\section{The Real World and Global Fits}
+
+Thus far the simulations have been very idealized, with all the uncertainties being perfectly Guassian and that uncertainty
+being known exactly and of course one does not measure cross sections;  
+
+
+\section{Statistical Model Selection}
+
+While the above is illistrative, in the real world we don't know the true model so one cannot exactly calculate the RMSE.
+
+For nested models, where the simpler model can be found within the more complex model, one can emply an F-test; though for
+more complex models one can use AIC or BIC.
+
+\begin{equation}
+\chi^2 = \Sigma^{N_i} [Rsidiuals]^2
+\end{equation}
+
+\begin{equation}
+\chi^2/nu = \chi^2/(N - N variables)
+\end{equation}
+
+\begin{equation}
+Akaike Information Criterion statistic: AIC = Nln(χ2/N)+2Nvarys
+\end{equation}
+
+\begin{equation}
+Bayesian Information Criterion statistic: BIC = Nln(χ2/N)+ln(N)Nvarys
+\end{equation}
+
+.
+
+So going back to the example problem we now present these scores.
+
+\begin{table}[htb]
+\begin{tabularx}{\columnwidth}{c|ccc|ccc}
+Range      & \multicolumn{3}{c}{Linear} & \multicolumn{3}{c}{Quadratic}  \\
+fm$^{-2}$  & chi2/nu   & A.I.C.    & B.I.C.   & chi2/nu     & A.I.C.      & B.I.C.   \\
+\end{tabularx}
+\end{table}
+
+The concept of a bias-varinace trade-off is key to regulariztion techniques such as stepwise regression, ridge regression and
+statistical lasso.    By accepting some bias, these techniques tend to achieve a far superior mean square error then
+the unregulated ordinary least squares solution of the same complexity.     In fact, both the fits of 
+Hill~{\it{et al.}}~\cite{Lee:2015jqa} as well as impliment form of regularization in their fits.
+
+Here we use a standard R stepwise regression routine.
+
+Ref. Bevington's classic statistic book, in his section on F-test.
+
+Maybe add example of stepwise regression on the faux data.
+
+\section{Summary}
+
+We have shown that the common practice of simply concluding that a model with
+a higher predictive validity is truer is not valid assumption and that parsimonious
+modeling can in fact have the higher predictive validity.
+%With this idea in mind, we apply bi-directional stepwise regression to the low $q^2$ 
+%charge form factor data and achieve remarkable agreement with the recent lamb shift 
+%measurements of the proton radius.
+
+\appendix{Explicate Math}
+
+\bibliography{elastic}
+
+\end{document}

@@ -1,0 +1,4 @@
+pdflatex bias.tex
+bibtex bias
+pdflatex bias.tex
+pdflatex bias.tex
