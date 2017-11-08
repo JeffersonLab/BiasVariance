@@ -6,14 +6,15 @@
 \usepackage{hyperref}  
 \usepackage{amssymb}  
 \usepackage{amsmath}  
+\usepackage[]{units}
 
 \bibliographystyle{apsrev4-1}
 
 \begin{document}
 
 \title{Bias-Variance Trade-off In Proton Radius Extractions From Electron Scattering Data \\
-or \\
-How the Bias Bias Biases `Unbiased' Proton Radius Extractions \\
+%or \\
+%How the Bias Bias Biases `Unbiased' Proton Radius Extractions \\
 or \\
 How I Learned to Stop Worrying and Love the Bias}
 
@@ -34,8 +35,8 @@ Herein we revisit this ansatz in the context of extracting the proton radius fro
 charge form factor data.
 This is done with a simple Monte Carlo simulation following exactly the conditions as outlined
 in the classic paper that rejected linear model extractions in favor of quadratic extractions
-on the basis that the simulations clearly indicated bias. In statistical modeling,
-one not only needs to consider bias but also variance.
+on the basis that the simulations clearly indicated bias. 
+In statistical modeling, one not only needs to consider bias but also variance.
 Once both bias and variance are taken into account via calculation of the root mean square error, 
 one now finds that at low Q$^2$ the linear model extractions in fact have better predictive 
 power due to significantly lower variance than quadratic models.
@@ -53,7 +54,7 @@ Fitted 333 data points:
 
 180 MeV: Total Chi2 34.179 Total 61.000 chi2/v 0.579
 
-For a proton charge radius of 0.850 $\pm$ 0.001~fm using two completely different binnings of the Mainz data.
+For a proton charge radius of $\unit[0.850\pm0.001]{fm}$ using two completely different binnings of the Mainz data.
 and a result that mimics that shape of asym. data.
 (try that trick with polynominals ;-)
 
@@ -81,49 +82,48 @@ $$
    = \left( -6  \left. \frac{\mathrm{d} G_E(Q^2)}{\mathrm{d}Q^2}
     \right|_{Q^{2}=0} \right)^{1/2} \>.
  $$
-Of course, electron scattering cannot reach the exact $Q^2 = 0$ limit so 
-in order to extract the charge radius from the data an extroplation must
-be made.
+Of course, electron scattering cannot reach the exact $Q^2 = 0$ limit.
+An extrapolation is required to extract the charge radius from the form factor data.
 
 In the recent literature, you can find a number of extractions of the proton radius ranging from
 parsimonious fits of low Q$^2$ data~\cite{Griffioen:2015hta,Horbatsch:2016ilr,Higinbotham:2015rja} to extremely 
 complex models with more than fifty free parameters~\cite{}.
 
-The criticism of the proponents of the complex fit is that the parsimonious models are biased, and implying 
-that bias is some kind fundamental flaw that must be avoided.    We will show in this work that when building 
-a statistical model, one needs to in fact consider both bias and variance and, contrary to intuition, models with 
-bias can in fact be the more appropriate model.
+A common criticism of the parsimonious models is the known prescence of bias. 
+Proponents of the complex fits assert that bias must be avoided at any cost. 
+We will show in this work that when building a statistical model, one needs to in fact consider both bias and variance.
+Contrary to intuition, models with bias can in fact have better predictive power, especially in extrapolations.
 
 \section{Bias}
 
 A very straight forward example of bias being used to rule out simpler models can be found in a Z. Physik
 article from 1975~\cite{Borkowski:1975}; and while an older paper, its very strong conclusions are still 
-noted to this day~\cite{Sick:2017aor} and a similar exercises are done with other functions in Kruas$\it{et al.}$~\cite{Kraus:2014qua}.
+noted to this day~\cite{Sick:2017aor} and a similar exercises are done with other functions in Kruas~\textit{et al.}~\cite{Kraus:2014qua}.
 As noted in~\cite{Hogg:2010yz}, the use of even an approximate generative model can be extremely important in understanding. %what? 
 
-The example as problem presented in the Z. Physik paper is extremely simple to reproduce.   
-Randomly generate sets of faux change form factor faux in steps of 0.05~fm$^{-2}$ from 0.1 fm to 0.4, 0.8, 1.2
-and 1.6~fm$^{-2}$ using the standard dipole function:
+The example problem, as presented in the Z. Physik paper, is extremely simple to reproduce.   
+Randomly generate sets of faux change form factor faux in steps of $\unit[0.05]{fm^{-2}}$ from $\unit[0.1]{fm^{-2}}$ to 0.4, 0.8, 1.2,
+and $\unit[1.6]{fm^{-2}}$ using the standard dipole function:
 \begin{equation}
 \label{sd}
-\mathrm{G_D}(Q^2) = ( 1 + Q^2/(18.27 fm^{-2}))^{-2}.
+\mathrm{G_D}(Q^2) = ( 1 + Q^2/(\unit[18.27]{fm^{-2}}))^{-2}.
 \end{equation}
 Perform fits on the resulting sets of faux data with linear and quadratic functions. The entire procedure is
 then repeated many times to determine the mean of the extracted radii for each model. Table~\ref{ztable} reproduces the table found in the
 Z. Physik article using python on a modern computer yielding only minor differences.
-As the table clearly shows, the mean of 1E6 linear fits is biased and thus the authors conclude that 
-the linear models should be rejected in favor of the lower-bias quadratic function. They then proceed to extract
-the proton charge radius from real data using a five parameter fit: a quadratic charge form factor and three floating normalizations.
+As the table clearly shows, the mean of $10^6$ linear fits is biased. 
+Therefore, the authors conclude that the linear models should be rejected in favor of the lower-bias quadratic function.
+They then proceed to extract the proton charge radius from real data using a five parameter fit: a quadratic charge form factor and three floating normalizations.
 
 A Python notebook is included in the supplemental material.
 
 \begin{table}
 \label{ztable}
-\caption{The following table shows the mean a$_0$ and radius terms from doing 1E6 Monte Carlo simulations
+\caption{The following table shows the mean a$_0$ and radius terms from doing $10^6$ Monte Carlo simulations
 for each range
-where Eq.~\ref{sd} was used to generate faux data in 0.05 fm$^{-2}$ steps with each points randomized using
+where Eq.~\ref{sd} was used to generate faux data in $\unit[0.05]{fm^{-2}}$ steps with each points randomized using
 0.5\% normal distribution.   The results clearly indicate that the linear fits are biased.   The input
-radius was 0.8113 fm (an a1/a0 term of 0.1097 fm$^{-1}$) and an a0 of one.}
+radius was \unit[0.8113]{fm} (an a1/a0 term of $\unit[0.1097]{fm^{-1}}$) and an a0 of one.}
 \begin{tabular}{c|cc|cc} \hline
 interval       & \multicolumn{2}{c|}{linear fit} & \multicolumn{2}{c}{quadratic fit}  \\
 fm$^{-2}$      & a$_0$      & radius          & a$_0$    & radius \\ \hline
@@ -136,7 +136,7 @@ fm$^{-2}$      & a$_0$      & radius          & a$_0$    & radius \\ \hline
 
 \section{Variance}
 
-While the mean of the results is indeed correct; when we run an experiment we typically do no get to run it 1E6 times.
+While the mean of the results is indeed correct; when we run an experiment we typically do no get to run it $10^6$ times.
 In particular in nuclear physics, the experiments are few and far between thus we need to carefully consider variance as
 well as the bias when picking the statistical model to use.
 
@@ -146,7 +146,7 @@ having a relatively high bias with a low variance while the quadratic fits have 
 
 \begin{table*}
 \label{fulltable}
-\caption{The input radius was 0.8113 fm (an a1/a0 of 0.1097 fm$^{-1}$).}
+\caption{The input radius was 0.8113 fm (an a1/a0 of $\unit[0.1097]{fm^{-1}}$).}
 \begin{tabular}{cc|cccccc|cccccc} \hline
 Data   & Range     & \multicolumn{6}{c|}{linear fit}                       & \multicolumn{6}{c}{quadratic fit}                    \\ 
 Points & fm$^{-2}$ &   a0  & Radius&  a1/a0 &  Bias  & Sigma &  RMSE  &   a0  & Radius& a1/a0  &  Bias  & Sigma &  RMSE \\  \hline
@@ -242,8 +242,8 @@ scattering proton radius extraction proceedures.     The parsimonious modelers w
 focused in on the low Q$^2$ region accepting accepting a higher level of bias in exchange for low variance while those modelers
 who are interesting in extracting more information about the proton (i.e. higher order moments) fit longer Q$^2$ ranges and have
 focused on complex models which while lower in bias come at a cost of higher varaince.  
-And the end result has been an uncertainty on the electron scattering proton radius stuck at $\approx.$ 0.01~fm since 
-L. Hand~{\it{et al.}} original fit in 1963~\cite{} as the increased complexity drives an increased variance.
+And the end result has been an uncertainty on the electron scattering proton radius stuck at $\approx \unit[0.01]{fm}$ since 
+L.~Hand~\textit{et al.} original fit in 1963~\cite{} as the increased complexity drives an increased variance.
 
 Also, since we don't know the true model so one cannot exactly calculate the RMSE; so while exercises like this one are
 extremely useful for making sets are models; in the end, the data must be used to select the approximate model. 
@@ -254,12 +254,12 @@ In fact, statistics books warn about drawing too strong an inference from these 
 just because the linear model has a negative bias when compared to standard dipole, does not imply that it has a negative bias
 to all possible models.
 In fact, the Z.Physik paper itself rules out the very model it was using for model builting: i.e. drawing very strong conclusions from the standard dipole
-function with its 0.81~fm radius yet their five parameter fit (two charge form factor parameters and three normalization parameters)
-gave a radius of 0.87~fm.
+function with its \unit[0.81]{fm} radius yet their five parameter fit (two charge form factor parameters and three normalization parameters)
+gave a radius of \unit[0.87]{fm}.
 
 Looking back to our example function, one can see that the range of the Saskatoon data (0.1 -- 0.8 fm$^{-2}$) could in fact be a reasonable
 choice for extracting a radius and as shown much later if one redoes the Z.Physik fits but adopts the Saskatoon linear proceedure one finds
-a radius of 0.84~fm~\cite{Higinbotham:2015rja}.   Though want one really wants is a function with both low bias and low variance.
+a radius of \unit[0.84]{fm}~\cite{Higinbotham:2015rja}.   Though want one really wants is a function with both low bias and low variance.
 
 \section{Beyond Standard Dipole And Polynomial Fucntions}
 
@@ -393,7 +393,7 @@ The concept of a bias-varinace trade-off is key to regulariztion techniques such
 statistical lasso.    By accepting some bias, these techniques tend to achieve a far superior mean square error then
 the unregulated ordinary least squares solution of the same complexity.     
 %In fact, both the fits of 
-%Hill~{\it{et al.}}~\cite{Lee:2015jqa} as well as impliment form of regularization in their fits.
+%Hill~{\textit{et al.}}~\cite{Lee:2015jqa} as well as impliment form of regularization in their fits.
 
 For the specific example of electron scattering, we have shown that the practice of simply 
 concluding that a model with
