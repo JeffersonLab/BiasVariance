@@ -11,12 +11,8 @@
 \bibliographystyle{apsrev4-1}
 
 \begin{document}
-
-\title{Bias-Variance Trade-off In Proton Radius Extractions From Electron Scattering Data \\
-%or \\
-%How the Bias Bias Biases `Unbiased' Proton Radius Extractions \\
-or \\
-How I Learned to Stop Worrying and Love the Bias}
+\title{Bias-Variance Trade-off In Proton Radius Extractions From Electron Scattering Data} 
+% a.k.a. How I Learned to Stop Worrying and Love the Bias
 
 \author{Randall Evan McClellan}
 \affiliation{Jefferson Lab, Newport News, VA 23606}
@@ -24,47 +20,58 @@ How I Learned to Stop Worrying and Love the Bias}
 \affiliation{Jefferson Lab, Newport News, VA 23606}
 \author{Douglas Weadon Higinbotham}
 \affiliation{Jefferson Lab, Newport News, VA 23606}
-\author{Christian Weiss}
-\affiliation{Jefferson Lab, Newport News, VA 23606}
-\author{William and Mary Group}
-\affiliation{William and Mary, Williamsburg, VA 23601}
+\author{Xuefei Yan}
+\affiliation{Duke University Durham, NC 27708}
 
 \begin{abstract}
-Intuitively, it is often assumed that a truer model will necessarily yield a more accurate fit.
-Herein we revisit this ansatz in the context of extracting the proton radius from idealized
-charge form factor data.
-This is done with a simple Monte Carlo simulation following exactly the conditions as outlined
-in the classic paper that rejected linear model extractions in favor of quadratic extractions
-on the basis that the simulations clearly indicated bias. 
-In statistical modeling, one not only needs to consider bias but also variance.
-Once both bias and variance are taken into account via calculation of the root mean square error, 
-one now finds that at low Q$^2$ the linear model extractions in fact have better predictive 
-power due to significantly lower variance than quadratic models.
+Intuitively, theorists often assume that a more complete model will necessarily yield a more 
+accurate least squares fit to experimental data.   Herein we analyze this ansatz in the context of extracting 
+the proton charge radius from simulatied charge form factor data.
+We will show, that due to the noise in the experimental data,
+that a parsimonious extraction of the proton radius can in fact be the better predictive model.  This result 
+provides a simple illustration the trade-off between bias and variance that is at the
+heart of machine learning algorithums as well as the basis for regression regularization methods.
 
-Finally we apply the rational function to the entire Mainz spectrometer B data set and get $\chi^2 = 679$ with 681 points fitted for a $\chi^2/\nu =  1.00$.   
-
-We then repeat using the rebinned data of Arrington/Hill/Lee, which gives the same answer though
-suggests that they have indeed now overestimated the uncertainties:
-
-$$ \chi^2 = 229.69 \text{ for } 333 \text{ data points, } \chi^2/\nu = 0.70 $$
-
-Pade Output Proton Charge Radius 0.8495479660202573 \\
-Pade Output Proton Magnetic Radius 0.8575784681411048 \\
-Fitted 333 data points:
-
-180 MeV: Total Chi2 34.179 Total 61.000 chi2/v 0.579
-
-For a proton charge radius of $\unit[0.850\pm0.001]{fm}$ using two completely different binnings of the Mainz data.
-and a result that mimics that shape of asym. data.
-(try that trick with polynominals ;-)
-
-%This result provides a simple illustration the trade-off between bias and variance that is at the
-%heart of current debate of fitting methods.
 \end{abstract}
+
+%This is done with a simple Monte Carlo simulation following exactly the conditions as outlined
+%in the classic paper that rejected linear model extractions in favor of quadratic extractions
+%on the basis that the simulations clearly indicated bias. 
+%
+%We will clearly show, that one should not reject a model solely be one needs to not only consider bias but also variance.
+%By considering both bias and variance, 
+%
+%Once both bias and variance are taken into account via calculation of the root mean square error, 
+%one now finds that at low Q$^2$ the linear model extractions in fact have better predictive 
+%power due to significantly lower variance than quadratic models.
+%
+%Finally we apply the rational function to the entire Mainz spectrometer B data set and get $\chi^2 = 679$ with 681 points fitted for a $\chi^2/\nu =  1.00$.   
+%
+%We then repeat using the rebinned data of Arrington/Hill/Lee, which gives the same answer though
+%suggests that they have indeed now overestimated the uncertainties:
+%
+%$$ \chi^2 = 229.69 \text{ for } 333 \text{ data points, } \chi^2/\nu = 0.70 $$
+%
+%Pade Output Proton Charge Radius 0.8495479660202573 \\
+%Pade Output Proton Magnetic Radius 0.8575784681411048 \\
+%Fitted 333 data points:
+%
+%180 MeV: Total Chi2 34.179 Total 61.000 chi2/v 0.579
+%
+%For a proton charge radius of $\unit[0.850\pm0.001]{fm}$ using two completely different binnings of the Mainz data.
+%and a result that mimics that shape of asym. data.
+%(try that trick with polynominals ;-)
+%
+%
+%
+%that is at the
+%heart of current debate between the variation extraction of the proton radius from electron scattering
+%data.
 
 \maketitle
 
 \section{Introduction}
+
 
 The proton's charge radius, $r_p$, can be extracted
 by determining the slope of the electric form factor as $Q^2$
