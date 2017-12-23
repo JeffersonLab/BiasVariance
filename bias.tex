@@ -11,12 +11,10 @@
 \bibliographystyle{apsrev4-1}
 
 \begin{document}
-\title{Bias-Variance Trade-off In Proton Radius Extractions From Electron Scattering Data} 
+\title{Bias-Variance Trade-Off In Proton Radius Extractions From Electron Scattering Data} 
 % a.k.a. How I Learned to Stop Worrying and Love the Bias
 
 \author{Randall Evan McClellan}
-\affiliation{Jefferson Lab, Newport News, VA 23606}
-\author{David Meekins} 
 \affiliation{Jefferson Lab, Newport News, VA 23606}
 \author{Douglas Weadon Higinbotham}
 \affiliation{Jefferson Lab, Newport News, VA 23606}
@@ -24,14 +22,13 @@
 \affiliation{Duke University, Durham, NC 27708}
 
 \begin{abstract}
-Intuitively, theorists often assume that a more complete model will necessarily yield a more 
+Intuitively, phenomenologists often assume that a more complete model will necessarily yield a more 
 accurate least squares fit to experimental data.   Herein we analyze this ansatz in the context of extracting 
 the proton charge radius from simulatied charge form factor data.
 We will show, due to the noise in the experimental data,
-that a parsimonious extraction of the proton radius can in fact be the better predictive model.  This result 
-provides a simple illustration the trade-off between bias and variance that is at the
+that a parsimonious extraction of the proton radius can in fact be the better predictive model.
+This result provides a simple illustration the trade-off between bias and variance that is at the
 heart of machine learning algorithms as well as the basis for regression regularization methods.
-
 \end{abstract}
 
 %This is done with a simple Monte Carlo simulation following exactly the conditions as outlined
@@ -72,10 +69,9 @@ heart of machine learning algorithms as well as the basis for regression regular
 
 \section{Introduction}
 
-
 The proton's charge radius, $r_p$, can be extracted
 by determining the slope of the electric form factor as $Q^2$
-approaches zero.  In fact the relation between this slope and 
+approaches zero.   The relation between this slope and 
 the radius is defined to be
 $$
 G_E(Q^2)
@@ -89,24 +85,25 @@ $$
    = \left( -6  \left. \frac{\mathrm{d} G_E(Q^2)}{\mathrm{d}Q^2}
     \right|_{Q^{2}=0} \right)^{1/2} \>.
  $$
-Of course, electron scattering cannot reach the exact $Q^2 = 0$ limit.
-An extrapolation is required to extract the charge radius from the form factor data.
+Of course, electron scattering cannot reach the exact $Q^2 = 0$ limit; thus,
+an extrapolation is required to extract the charge radius from the experimental data.
 
 In the recent literature, you can find a number of extractions of the proton radius ranging from
 parsimonious fits of low Q$^2$ data~\cite{Griffioen:2015hta,Horbatsch:2016ilr,Higinbotham:2015rja} to extremely 
 complex models with more than fifty free parameters~\cite{}.
 
 A common criticism of the parsimonious models is the known prescence of bias. 
-Proponents of the complex fits assert that bias must be avoided at any cost. 
+Proponents of the complex fits imply that bias must be avoided at any cost. 
 We will show in this work that when building a statistical model, one needs to in fact consider both bias and variance.
-Contrary to intuition, models with bias can in fact have better predictive power, especially in extrapolations.
+Contrary to intuition, models with bias can in fact have better predictive power.% especially in extrapolations.
 
 \section{Bias}
 
 A very straight forward example of bias being used to rule out simpler models can be found in a Z. Physik
-article from 1975~\cite{Borkowski:1975}; and while an older paper, its very strong conclusions are still 
-noted to this day~\cite{Sick:2017aor} and a similar exercises are done with other functions in Kruas~\textit{et al.}~\cite{Kraus:2014qua}.
-As noted in~\cite{Hogg:2010yz}, the use of even an approximate generative model can be extremely important in understanding. %what? 
+article from 1975~\cite{Borkowski:1975}; and while an older research article, its very strong conclusions are still 
+noted to this day~\cite{Sick:2017aor} and a similar exercises have been done with other functions in Kruas~\textit{et al.}~\cite{Kraus:2014qua}.
+
+As noted in~\cite{Hogg:2010yz}, the use of even an approximate generative model can be extremely important in understanding. 
 
 The example problem, as presented in the Z. Physik paper, is extremely simple to reproduce.   
 Randomly generate sets of faux change form factor faux in steps of $\unit[0.05]{fm^{-2}}$ from $\unit[0.1]{fm^{-2}}$ to 0.4, 0.8, 1.2,
@@ -146,6 +143,27 @@ fm$^{-2}$      & a$_0$      & radius          & a$_0$    & radius \\ \hline
 While the mean of the results is indeed correct; when we run an experiment we typically do no get to run it $10^6$ times.
 In particular in nuclear physics, the experiments are few and far between thus we need to carefully consider variance as
 well as the bias when picking the statistical model to use.
+
+If the authors of the Z. Phys. paper had decide to focus on variance instead of bias, they would have come to a very
+different conclusion.
+
+\begin{table}
+\label{ztable}
+\caption{The following table shows the variance of the a$_0$ and radius terms from doing $10^6$ Monte Carlo simulations
+for each range
+where Eq.~\ref{sd} was used to generate faux data in $\unit[0.05]{fm^{-2}}$ steps with each points randomized using
+0.5\% normal distribution.   The results clearly indicate that the quadratic fits have a large variance.   The input
+radius was \unit[0.8113]{fm} (an a1/a0 term of $\unit[0.1097]{fm^{-1}}$) and an a0 of one.}
+\begin{tabular}{c|c|c} \hline
+interval       & \multicolumn{1}{c|}{linear fit} & \multicolumn{1}{c}{quadratic fit}  \\
+fm$^{-2}$   & radius sigma         &  radius sigma \\ \hline
+ 0.1 -- 0.4 & 0.0184&  0.1094 \\
+ 0.1 -- 0.8 & 0.0095&  0.0281 \\
+ 0.1 -- 1.2 & 0.0110&  0.0138 \\
+ 0.1 -- 1.6 & 0.0136&  0.0085 \\ \hline
+\end{tabular}
+\end{table}
+
 
 Table~\ref{fulltable} shows more complete picture of the simulation results where the variance is shown along with the bias.
 This table in fact shows nearly a textbook illustration of the trade-off between variance and bias with the simple fits
@@ -268,7 +286,7 @@ Looking back to our example function, one can see that the range of the Saskatoo
 choice for extracting a radius and as shown much later if one redoes the Z.Physik fits but adopts the Saskatoon linear proceedure one finds
 a radius of \unit[0.84]{fm}~\cite{Higinbotham:2015rja}.   Though want one really wants is a function with both low bias and low variance.
 
-\section{Beyond Standard Dipole And Polynomial Fucntions}
+\section{Beyond Polynomial Expansions}
 
 While one can cointue to increase the $Q^2$ range of the data, one will find that higher and higher order polynomials are required
 to discribe the data and as shown in~\cite{Kraus:2014qua}, but this leads to ever increasing variance and instability as real data
@@ -280,7 +298,7 @@ both low bias and low varaince over a large range of $Q^2$.
 
 While a Taylor series is the most general minimax function, it is not the only one.    If one explores (quote math book) one 
 will find several other functions which are equally flexible yet have properties that may make them approxiate for the 
-problem at hand.
+extrapolation problem at hand.
 
 The rational function
 
@@ -290,126 +308,33 @@ G_E = (a_0 + a_1 Q^2)/(1 + a_2 Q^2)
 
 And then a table of the results.
 
-Add function of Jose and Christian.
-
-\begin{alignat*}{2}
-Trail Moments=
-r0:&  1,\\
-r2:&  0.71,&\\
-r4:&  1.4886245922111714,&\\
-r6:  8.396382952136717,&\\
-r8:  125.4944297151659,&\\
-r10: 3909.7337848855677,\\
-r12: 203387.02342771934,\\
-r14: 1.5533472343250945e7,\\
-r16: 1.620661306754837e9,\\
-r18: 2.2059826827872018e11,\\
-r20: 3.790434839036413e13,\\
-r22: 8.016789155142601e15,\\
-r24: 2.0455477973159212e18,\\
-r26: 6.194020562555066e20, \\
-r28: 2.1954425776105903e23, \\
-r30: 9.003115066949057e25, \\
-r32: 4.228910288487866e28, \\
-r34: 2.255488525203844e31, \\
-r36: 1.3555113752177442e34, \\
-r38: 9.117417045801919e36, \\
-r40: 6.822151726705506e39 
-\end{alignat*}
-
-\begin{alignat*}{2}
-Trail G_E(Q^2) & =  \\
-&1.0*q2**0 + \\
-&-0.11833333333333333*q2**1 + \\
-&0.012405204935093095*q2**2 + \\
-&-0.0016659489984398247*q2**3 + \\
-&0.0003458290060492887*q2**4 + \\
-&-9.794707453717652e-05*q2**5 + \\
-&3.26620112506641e-05*q2**6 + \\
-&-1.187870063325348e-05*q2**7 + \\
-&4.556419987712978e-06*q2**8 + \\
-&-1.8134578995563369e-06*q2**9 + \\
-&7.418995770908466e-07*q2**10 + \\
-&-3.1010304674158173e-07*q2**11 + \\
-&1.318754495362791e-07*q2**12 + \\
-&-5.6883963856478145e-08*q2**13 + \\
-&2.4830374072102887e-08*q2**14 + \\
-&-1.0948913684904526e-08*q2**15 +\\ 
-&4.87015501923618e-09*q2**16 + \\
-&-2.182769986978775e-09*q2**17 + \\
-&9.848413919033538e-10*q2**18 + \\
-&-4.469786132456496e-10*q2**19 + \\
-&2.039353202104902e-10*q2**20 + \\
-&...
-\end{alignat*}
-
 We note that this deceptively simple form can be extended to give the correct asymmotic behiver
-as was done by Kelly~\cite{}
+as was done by Kelly~\cite{} and Puckett~\cite{}.
 
-%\section{Extra Stuff}
+%\section{Appliction To Experimental Data}
 %
-%\begin{equation}
-%\chi^2 = \Sigma^{N_i} [Rsidiuals]^2
-%\end{equation}
+%We use the entire Mainz spectrometer B data set.
 %
-%\begin{equation}
-%\chi^2/nu = \chi^2/(N - N variables)
-%\end{equation}
+%Results:
 %
-%\begin{align}
-%Akaike Information Criterion statistic \\
-%AIC = Nln(χ2/N)+2Nvarys
-%\end{align}
+%Pade Output Proton Charge Radius   0.8505217414548519
+%Pade Output Proton Magnetic Radius 0.8664383622994243
 %
-%\begin{align}
-%Bayesian Information Criterion statistic \\
-%BIC = Nln(χ2/N)+ln(N)Nvarys
-%\end{align}
-%
-%\begin{table}[htb]
-%\begin{tabularx}{\columnwidth}{c|ccc|ccc}
-%Range      & \multicolumn{3}{c}{Linear} & \multicolumn{3}{c}{Quadratic}  \\
-%fm$^{-2}$  & chi2/nu   & A.I.C.    & B.I.C.   & chi2/nu     & A.I.C.      & B.I.C.   \\
-%\end{tabularx}
-%\end{table}
-
-\begin{figure}
-\includegraphics[width=\columnwidth]{Figure/josefunction.pdf}
-\end{figure}
-
-\section{Appliction To Experimental Data}
-
-We use the entire Mainz spectrometer B data set.
-
-Results:
-
-Pade Output Proton Charge Radius   0.8505217414548519
-
-Pade Output Proton Magnetic Radius 0.8664383622994243
-
-Total Chi2 = 679.35 for 681 data points, Chi2/v = 1.00 
-
-Checking just the lowest beam energy:
-
-180 MeV: Total Chi2 176.629 wth 166 points fitting for a chi2/v 1.077:
-
+%Total Chi2 = 679.35 for 681 data points, Chi2/v = 1.00 
 
 \section{Summary}
 
 The concept of a bias-varinace trade-off is key to regulariztion techniques such as stepwise regression, ridge regression and
 statistical lasso.    By accepting some bias, these techniques tend to achieve a far superior mean square error then
 the unregulated ordinary least squares solution of the same complexity.     
-%In fact, both the fits of 
-%Hill~{\textit{et al.}}~\cite{Lee:2015jqa} as well as impliment form of regularization in their fits.
 
-For the specific example of electron scattering, we have shown that the practice of simply 
-concluding that a model with
-a higher predictive validity is truer is not valid assumption and that parsimonious
-modeling can in fact have the higher predictive validity depending on the exact range and precision of the data.
+For the specific example of electron scattering, we have shown using the standard dipole function that 
+the practice of simply concluding that a model with a higher predictive validity is truer is not valid 
+assumption and that parsimonious modeling can in fact have the higher predictive validity depending on 
+the exact range and precision of the data.
 
-The detailed math dehind very specific example given herein is covered in detail in Shmueli's 
-review article~\cite{Shmueli:2010}.  And as George Box was always quick to say, all models are wrong;
-but some are useful.
+Further details of bias-variance trade-off are covered in detail in Shmueli's review article~\cite{Shmueli:2010}  
+and as George Box was always known to say, "All models are wrong; but some are useful."
 
 \bibliography{elastic}
 
