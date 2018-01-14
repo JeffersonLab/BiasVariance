@@ -22,48 +22,17 @@
 \affiliation{Duke University, Durham, NC 27708}
 
 \begin{abstract}
-Intuitively, phenomenologists often assume that a more complete model will necessarily yield a more 
-accurate least squares fit to experimental data.   Herein we analyze this ansatz in the context of extracting 
+Intuitively, phenomenologists often assume that a more complex model will necessarily yield a more 
+accurate discription of experimental data.   Herein we analyze this ansatz in the context of extracting 
 the proton charge radius from simulatied charge form factor data.
 We will show, due to the noise in the experimental data,
-that a parsimonious extraction of the proton radius can in fact be the better predictive model.
-This result provides a simple illustration the trade-off between bias and variance that is at the
-heart of machine learning algorithms as well as the basis for regression regularization methods.
+that a parsimonious extraction of the proton radius can in fact be the better model to use.
+This result, which is contra to many previous papers that focused solely on bias,  provides a 
+simple illustration the trade-off between bias and variance that is at the
+heart of machine learning algorithms as well as the basis for regression regularization methods
+where a biased model with a low variance can be the better predictive model then a low bias high
+variance model.  
 \end{abstract}
-
-%This is done with a simple Monte Carlo simulation following exactly the conditions as outlined
-%in the classic paper that rejected linear model extractions in favor of quadratic extractions
-%on the basis that the simulations clearly indicated bias. 
-%
-%We will clearly show, that one should not reject a model solely be one needs to not only consider bias but also variance.
-%By considering both bias and variance, 
-%
-%Once both bias and variance are taken into account via calculation of the root mean square error, 
-%one now finds that at low Q$^2$ the linear model extractions in fact have better predictive 
-%power due to significantly lower variance than quadratic models.
-%
-%Finally we apply the rational function to the entire Mainz spectrometer B data set and get $\chi^2 = 679$ with 681 points fitted for a $\chi^2/\nu =  1.00$.   
-%
-%We then repeat using the rebinned data of Arrington/Hill/Lee, which gives the same answer though
-%suggests that they have indeed now overestimated the uncertainties:
-%
-%$$ \chi^2 = 229.69 \text{ for } 333 \text{ data points, } \chi^2/\nu = 0.70 $$
-%
-%Pade Output Proton Charge Radius 0.8495479660202573 \\
-%Pade Output Proton Magnetic Radius 0.8575784681411048 \\
-%Fitted 333 data points:
-%
-%180 MeV: Total Chi2 34.179 Total 61.000 chi2/v 0.579
-%
-%For a proton charge radius of $\unit[0.850\pm0.001]{fm}$ using two completely different binnings of the Mainz data.
-%and a result that mimics that shape of asym. data.
-%(try that trick with polynominals ;-)
-%
-%
-%
-%that is at the
-%heart of current debate between the variation extraction of the proton radius from electron scattering
-%data.
 
 \maketitle
 
@@ -89,19 +58,25 @@ Of course, electron scattering cannot reach the exact $Q^2 = 0$ limit; thus,
 an extrapolation is required to extract the charge radius from the experimental data.
 
 In the recent literature, you can find a number of extractions of the proton radius ranging from
-parsimonious fits of low Q$^2$ data~\cite{Griffioen:2015hta,Horbatsch:2016ilr,Higinbotham:2015rja} to extremely 
-complex models with more than fifty free parameters~\cite{}.
+parsimonious fits of low Q$^2$ data~\cite{Griffioen:2015hta,Horbatsch:2016ilr,Higinbotham:2015rja} to 
+extremely complex models with more than fifty free parameters~\cite{}.
 
 A common criticism of the parsimonious models is the known prescence of bias. 
 Proponents of the complex fits imply that bias must be avoided at any cost. 
-We will show in this work that when building a statistical model, one needs to in fact consider both bias and variance.
-Contrary to intuition, models with bias can in fact have better predictive power.% especially in extrapolations.
+In fact this was explicately stated in a classic Monte Carlo study where the 
+presents of a bias was used to reject the then coming used parsimionous 
+model~\cite{Borkowski:1975}.
+
+We will show in this work that when building a statistical model, one needs to in fact 
+consider both bias and variance.   Contrary to intuition, models with bias can in fact 
+have better predictive power especially in cases where an extrapolation is required.
 
 \section{Bias}
 
 A very straight forward example of bias being used to rule out simpler models can be found in a Z. Physik
 article from 1975~\cite{Borkowski:1975}; and while an older research article, its very strong conclusions are still 
-noted to this day~\cite{Sick:2017aor} and a similar exercises have been done with other functions in Kruas~\textit{et al.}~\cite{Kraus:2014qua}.
+noted to this day~\cite{Sick:2017aor} and a similar exercises have been done with other functions 
+in Kruas~\textit{et al.}~\cite{Kraus:2014qua}.
 
 As noted in~\cite{Hogg:2010yz}, the use of even an approximate generative model can be extremely important in understanding. 
 
@@ -289,37 +264,27 @@ a radius of \unit[0.84]{fm}~\cite{Higinbotham:2015rja}.   Though want one really
 
 While one can cointue to increase the $Q^2$ range of the data, one will find that higher and higher order polynomials are required
 to discribe the data and as shown in~\cite{Kraus:2014qua}, but this leads to ever increasing variance and instability as real data
-isn't prefectly normally distriubuted as in our example Monte Carlo.
+isn't prefectly normally distriubuted as in these example Monte Carlo distributions.
 
-To try to avoid these issues, one can impliment a bounded least squares fit~\cite{} or try a machine learning regression techinque
-such as stepwise regresson to pick the appropriate order fit, though it would be far more statifying to simply find function that has 
+To try to avoid these issues, one can impliment a bounded least squares fit based on a physical argument~\cite{Horbatsch:2016ilr} 
+or try purely statastical appoaches such as machine learning regression such as stepwise regresson~\cite{Higinbotham:rja} 
+to pick the appropriate order fit, though it would be far more statifying to simply find function that has 
 both low bias and low varaince over a large range of $Q^2$.
 
 While a Taylor series is the most general minimax function, it is not the only one.    If one explores (quote math book) one 
 will find several other functions which are equally flexible yet have properties that may make them approxiate for the 
-extrapolation problem at hand.
+extrapolation problem at hand.   In particular, rational functions~\cite{Kelly:2004hm,PUckett:2017flj} 
+and continued fractions~\cite{} have been shown to extrapolate well~\cite{}.
 
-The rational function
-
-\begin{equation}
-G_E \simeq (a_0 + a_1 Q^2)/(1 + a_2 Q^2)
-\end{equation}
-
-And then a table of the results.
-
-We note that this deceptively simple form can be extended to give the correct asymmotic behiver
-as was done by Kelly~\cite{} and Puckett~\cite{}.
-
-%\section{Appliction To Experimental Data}
+%The rational function or even a two parameter continued fraction 
 %
-%We use the entire Mainz spectrometer B data set.
+%\begin{equation}
+%G_E \simeq (a_0 + a_1 Q^2)/(1 + a_2 Q^2)
+%\end{equation}
 %
-%Results:
-%
-%Pade Output Proton Charge Radius   0.8505217414548519
-%Pade Output Proton Magnetic Radius 0.8664383622994243
-%
-%Total Chi2 = 679.35 for 681 data points, Chi2/v = 1.00 
+%We note that this deceptively simple form can be extended to give the correct asymmotic behiver
+%as was done by J.J.~Kelly~\cite{Kelly:2004hm} and A.J.R.~Puckett {\it{et al.}}~\cite{Puckett:2017flj}.
+
 
 \section{Summary}
 
