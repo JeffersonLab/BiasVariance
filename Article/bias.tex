@@ -11,7 +11,8 @@
 \bibliographystyle{apsrev4-1}
 
 \begin{document}
-\title{Bias-Variance Trade-Off In Proton Radius Extractions From Electron Scattering Data} 
+\title{Bias Bias In Proton Radius Extractions From Electron Scattering Data} 
+%\title{Bias-Variance Trade-Off In Proton Radius Extractions From Electron Scattering Data} 
 % a.k.a. How I Learned to Stop Worrying and Love the Bias
 
 \author{Randall Evan McClellan}
@@ -22,24 +23,40 @@
 \affiliation{Duke University, Durham, NC 27708}
 
 \begin{abstract}
-Intuitively, phenomenologists often assume that a more complex model will necessarily yield a more 
-accurate discription of experimental data.   Herein we analyze this ansatz in the context of extracting 
-the proton charge radius from simulatied charge form factor data.
-We will show, due to the noise in the experimental data,
-that a parsimonious extraction of the proton radius can in fact be the better model to use.
-This result, which is contra to many previous papers that focused solely on bias,  provides a 
-simple illustration the trade-off between bias and variance that is at the
-heart of machine learning algorithms as well as the basis for regression regularization methods
-where a biased model with a low variance can be the better predictive model then a low bias high
-variance model.  
+Intuitively, phenomenologists often assume that a more complex statistical model will necessarily yield a more 
+accurate discription of experimental data.   Herein, we analyze this ansatz in the context of extracting 
+the proton charge radius from simulated charge form factor data.
+We will show, that for a given set of data, that the parsimonious model can in fact be the better model to use.
+This result provides a simple but important illustration the trade-off between bias and variance that is at the
+heart of machine learning.   This concept also forms the basis for regression regularization methods.
+We note that those phenomologists using techniques that balance bias and variance,
+tend to extract photon radii from electron scattering data that agree with the muonic hydrogen lamb 
+shift results, whereas those simply trying to eliminate bias extract larger radii.
 \end{abstract}
 
 \maketitle
 
 \section{Introduction}
 
-The proton's charge radius, $r_p$, can be extracted
-by determining the slope of the electric form factor as $Q^2$
+High precision muonic Lamb shift data have determined the proton radius to 
+be √0.84087(39)~fm~\cite{Pohl:2010zza,Antognini:1900ns}.   This result is in stark contrast to the current
+CODATA recommended value of 0.875~fm~\cite{Mohr:2015ccw} which comes from an average of atomic 
+Lamb shift and electron scattering results.  
+
+While initial efforts to understand this puzzle focused on the details muonic result, attention has
+now turned to re-examining the atomic and electron scattering results.   In fact, the first of the
+new generation of published atomic result is in fact in statistical agreement with the muonic result~\cite{}
+though preliminary results from another group agrees with the classic atomic results~\cite{}.
+
+For electron scattering, the puzzle has also become unclear with extractions of the proton 
+radius ranging from relatively parsimonious fits of 
+low Q$^2$ data~\cite{Griffioen:2015hta,Horbatsch:2016ilr,Higinbotham:2015rja} to 
+extremely complex models with more than fifty free parameters~\cite{}.   As nicely illistrated in the
+work of Krauth~{\it{\et al.}}~\cite{Krauth:2017ijq}, the new parsimonious fits tend to agree with the 
+muonic results while the more complex fits are generally in agreement with the CODATA value.
+
+For the electron scattering data, the proton's charge radius, $r_p$, is extracted
+by determining the slope of the electric form factor as the four-moment transfer, $Q^2$,
 approaches zero.   The relation between this slope and 
 the radius is defined to be
 $$
@@ -57,19 +74,15 @@ $$
 Of course, electron scattering cannot reach the exact $Q^2 = 0$ limit; thus,
 an extrapolation is required to extract the charge radius from the experimental data.
 
-In the recent literature, you can find a number of extractions of the proton radius ranging from
-parsimonious fits of low Q$^2$ data~\cite{Griffioen:2015hta,Horbatsch:2016ilr,Higinbotham:2015rja} to 
-extremely complex models with more than fifty free parameters~\cite{}.
+One of the criticisms of the parsimonious extractions of the proton radius is the prescence of bias~\cite{}.
+with an implication that bias needs to be avoided in order to successfully extract the true radius from the data.
+In fact, the rejection of statistical models based solely on bias was explicately stated in the 
+classic Monte Carlo study of Borkowski {\it{et al.}}~\cite{Borkowski:1975}. 
 
-A common criticism of the parsimonious models is the known prescence of bias. 
-Proponents of the complex fits imply that bias must be avoided at any cost. 
-In fact this was explicately stated in a classic Monte Carlo study where the 
-presents of a bias was used to reject the then coming used parsimionous 
-model~\cite{Borkowski:1975}.
-
-We will show in this work that when building a statistical model, one needs to in fact 
-consider both bias and variance.   Contrary to intuition, models with bias can in fact 
-have better predictive power especially in cases where an extrapolation is required.
+We will show in this work that when building a statistical model to extract the proton radius, one needs 
+to in fact consider both bias and variance.   And thus, contrary to intuition, models with some bias 
+can in fact have better predictive power then models without bias.   In fact, the idea of balancing bias and 
+varaince forms the heart of machine learning as well as many statistical modeing techniques~\cite{}.
 
 \section{Bias}
 
@@ -299,6 +312,8 @@ the exact range and precision of the data.
 
 Further details of bias-variance trade-off are covered in detail in Shmueli's review article~\cite{Shmueli:2010}  
 and as George Box was always known to say, "All models are wrong; but some are useful."
+
+\section{Acknowledgement}
 
 \bibliography{elastic}
 
