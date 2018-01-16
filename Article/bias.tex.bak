@@ -11,7 +11,8 @@
 \bibliographystyle{apsrev4-1}
 
 \begin{document}
-\title{Bias-Variance Trade-Off In Proton Radius Extractions From Electron Scattering Data} 
+\title{Balancing Bias and Variance When Extracting The Proton Radius From Electron Scattering Data} 
+%\title{Bias-Variance Trade-Off In Proton Radius Extractions From Electron Scattering Data} 
 % a.k.a. How I Learned to Stop Worrying and Love the Bias
 
 \author{Randall Evan McClellan}
@@ -22,24 +23,43 @@
 \affiliation{Duke University, Durham, NC 27708}
 
 \begin{abstract}
-Intuitively, phenomenologists often assume that a more complex model will necessarily yield a more 
-accurate discription of the experimental data.   Herein we analyze this ansatz in the context of extracting 
+Intuitively, phenomenologists often assume that a more complex statistical model will necessarily yield a more 
+accurate discription of experimental data.   Herein, we analyze this ansatz in the context of extracting 
 the proton charge radius from simulated charge form factor data.
-We will show, due to the noise in the experimental data,
-that a parsimonious extraction of the proton radius can in fact be the better model to use.
-This result, which is contra to many previous papers that focused solely on bias,  provides a 
-simple illustration the trade-off between bias and variance that is at the
-heart of machine learning algorithms as well as the basis for regression regularization methods
-where a biased model with a low variance can be the better predictive model then a low bias high
-variance model.  
+We will show, that for a given set of data, that a biased parsimonious model can in fact be the better model to use
+if it has a significantly smaller variance then the more complex less biased model.
+This result provides a simple but important illustration the trade-off between bias and variance that is at the
+heart of machine learning.   This concept also forms the basis for regression regularization methods.
+We note that those phenomologists using techniques that balance bias and variance,
+tend to extract photon radii from electron scattering data that agree with the muonic hydrogen lamb 
+shift results, whereas those simply trying to eliminate bias extract larger radii.
 \end{abstract}
 
 \maketitle
 
 \section{Introduction}
 
-The proton's charge radius, $r_p$, can be extracted
-by determining the slope of the electric form factor as $Q^2$
+High precision muonic Lamb shift data have determined the proton radius to 
+be √0.84087(39)~fm~\cite{Pohl:2010zza,Antognini:1900ns}.   This result is in stark contrast to the current
+CODATA recommended value of 0.875~fm~\cite{Mohr:2015ccw} which comes from an average of atomic 
+Lamb shift and electron scattering results.  
+
+While initial efforts to understand this puzzle focused on the details muonic result, attention has
+now turned to re-examining the atomic and electron scattering results.   In fact, the first of the
+new generation of published atomic result is in fact in statistical agreement with the muonic 
+result~\cite{Beyer79} though preliminary results from another group agrees with the classic atomic 
+results~\cite{fleurbaey:tel-01633631}.
+
+For electron scattering, the puzzle has also become unclear with extractions of the proton 
+radius ranging from relatively parsimonious fits of 
+low Q$^2$ data~\cite{Griffioen:2015hta,Horbatsch:2016ilr,Higinbotham:2015rja} to 
+extremely complex models with more than fifty free parameters~\cite{Bernauer:2013tpr,Lee:2015jqa}.   
+As nicely illistrated in the work of Krauth~{\it{et al.}}~\cite{Krauth:2017ijq}, the 
+new parsimonious fits tend to agree with the muonic results while the more complex fits 
+are generally in agreement with the CODATA value.
+
+For the electron scattering data, the proton's charge radius, $r_p$, is extracted
+by determining the slope of the electric form factor as the four-moment transfer, $Q^2$,
 approaches zero.   The relation between this slope and 
 the radius is defined to be
 $$
@@ -57,19 +77,12 @@ $$
 Of course, electron scattering cannot reach the exact $Q^2 = 0$ limit; thus,
 an extrapolation is required to extract the charge radius from the experimental data.
 
-In the recent literature, you can find a number of extractions of the proton radius ranging from
-parsimonious fits of low Q$^2$ data~\cite{Griffioen:2015hta,Horbatsch:2016ilr,Higinbotham:2015rja} to 
-extremely complex models with more than fifty free parameters~\cite{}.
-
-A common criticism of the parsimonious models is the known prescence of bias. 
-Proponents of the complex fits imply that bias must be avoided at any cost. 
-In fact this was explicately stated in a classic Monte Carlo study where the 
-presents of a bias was used to reject the then coming used parsimionous 
-model~\cite{Borkowski:1975}.
-
-We will show in this work that when building a statistical model, one needs to in fact 
-consider both bias and variance.   Contrary to intuition, models with bias can in fact 
-have better predictive power especially in cases where an extrapolation is required.
+One of the criticisms of the parsimonious extractions of the proton radius is the prescence of bias~\cite{Sick:2017aor}.
+with an implication that bias needs to be avoided in order to successfully extract the true radius from the data.
+In fact, the rejection of statistical models based solely on bias was explicately stated in the 
+classic Monte Carlo study of Borkowski~{\it{et al.}}~\cite{Borkowski:1975}. 
+We will show in this work that when using a Monte Carlo study to test a statistical model's ability
+to extract the proton radius, one needs to in fact consider both bias and variance.
 
 \section{Bias}
 
@@ -77,10 +90,11 @@ A very straight forward example of bias being used to rule out simpler models ca
 article from 1975~\cite{Borkowski:1975}; and while an older research article, its very strong conclusions are still 
 noted to this day~\cite{Sick:2017aor} and a similar exercises have been done with other functions 
 in Kruas~\textit{et al.}~\cite{Kraus:2014qua}.
+As noted in~\cite{Hogg:2010yz}, the use of even an approximate generative model can be extremely 
+important in understanding thus it is worth while to revisit this problem using the standard dipole 
+function used by Borkowski~{\it{et al.}}. 
 
-As noted in~\cite{Hogg:2010yz}, the use of even an approximate generative model can be extremely important in understanding. 
-
-The example problem, as presented in the Z. Physik paper, is extremely simple to reproduce.   
+The example problem, as presented in the Z. Physik paper, is simple to reproduce.   
 Randomly generate sets of faux change form factor faux in steps of $\unit[0.05]{fm^{-2}}$ from $\unit[0.1]{fm^{-2}}$ to 0.4, 0.8, 1.2,
 and $\unit[1.6]{fm^{-2}}$ using the standard dipole function:
 \begin{equation}
@@ -93,8 +107,6 @@ Z. Physik article using python on a modern computer yielding only minor differen
 As the table clearly shows, the mean of $10^6$ linear fits is biased. 
 Therefore, the authors conclude that the linear models should be rejected in favor of the lower-bias quadratic function.
 They then proceed to extract the proton charge radius from real data using a five parameter fit: a quadratic charge form factor and three floating normalizations.
-
-A Python notebook is included in the supplemental material.
 
 \begin{table}
 \label{ztable}
@@ -118,28 +130,28 @@ fm$^{-2}$      & a$_0$      & radius          & a$_0$    & radius \\ \hline
 While the mean of the results is indeed correct; when we run an experiment we typically do no get to run it $10^6$ times.
 In particular in nuclear physics, the experiments are few and far between thus we need to carefully consider variance as
 well as the bias when picking the statistical model to use.
-
-If the authors of the Z. Phys. paper had decide to focus on variance instead of bias, they would have come to a very
-different conclusion.
-
-\begin{table}
-\label{ztable}
-\caption{The following table shows the variance of the a$_0$ and radius terms from doing $10^6$ Monte Carlo simulations
-for each range
-where Eq.~\ref{sd} was used to generate faux data in $\unit[0.05]{fm^{-2}}$ steps with each points randomized using
-0.5\% normal distribution.   The results clearly indicate that the quadratic fits have a large variance.   The input
-radius was \unit[0.8113]{fm} (an a1/a0 term of $\unit[0.1097]{fm^{-1}}$) and an a0 of one.}
-\begin{tabular}{c|c|c} \hline
-interval       & \multicolumn{1}{c|}{linear fit} & \multicolumn{1}{c}{quadratic fit}  \\
-fm$^{-2}$   & sigma [fm]         &  sigma [fm] \\ \hline
- 0.1 -- 0.4 & 0.0184&  0.1094 \\
- 0.1 -- 0.8 & 0.0095&  0.0281 \\
- 0.1 -- 1.2 & 0.0110&  0.0138 \\
- 0.1 -- 1.6 & 0.0136&  0.0085 \\ \hline
-\end{tabular}
-\end{table}
-
-
+%
+%If the authors of the Z. Phys. paper had decided to focus on variance instead of bias, they would have come to a very
+%different conclusion.
+%
+%\begin{table}
+%\label{ztable}
+%\caption{The following table shows the variance of the a$_0$ and radius terms from doing $10^6$ Monte Carlo simulations
+%for each range
+%where Eq.~\ref{sd} was used to generate faux data in $\unit[0.05]{fm^{-2}}$ steps with each points randomized using
+%0.5\% normal distribution.   The results clearly indicate that the quadratic fits have a large variance.   The input
+%radius was \unit[0.8113]{fm} (an a1/a0 term of $\unit[0.1097]{fm^{-1}}$) and an a0 of one.}
+%\begin{tabular}{c|c|c} \hline
+%interval       & \multicolumn{1}{c|}{linear fit} & \multicolumn{1}{c}{quadratic fit}  \\
+%fm$^{-2}$   & sigma [fm]         &  sigma [fm] \\ \hline
+% 0.1 -- 0.4 & 0.0184&  0.1094 \\
+% 0.1 -- 0.8 & 0.0095&  0.0281 \\
+% 0.1 -- 1.2 & 0.0110&  0.0138 \\
+% 0.1 -- 1.6 & 0.0136&  0.0085 \\ \hline
+%\end{tabular}
+%\end{table}
+%
+%
 Table~\ref{fulltable} shows more complete picture of the simulation results where the variance is shown along with the bias.
 This table in fact shows nearly a textbook illustration of the trade-off between variance and bias with the simple fits
 having a relatively high bias with a low variance while the quadratic fits have a low bias and high variance.
@@ -171,10 +183,9 @@ Points & fm$^{-2}$ &   a0  & Radius&  a1/a0 &  Bias  & Sigma &  RMSE  &   a0  & 
 31& 0.1 - 0.4 & 0.9995& 0.7951& -0.1054& -0.0043& 0.0098& 0.0107 & 1.0000& 0.8090& -0.1091& -0.0006& 0.0629& 0.0629 \\
 31& 0.1 - 0.8 & 0.9987& 0.7829& -0.1021& -0.0076& 0.0041& 0.0086 & 1.0000& 0.8099& -0.1093& -0.0004& 0.0208& 0.0208  \\
 31& 0.1 - 1.2 & 0.9974& 0.7712& -0.0991& -0.0106& 0.0026& 0.0109 & 0.9999& 0.8089& -0.1091& -0.0006& 0.0121& 0.0121  \\
-31& 0.1 - 1.6 & 0.9959& 0.7600& -0.0963& -0.0134& 0.0019& 0.0136 & 0.9998& 0.8076& -0.1087& -0.0010& 0.0085& 0.0085  \\ 
+31& 0.1 - 1.6 & 0.9959& 0.7600& -0.0963& -0.0134& 0.0019& 0.0136 & 0.9998& 0.8076& -0.1087& -0.0010& 0.0085& 0.0085  \\  \hline
 \end{tabular}
 \end{table*}
-
 
 \section{Goldilocks Dilemma}
 
@@ -190,7 +201,7 @@ This is in complete contrast to the conclusion one draws when only considers bia
 though constant with the observation that the optimal specific form of the parameterization may depend on the $Q^2$ region
 being fit~\cite{Alberico:2008sz}.
 \begin{figure}
-\includegraphics[width=\columnwidth]{Figure/biasvariance.pdf}
+\includegraphics[width=\columnwidth]{Figure/biasvariance-clean.pdf}
 \caption{An illustration of the trade-off between bias and variance when selecting a statistical model.   Simple models
 will have low variance but high bias (under-fitting) while complex models will have low bias but high variance (over-fitting).   
 It is this trade-off that one seeks to balance.   While with repeated  Monte Carlo simulations it is trivial to find the optimal
@@ -210,8 +221,8 @@ over a range of 0.1 to 1.6 would produce nearly idenitical if all other things w
 
 In this case, the choice of the parsimonious modeler to use the low Q$^2$ data would like be driven by the recugnition that as Q$^2$ increases
 the extraction of a charge form factor is complicated by the growing influcance of the magnetic form factor while the use of the larger Q$^2$
-range would likely be driven by a desire to form a more complet picture of the proton's structure (e.g. interest not only in the proton's radius
-but also its higher order momentums).
+range would likely be driven by a desire to form a more complet picture of the proton's structure 
+(e.g. one may be interested in not only in the proton's radius but also higher order moments).
 
 \begin{equation}
 \sigma / \sigma_{Mott} = eps G_E^2 + tau G_M^2
@@ -236,69 +247,66 @@ will start become quite important.
 
 \section{Model Selection and the Modern Debate}
 
-While this classic Monte Carlo example problem is over 40 years old, it actually points to exactly the split in the current electron
-scattering proton radius extraction proceedures.     The parsimonious modelers who are focused solely on extracting a radius have
-focused in on the low Q$^2$ region accepting accepting a higher level of bias in exchange for low variance while those modelers
-who are interesting in extracting more information about the proton (i.e. higher order moments) fit longer Q$^2$ ranges and have
+While this classic Monte Carlo example problem is over 40 years old, it actually points to exactly the split in 
+the current electron scattering proton radius extraction proceedures.     The parsimonious modelers, who are 
+focused solely on extracting a radius, have focused in on the low Q$^2$ region accepting accepting a slightly higher 
+level of bias in exchange for low variance while those modelers who are interesting in extracting more information 
+about the proton (i.e. higher order moments) fit longer Q$^2$ ranges and have
 focused on complex models which while lower in bias come at a cost of higher varaince.  
-And the end result has been an uncertainty on the electron scattering proton radius stuck at $\approx \unit[0.01]{fm}$ since 
-L.~Hand~\textit{et al.} original fit in 1963~\cite{} as the increased complexity drives an increased variance.
+It fact, the result of increasing Q$^2$ ranges requiring increasing complexity have resulted in
+an uncertainty in the extracted radius 
+stuck at $\approx \unit[0.01]{fm}$ since L.~Hand~\textit{et al.}'s original fit in 1963~\cite{Hand:1963zz}.
 
-Also, since we don't know the true model so one cannot exactly calculate the RMSE; so while exercises like this one are
-extremely useful for making sets are models; in the end, the data must be used to select the approximate model. 
-For this we relay on statistical modeling techinques such as chi2, reduced chi2, F-tests, A.I.C., B.I.C. to guide our selecton of
-regression models and/or theoretical constraints.
+Also, since we don't know the true model, one cannot in general calculate the RMSE; so while Monte Carlo exercises 
+like the one discribed herein are extremely useful for making sets are models; in the end, the data must be used 
+to select the approximate model. 
+For this one can relay on statistical modeling techinques such as chi2, reduced chi2, F-tests, A.I.C., B.I.C. 
+to guide our selecton of regression models and/or use theoretical constraints.
 
 In fact, statistics books warn about drawing too strong an inference from these types of Monte Carlos.   For example,
 just because the linear model has a negative bias when compared to standard dipole, does not imply that it has a negative bias
 to all possible models.
-In fact, the Z.Physik paper itself rules out the very model it was using for model builting: i.e. drawing very strong conclusions from the standard dipole
-function with its \unit[0.81]{fm} radius yet their five parameter fit (two charge form factor parameters and three normalization parameters)
+In fact, the Z.Physik paper itself rules out the very model it was using for model building: i.e. 
+drawing very strong conclusions from the standard dipole function with its \unit[0.81]{fm} radius 
+yet their five parameter fit (two charge form factor parameters and three normalization parameters)
 gave a radius of \unit[0.87]{fm}.
 
-Looking back to our example function, one can see that the range of the Saskatoon data (0.1 -- 0.8 fm$^{-2}$) could in fact be a reasonable
-choice for extracting a radius and as shown much later if one redoes the Z.Physik fits but adopts the Saskatoon linear proceedure one finds
-a radius of \unit[0.84]{fm}~\cite{Higinbotham:2015rja}.   Though want one really wants is a function with both low bias and low variance.
+Looking back to our example function, one can see that the range of the 
+Saskatoon data (0.1 -- 0.8 fm$^{-2}$) could in fact be a reasonable
+choice for extracting a radius and as shown much later if one redoes 
+the Z.Physik fits but adopts the Saskatoon linear proceedure one finds
+a radius of \unit[0.84]{fm}~\cite{Higinbotham:2015rja}.   
 
 \section{Beyond Polynomial Expansions}
 
-While one can cointue to increase the $Q^2$ range of the data, one will find that higher and higher order polynomials are required
-to discribe the data and as shown in~\cite{Kraus:2014qua}, but this leads to ever increasing variance and instability as real data
-isn't prefectly normally distriubuted as in these example Monte Carlo distributions.
+While one can cointue to increase the $Q^2$ range of the data, one will find that 
+higher and higher order polynomials are required
+to discribe the data and as shown in~\cite{Kraus:2014qua}, but this leads to ever increasing variance 
+and instability as real data isn't prefectly normally distriubuted as in these example Monte Carlo distributions.
 
-To try to avoid these issues, one can impliment a bounded least squares fit based on a physical argument~\cite{Horbatsch:2016ilr} 
-or try purely statastical appoaches such as machine learning regression such as stepwise regresson~\cite{Higinbotham:rja} 
-to pick the appropriate order fit, though it would be far more statifying to simply find function that has 
-both low bias and low varaince over a large range of $Q^2$.
-
-While a Taylor series is the most general minimax function, it is not the only one.    If one explores (quote math book) one 
-will find several other functions which are equally flexible yet have properties that may make them approxiate for the 
-extrapolation problem at hand.   In particular, rational functions~\cite{Kelly:2004hm,PUckett:2017flj} 
-and continued fractions~\cite{} have been shown to extrapolate well~\cite{}.
-
-%The rational function or even a two parameter continued fraction 
-%
-%\begin{equation}
-%G_E \simeq (a_0 + a_1 Q^2)/(1 + a_2 Q^2)
-%\end{equation}
-%
-%We note that this deceptively simple form can be extended to give the correct asymmotic behiver
-%as was done by J.J.~Kelly~\cite{Kelly:2004hm} and A.J.R.~Puckett {\it{et al.}}~\cite{Puckett:2017flj}.
-
+To try to avoid these issues, one can impliment a bounded least squares fit based on a 
+physics argument~\cite{Horbatsch:2016ilr} 
+or try a purely statastical appoaches such as machine learning regression such as stepwise regresson~\cite{Higinbotham:rja},
+though it would be far more statifying to simply find a function that has both low bias and low varaince over a large 
+range of $Q^2$.  In particular, rational functions~\cite{Kelly:2004hm,Puckett:2017flj} and continued 
+fractions~\cite{Sick:2003gm} are known to extrapolate well and should be further investigated.
 
 \section{Summary}
 
-The concept of a bias-varinace trade-off is key to regulariztion techniques such as stepwise regression, ridge regression and
-statistical lasso.    By accepting some bias, these techniques tend to achieve a far superior mean square error then
-the unregulated ordinary least squares solution of the same complexity.     
+The concept of a bias-varinace trade-off is key to regulariztion techniques such as stepwise regression, 
+ridge regression and statistical lasso.    By accepting some bias, these techniques tend to achieve a far 
+superior mean square error then the unregulated ordinary least squares solution of the same complexity.     
 
-For the specific example of electron scattering, we have shown using the standard dipole function that 
-the practice of simply concluding that a model with a higher predictive validity is truer is not valid 
-assumption and that parsimonious modeling can in fact have the higher predictive validity depending on 
-the exact range and precision of the data.
+For the specific example of electron scattering, we have revisited a classic Monte Carlo study and shown
+the practice of simply concluding that a model with a higher predictive validity 
+is truer is not valid assumption and that parsimonious modeling can in fact have the higher predictive 
+validity depending on the exact range and precision of the data.
+Further details about the difference between discriptive and predictiving modeling can be 
+found in Shmueli's article ``To Explain or to predict''~\cite{Shmueli:2010}.
 
-Further details of bias-variance trade-off are covered in detail in Shmueli's review article~\cite{Shmueli:2010}  
-and as George Box was always known to say, "All models are wrong; but some are useful."
+This work was supported by the U.S.  Department of Energy contract DE-AC05-06OR23177
+under which Jefferson Science Associates operates the Thomas Jefferson National 
+Accelerator Facility.    {\bf{Add Duke contract.}}
 
 \bibliography{elastic}
 
