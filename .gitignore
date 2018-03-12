@@ -5,3 +5,5 @@ bias.bbl
 bias.blg
 bias.aux
 .ipynb_checkpoints
+
+*.ipynb
