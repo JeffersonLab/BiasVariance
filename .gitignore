@@ -7,3 +7,7 @@ bias.aux
 .ipynb_checkpoints
 
 *.ipynb
+
+Article/.bias.tex.swp
+
+*.swp
