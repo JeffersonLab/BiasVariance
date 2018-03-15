@@ -58,11 +58,12 @@ results~\cite{fleurbaey:tel-01633631}.
 For the electron scattering data, the proton's charge radius, $r_p$, is extracted from
 cross section data by determining the slope of the electric form factor, $G_E$, in the
 limit of four-moment transfer, $Q^2$, approaching zero: 
-$$
+\begin{equation}
+\label{eq:radius}
   r_p \equiv \sqrt{ \langle r^2 \rangle}
    = \left( -6  \left. \frac{\mathrm{d} G_E(Q^2)}{\mathrm{d}Q^2}
     \right|_{Q^{2}=0} \right)^{1/2} \>.
-$$
+\end{equation}
 Of course, electron scattering cannot reach the exact $Q^2 = 0$ limit; thus,
 an extrapolation is required to extract the charge radius from the experimental data.
 
@@ -101,26 +102,28 @@ where the cutoff parameters of 18.27~fm$^{-2}$ corresponds to a radius of 0.8097
 To minic real data, the data points were randomly smeared with a normal distrubution
 with a sigma of 0.5\%.  
 Next, perform fits on the resulting sets of pseudo data with linear and quadratic functions:
-\begin{equation}
-f_{\mathrm{linear}}(Q^2)  = a_0 + a_1 Q^2
-\end{equation}
-\begin{equation}
-f_{\mathrm{quadratic}}(Q^2)  = a_0 + a_1 Q^2 + a_2 Q^4 
-\end{equation}
-These functions are written so that they are linear in fit coefficients.  This allows the $\chi^2$ minimization to be solved exactly
-and also allows the normalization to float, which is a common practice.   By factoring out the normalization term, $a_0$, 
-the slope given by $a_1/a_0$ can be used to determine the radius.
+\begin{align}
+f_{\mathrm{linear}}(Q^2) &  = a_0 + a_1 Q^2, \\
+f_{\mathrm{quadratic}}(Q^2) & = a_0 + a_1 Q^2 + a_2 Q^4. 
+\end{align}
+These functions are written so that they are linear in fit coefficients.  
+This allows the $\chi^2$ minimization to be solved exactly
+and also allowing the normalization to float.   Since it is known that
+G$_E$(0) = 1, it is common praticle to factor out the normalization term, $a_0$, 
+then the slope of G$_E$(0) is given by $a_1/a_0$ and can be used in Eq.~\ref{eq:radius} 
+to determine the radius.
 
 This procedure was done with $10^6$ sets of pseudo data to 
 precisely determine the mean of the extracted 
 radii for these two models.   Since we used standard dipole as the input function, one would expect an unbiased 
-function to return a radius of 0.81fm.
-Table~\ref{ztable} reproduces the table found in the
-Z. Physik article and example code is provided in the supplemental material.
+function to return a radius of 0.8097~fm.
+Table~\ref{ztable} reproduces the original result~\cite{Borkowski:1975} and
+an example code is provided in the supplemental material of our paper.  
 As the table clearly shows, the mean of linear fits shows a clear bias. 
-Therefore, the authors conclude that the linear models should always be rejected in favor of the lower-bias quadratic function.
-They then proceed to extract the proton charge radius from real data using a five parameter fit: a quadratic charge form factor 
-and three floating normalizations.
+Therefore, the authors of the original work concluded that the linear models 
+should always be rejected in favor of the lower-bias quadratic function.
+They then proceed to extract the proton charge radius from real data using a five parameter 
+fit: a quadratic charge form factor and three floating normalizations.
 
 \begin{table}
 \caption{The mean $a_0$ and radius from doing $10^6$ Monte Carlo simulations
@@ -129,10 +132,10 @@ where Eq.~\ref{sd} was used to generate pseduo data in $\unit[0.05]{fm^{-2}}$ st
 with each data point smeared by a randomly generated, normally distributed point-to-point 
 uncertainty of 0.5\%.
 The results clearly indicate that the linear fits are biased.   The input
-radius was \unit[0.8113]{fm} (an a$_1$/a$_0$ term of $\unit[0.1097]{fm^{-1}}$) and an a$_0$ of one.}
+radius was \unit[0.8113]{fm} (an $a_1/a_0$ term of $\unit[0.1097]{fm^{-1}}$) and an a$_0$ of one.}
 \begin{tabular}{c|cc|cc} \hline
 interval       & \multicolumn{2}{c|}{linear fit} & \multicolumn{2}{c}{quadratic fit}  \\
-fm$^{-2}$      & $a_0$      & radius [fm]          & $a_0$    & radius [fm] \\ \hline
+fm$^{-2}$      & $a_0$      & Radius [fm]          & $a_0$    & Radius [fm] \\ \hline
  0.1 -- 0.4 & 1.000& 0.79& 1.000& 0.81 \\
  0.1 -- 0.8 & 0.999& 0.78& 1.000& 0.81 \\
  0.1 -- 1.2 & 0.997& 0.77& 1.000& 0.81 \\
@@ -141,28 +144,31 @@ fm$^{-2}$      & $a_0$      & radius [fm]          & $a_0$    & radius [fm] \\ \
 \label{ztable}
 \end{table}
 
+
 \section{Variance}
 
-While the mean of the results is indeed correct; when we run an experiment we typically do no get to run it $10^6$ times.
-In particular in nuclear physics, the experiments are few and far between thus we need to carefully consider variance as
-well as the bias when picking the statistical model to use.
-
-Table~\ref{fulltable} shows a more complete picture of the simulation results where the width of the fit, sigma, is 
-shown along with the bias.
-This table shows nearly a textbook illustration of the trade-off between variance and bias with the simple fits
-having a relatively high bias with a low variance while the quadratic fits have a low bias and high variance.
+While it is true that the linear fit exhibit a bias, it is not the only parameter that needs
+to be considered when selecting which model to use for extrapolting the radius.
+In particular, one should consider also consider the variance.
+Table~\ref{fulltable} shows a more complete picture of the simulation results 
+where the width of the fit, sigma, is 
+shown along with the bias.   This is graphically respented in Fig.~1 where it becomes clear that 
+for the low $Q^2$ intervals, the linear fits clearly provide results that are closer to
+the input radius then then quadratic fits while for the larger intervoles the quadratic becomes
+the more appropriate function.
+Thus this simple example problem becomes a nearly textbook illustration of the trade-off between 
+variance and bias with the linear fit having a relatively high bias with a low variance while the 
+quadratic fits have a low bias and high variance.
 Since cross section rates are higher at low $Q^2$, one can easily get more points at low $Q^2$; thus in 
-Table~\ref{equaldatatable} we should the results for the same number of points in each range.
-To quantify the goodness of the fits, we use Root Mean Square Error (RMSE),
-\begin{equation}
-RMSE = \sqrt{ bias^2 + sigma^2} = \sqrt{bias^2 + variance}.
-\end{equation}
+Table~\ref{equaldatatable} we show the results for the same number of points in each range.
 
 \begin{table*}
-\caption{The input radius was 0.8113 fm (an a1/a0 of $\unit[0.1097]{fm^{-1}}$).}
+\caption{An expanded version of Table~\ref{ztable} where instead of just showing the mean offset of the 
+fit results, the bias, we also indicate the width of the fit results, sigma.   Also shown is the
+root mean square error, RMSE, which can be used to quantify the best function for a given interval.}
 \begin{tabular}{cc|cccccc|cccccc} \hline
 Data   & Range     & \multicolumn{6}{c|}{linear fit}                       & \multicolumn{6}{c}{quadratic fit}                    \\ 
-Points & fm$^{-2}$ &   a$_0$  & Radius&  a$_1$/a$_0$ &  Bias  & Sigma &  RMSE  &   a$_0$  & Radius& a$_1$/a$_0$  &  Bias  & Sigma &  RMSE \\  \hline
+Points & fm$^{-2}$ &   $a_0$  & Radius [fm]&  $a_1/a_0$ &  Bias  & Sigma &  RMSE  &   $a_0$  & Radius [fm]& $a_1/a_0$  &  Bias  & Sigma &  RMSE \\  \hline
 7      & 0.1 -- 0.4 & 0.9995& 0.7948& -0.1053& -0.0044& 0.0184& 0.0189 & 1.0000& 0.8063& -0.1084& -0.0013& 0.1094& 0.1094\\
 15     & 0.1 -- 0.8 & 0.9987& 0.7828& -0.1021& -0.0076& 0.0057& 0.0095 & 1.0000& 0.8096& -0.1092& -0.0005& 0.0281& 0.0281\\
 22     & 0.1 -- 1.2 & 0.9975& 0.7712& -0.0991& -0.0106& 0.0030& 0.0110 & 0.9999& 0.8089& -0.1090& -0.0007& 0.0138& 0.0138\\
@@ -178,14 +184,14 @@ high bias though a low variance while the quadratic fits tend to have a relative
 \end{figure}
 
 \begin{table*}
-\caption{Same as before, but now with equal number of data points of each range.}
+\caption{Same as Table~\ref{fulltable}, but now with equal number of data points of each range.}
 \begin{tabular}{cc|cccccc|cccccc} \hline
-Data   & Range     & \multicolumn{6}{c|}{linear fit}                       & \multicolumn{6}{c}{quadratic fit}                    \\ 
-Points & fm$^{-2}$ &   a$_0$  & Radius&  a$_1$/a$_0$ &  Bias  & Sigma &  RMSE  &   a$_0$  & Radius& a$_1$/a$_0$  &  Bias  & Sigma &  RMSE \\  \hline
-31& 0.1 - 0.4 & 0.9995& 0.7951& -0.1054& -0.0043& 0.0098& 0.0107 & 1.0000& 0.8090& -0.1091& -0.0006& 0.0629& 0.0629 \\
-31& 0.1 - 0.8 & 0.9987& 0.7829& -0.1021& -0.0076& 0.0041& 0.0086 & 1.0000& 0.8099& -0.1093& -0.0004& 0.0208& 0.0208  \\
-31& 0.1 - 1.2 & 0.9974& 0.7712& -0.0991& -0.0106& 0.0026& 0.0109 & 0.9999& 0.8089& -0.1091& -0.0006& 0.0121& 0.0121  \\
-31& 0.1 - 1.6 & 0.9959& 0.7600& -0.0963& -0.0134& 0.0019& 0.0136 & 0.9998& 0.8076& -0.1087& -0.0010& 0.0085& 0.0085  \\  \hline
+Data   & Interval  & \multicolumn{6}{c|}{linear fit}                       & \multicolumn{6}{c}{quadratic fit}                    \\ 
+Points & fm$^{-2}$ &   $a_0$  & Radius [fm]&  $a_1/a_0$ &  Bias  & Sigma &  RMSE  &   $a_0$  & Radius [fm]& $a_1/a_0$  &  Bias  & Sigma &  RMSE \\  \hline
+31& 0.1 -- 0.4 & 0.9995& 0.7951& -0.1054& -0.0043& 0.0098& 0.0107 & 1.0000& 0.8090& -0.1091& -0.0006& 0.0629& 0.0629 \\
+31& 0.1 -- 0.8 & 0.9987& 0.7829& -0.1021& -0.0076& 0.0041& 0.0086 & 1.0000& 0.8099& -0.1093& -0.0004& 0.0208& 0.0208  \\
+31& 0.1 -- 1.2 & 0.9974& 0.7712& -0.0991& -0.0106& 0.0026& 0.0109 & 0.9999& 0.8089& -0.1091& -0.0006& 0.0121& 0.0121  \\
+31& 0.1 -- 1.6 & 0.9959& 0.7600& -0.0963& -0.0134& 0.0019& 0.0136 & 0.9998& 0.8076& -0.1087& -0.0010& 0.0085& 0.0085  \\  \hline
 \end{tabular}
 \label{equaldatatable}
 \end{table*}
@@ -196,23 +202,29 @@ For any given set of statistical models, the goal is to find the optimal balance
 As was noted by George Box, all models are wrong, thus the goal is to find the most appropriate one. 
 In general, this can be written as,
 \begin{equation}
-\frac{d Bias^2 }{ d Complexity} = \frac{- d Variance }{ d Complexity }
+\frac{d {\mathrm{Bias}^2 }}{ d {\mathrm{Complexity}}} = \frac{- d {\mathrm{Variance}} }{ d {\mathrm{Complexity}}},
+\end{equation}
+as illistrated in Fig.~\ref{biasvariance}.
+Thus to quantify the goodness of the fits, we use Root Mean Square Error (RMSE),
+\begin{equation}
+RMSE = \sqrt{ {\mathrm{bias}}^2 + {\mathrm{Sigma}}^2} = \sqrt{{\mathrm{Bias}}^2 + {\mathrm{Variance}}}.
 \end{equation}
 
-Thus going back to Table~\ref{fulltable} and checking the Root Mean Square Error, RMSE, one can see that for the four ranges
-one finds the 0.1 -- 0.8 range is actually optimal for the linear model and the 0.1 -- 1.6 range is optimal for the quadratic model. 
-This is in complete contrast to the conclusion one draws when only considers bias as presented in Table~\ref{ztable}
-though constant with the observation that the optimal specific form of the parameterization may depend on the $Q^2$ region
-being fit~\cite{Alberico:2008sz}.
+Going back to Table~\ref{fulltable} and checking the Root Mean Square Error, RMSE, one can now qunatify 
+that for this example the 0.1 -- 0.8~fm$^{-2}$ interval is optimal for the linear model and the 0.1 -- 1.6~fm$^{-2}$ 
+interval is optimal for the quadratic model. 
+This is in contrast to the conclusion one draws when one only considers bias as presented in Table~\ref{ztable}
+though consistant with the observation that the optimal specific form of the parameterization 
+may depend on the $Q^2$ region being fit~\cite{Alberico:2008sz}.
 \begin{figure}
+\label{biasvariance}
 \includegraphics[width=\columnwidth]{Figure/biasvariance-clean.pdf}
-%\includegraphics[width=\columnwidth]{Figure/biasvariance.pdf}
 \caption{An illustration of the trade-off between bias and variance when selecting a statistical model.   Simple models
 will have low variance but high bias (under-fitting) while complex models will have low bias but high variance (over-fitting).   
 It is this trade-off that one seeks to balance.   While with repeated  Monte Carlo simulations it is trivial to find the optimal
-predictive model for a give set of data; in the real world true model is typically unknown and one only gets preform a very limited number
-of experiments and thus one relies on using real data and statistical methods for model selection~\cite{Hastie:2009}.
-}
+predictive model for a give set of data; in the real world true model is typically unknown and one only gets preform a 
+very limited number of experiments and thus one relies on using real data and statistical methods for 
+model selection~\cite{Hastie:2009}.}
 \end{figure}
 
 It is interesting to repeat the Monte Carlo simulation for equal number of data points within each range
