@@ -1,6 +1,7 @@
 
 %
-%
+% Prepared for Phys. Rev. X
+% Topics: Nuclear Physics & Statistical Physics 
 %
 
 \documentclass[10pt,aps,prc,twocolumn]{revtex4-1}
@@ -63,7 +64,6 @@ limit of four-moment transfer, $Q^2$, approaching zero:
 \begin{equation}
 \label{eq:radius}
   r_p \equiv \sqrt{ \langle r^2 \rangle}
-%   = \left( -6  \left. \frac{\partial G_E(Q^2)}{\partial Q^2}
    = \left( -6  \left. \frac{dG_E(Q^2)}{dQ^2}
     \right|_{Q^{2}=0} \right)^{1/2} \>.
 \end{equation}
@@ -85,6 +85,7 @@ We will show in this work that when using a Monte Carlo study to test a model's 
 to extract the proton radius, one needs to consider not only bias but also the variance.
 We will also illustrate how a biased parsimonious model can in fact have a higher predictive 
 validity than an unbiased less parsimonious model.
+
 
 \section{Bias}
 
@@ -164,8 +165,6 @@ the more appropriate function.
 Thus this simple example problem becomes a nearly textbook illustration of the trade-off between 
 variance and bias with the linear fit having a relatively high bias with a low variance, while the 
 quadratic fits have a low bias and high variance.
-%Since cross section rates are higher at low $Q^2$, one can easily get more points at low $Q^2$; thus in 
-%Table~\ref{equaldatatable} we show the results for the same number of points in each range.
 
 \begin{table*}
 \caption{An expanded version of Table~\ref{ztable} where instead of just showing the mean offset of the 
@@ -299,7 +298,7 @@ found in~\cite{Shmueli:2010}.
 \begin{table*}
 \caption{For the lowest Q$^2$ interval, 0.1 to 0.4 fm$^{-2}$, we compare regressions with
 a linear function (Eq.~\ref{Eq:linear}) to the dipole fit function (Eq.~\ref{eq:fitdipole}).   Keeping the range
-fixed, a spacing of 0.05~fm$^{-2}$ (7 points) and 0.005~fm$^{-2}$ (31 points) was used
+fixed, a spacing of 0.05~fm$^{-2}$ (7 points) and 0.01~fm$^{-2}$ (31 points) was used
 with various absolute random errors.  In several of these cases, the simple linear 
 function provides a better predictive model then the true functional form and is never 
 far from the true function.}
@@ -322,7 +321,7 @@ Points & Error    & $a_0$ & Radius&a$_1/a_0$&  Bias  & Sigma &  RMSE  & $n_0$ & 
 \begin{figure}[htb]
 \includegraphics[width=\columnwidth]{Figure/linearVSquadratic.pdf}
 \caption{Illistation the effect of the effect renormalizing of data using
-one set of pseudo data, with absolute 0.3\% random point-to-point uncertainty and 0.005 fm$^{-2}$ spacing,
+one set of pseudo data, with absolute 0.3\% random point-to-point uncertainty and 0.01 fm$^{-2}$ spacing,
 we show the effect of applying the prior that $G_E(0)=1$.   While the prior is true, using an inappropriate model
 will cause both the radius and normalization to be incorrect.   What is completely neglected is the fact that 
 regressions are only valid over the range of the data and thus the renormalization itself can be inappropriate
@@ -338,7 +337,6 @@ so the function goes to the known limiting value at the origin).
 Since here we know the function that generated the pseudo data, it is clear that the quadratic
 fit has caused the data to be inappropriately shifted and will generate an unusually large radius, 
 but in real life the true function is not known.
-
 
 
 \section{Model Selection}
@@ -365,6 +363,7 @@ One should also always keep in mind that the input models in Monte Carlo simulat
 and one needs to be careful about drawing too strong inferences from the simulated results. 
 For example, just because the linear model has a negative bias when compared to the standard dipole, 
 does not imply that it has a negative bias with respect to all possible models.
+
 
 \section{Real Data}
 
@@ -398,66 +397,70 @@ the terms which include the  magnetic form factor, $G_M$, are not very important
 focused on simply the charge form factor.
 
 To illustrate the current tension between fit done with different models, in Fig.~\ref{RealData} shows 
-data points shows one full subset of the Mainz data~\footnote{Mainz Spectrometer B with a beam energy of 315 MeV with Mo and Tsi radiative correction downloaded
-from supplimental material~\cite{Bernauer:2013tpr}.} 
+104 data points from one full subset from a modern electron scattering 
+experiment~\footnote{Data from Mainz spectrometer B with a beam energy of 315 MeV with Mo and Tsi radiative 
+corrections~\cite{Bernauer:2013tpr}.} 
 that covers a range similar to those range studied herein.  By using a single set, only one floating normalization
 parameter is reguired.
-Along with the data, four four reprentive functions are shown using Eq.~\ref{Eq:CrossSection} with a standard magnetic form factor and
+Along with the data, four represenative functions are shown using Eq.~\ref{Eq:CrossSection} with a standard magnetic form factor and
 four different $G_E$ functions.   Two $G_E$ functions give radii that agree with the CODATA value for the proton
 radius~\cite{Bernauer:2013tpr,Ye:2017gyb} and two that agree with the muonic Lamb shift measurements~\cite{Higinbotham:2015rja,Griffioen:2015hta}.
-We note that this figure looks oddly similiar to the psuedo data figure~\ref{linearVSquadratic} but here the true function is an unknown 
-so it isn't clear how far or which curves are shifted the true cross section values.
+We note that this figure looks oddly similiar to the psuedo data in Fig.~\ref{linearVSquadratic} but here the true function is an unknown 
+so it is not clear how far or which curves are shifted with respeect to the true reduced cross section values.
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{Figure/RealData.pdf} 
-\caption{Shown is one set of modern cross section data~\cite{Bernauer:2013tpr} to illistrate the current tension between 
-different modelers and the effect of floating the normalization of the data.}
+\caption{Shown is one set of modern cross section data to illistrate the current tension between 
+different models and the effect of floating the normalization of the data.   A standard magnetic
+form factor has been used along with charge form factors from recent publications:  a bounded
+13$^{th}$ order polynimial with a radius of 0.88~fm~\cite{Ye:2017gyb}, a unbounded 10$^{th}$ order polynimal with a radius of 0.88~fm~\cite{Bernauer:2013tpr}, 
+a continued fraction with a radius of 0.84~fm~\cite{Griffioen:2015hta}, and a dipole function with a radius of 0.84~fm~\cite{Higinbotham:2015rja}. }
 \label{RealData}
 \end{figure}
 
 Following the logic of this work, we try fitting the cross section data shown in Fig.~\ref{RealData} with  Eq.~\ref{Eq:CrossSection} where
-$G_E$ has been approximated by Eq.\ref{Eq:linear} and Eq.~\ref{Eq:quadratic} though with the normalization now subsumed in Eq.~\ref{Eq:CrossSection}.    
-Additionally, we did fits with the following two common functions:
+$G_E$ has been approximated by Eq.~\ref{Eq:linear} and Eq.~\ref{Eq:quadratic} though with the normalization now subsumed in Eq.~\ref{Eq:CrossSection}.    
+Additionally, we performed fits with the following two commonly used functions:
 \begin{align}
-f_{\mathrm{cubic}}(Q^2)   & = 1 + a_1 Q^2 + a_2 Q^4 + a_3 Q^6  \\
-f_{\mathrm{rational}}(Q^2) & = (1+n_1 Q^2)/(1+m_1 Q^2).
+f_{\mathrm{cubic}}(Q^2)   & = 1 + a_1 Q^2 + a_2 Q^4 + a_3 Q^6,  \\
+f_{\mathrm{rational}}(Q^2) & = \frac{1+n_1 Q^2}{1+m_1 Q^2},
 \end{align}
-where the radius for the rational function is given by $\sqrt(-6 (n_1 - m_1))$ and for the polynomials $\sqrt(-6 a_1)$.
-Fits were done first with a standard dipole magnetic form factor
+where the radius for the rational function is given by $\sqrt{-6 (n_1 - m_1)}$ and for the polynomials $\sqrt{-6 a_1}$.
+The fits were done first with a standard dipole magnetic form factor
 and then repeated with the magnetic form factor from~\cite{Bernauer:2013tpr} and~\cite{Ye:2017gyb}.    
 Using reduced $\chi^2$ or AIC for model selection slightly preferred fits with Eq.~\ref{Eq:quadratic} while the more conservative BIC picked the
 more parsimonious Eq.~\ref{Eq:linear}.      
 For the uncertainties, we used a statistical bootstrap.
 It is important to note that the use of statistical criteria for model selection helps avoids confirmation bias,
-though one could still be using inappropriate function for the problem at hand. 
+though one could still be using an inappropriate function for the problem at hand. 
 
 \begin{table}
 \caption{Using three different magnetic form factor parameterizations, we extract the normalization
 and radius using a linear, quadaritic and cubic approximation for the $G_E$ function and Eq.~\ref{Eq:CrossSection}.
-To avoid floating multiple normalizations, a single set of Spectrometer~B 315~MeV Mainz data nice shown in Fig.~\ref{RealData}.
+To avoid floating multiple normalizations, the set of 104 data points shown in Fig.~\ref{RealData} is used.
 The parameter uncertainies were obtained using $10^5$ statistical bootstraps of the data.}
 \begin{tabular}{c|ccccc} \hline  \hline
 \multicolumn{6}{l}{Standard Magnetic Form Factor}      \\  \hline
-$G_E$ Fit & reduced      & AIC          & BIC  & Norm & Radius    \\  
-Function  & $\chi^2$     &              &      &          & [fm]      \\  \hline
-linear    & 1.187        & 19.82        & {\bf{25.11}}    & 1.001(1)    & 0.853(2)   \\
-quadratic & {\bf{1.173}} & {\bf{19.52}} & 27.45           & 0.998(2)    & 0.837(10)  \\
-cubic     & 1.174        & 20.59        & 31.18           & 0.998(6)    & 0.788(57)  \\    
-rational  & 1.173        & 19.54        & 27.47           & 0.998(2)    & 0.837(10)    \\    \hline \hline
+$G_E$ Fit & reduced   & AIC    & BIC    & Norm & Radius    \\  
+Function  & $\chi^2$  &        &        &          & [fm]      \\  \hline
+linear    & 1.187     & 19.82  & 25.11  & 1.001(1)    & 0.853(2)   \\
+quadratic & 1.173     & 19.52  & 27.45  & 0.998(2)    & 0.837(10)  \\
+cubic     & 1.174     & 20.59  & 31.18  & 0.998(6)    & 0.788(57)  \\    
+rational  & 1.173     & 19.54  & 27.47  & 0.998(2)    & 0.837(10)    \\    \hline \hline
 \multicolumn{6}{l}{Bernauer Magnetic Form Factor}      \\  \hline
-$G_E$ Fit       & reduced  & AIC   & BIC   & Norm & Radius    \\  
-Function  & $\chi^2$ &       &       &               & [fm]      \\  \hline
-linear    & 1.601    & 50.96 & 56.24 & 0.988(1)       & 0.786(2)     \\
-quadratic & 1.183    & {\bf{20.43}} & {\bf{28.37}} & 1.000(4)        & 0.854(10)    \\ 
-cubic     & {\bf{1.173}}    & 20.55 & 31.13        & 0.992(6)        & 0.785(56)    \\ 
-rational  & 1.189        & 20.93        & 28.86    & 1.001(2)        & 0.861(13)    \\    \hline \hline
+$G_E$ Fit & reduced   & AIC    & BIC   & Norm & Radius    \\  
+Function  & $\chi^2$  &        &       &               & [fm]      \\  \hline
+linear    & 1.601     & 50.96  & 56.24 & 0.988(1)       & 0.786(2)     \\
+quadratic & 1.183     & 20.43  & 28.37 & 1.000(4)        & 0.854(10)    \\ 
+cubic     & 1.173     & 20.55  & 31.13        & 0.992(6)        & 0.785(56)    \\ 
+rational  & 1.189     & 20.93        & 28.86    & 1.001(2)        & 0.861(13)    \\    \hline \hline
 \multicolumn{6}{l}{Ye Magnetic Form Factor}      \\  \hline
 $G_E$ Fit  & reduced  & AIC    & BIC   & Norm       & Radius    \\  
 Function  & $\chi^2$  &        &       &            & [fm]      \\  \hline
 linear    & 1.639     & 53.35  & 58.64 & 0.987(1)   & 0.781(2)     \\
-quadratic & 1.182     & {\bf{20.33}}  & {\bf{28.26}} & 1.000(2)      & 0.852(10)     \\
-cubic     & {\bf{1.173}}  & 20.55  & 31.12 & 0.992(6)  & 0.782(55)    \\ 
-rational  & 1.188        & 20.86        & 28.80        & 1.001(2)    & 0.861(14)    \\    \hline \hline
+quadratic & 1.182     & 20.33  & 28.26 & 1.000(2)      & 0.852(10)     \\
+cubic     & 1.173     & 20.55  & 31.12 & 0.992(6)  & 0.782(55)    \\ 
+rational  & 1.188     & 20.86        & 28.80        & 1.001(2)    & 0.861(14)    \\    \hline \hline
 \end{tabular}
 \label{datatable}
 \end{table}
@@ -466,10 +469,10 @@ rational  & 1.188        & 20.86        & 28.80        & 1.001(2)    & 0.861(14)
 %cubic-   & {\bf{1.011}}    & 4.143 & 12.077       & fixed-          & 0.832(5)     \\ 
 %cubic+   & {\bf{1.103}}    &13.192 & 21.126       & fixed+          & 0.863(6)     \\ \hline \hline
 
-It is of particular note that the quadratic fit is the same function over a simplar range as found in the original 1976 work precribing
+It is of particular note that the quadratic fit is the same function over a similar range as found in the original 1976 work opting for
 the quadratic fit~\cite{Borkowski:1975} though herein we use a single floating normalization 
 instead of three and the point-to-point errors are smaller.   It is perhaps distressing to note that published values of the 
-radius extracted from electron scattered remained basically unchanged since the 1976 work~\cite{Borkowski:1975} while the 
+radius extracted from electron scattering remained basically unchanged since the 1976 work~\cite{Borkowski:1975} while the 
 functions used to make the extractions and obtained that same radius have became increasingly complex and convoluted.
 
 
@@ -477,7 +480,7 @@ functions used to make the extractions and obtained that same radius have became
 
 For the specific example of electron scattering, we have revisited a classic Monte Carlo study and shown
 the common practice of simply concluding that one should reject regression models with a bias is incorrect; 
-and in fact one needs to consider both bias and variance when selecting a statistical model.   
+in fact one needs to consider both bias and variance when selecting a statistical model.   
 This idea is not constrained to the physical sciences, but also extends 
 to quantitative analysis~\cite{Brighton:2015} and it is at the heart of statistical 
 learning~\cite{Hastie:2009}.
