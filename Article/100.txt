@@ -1,0 +1,11 @@
+We seek to establish a new paradigm of robust model selection 
+for experimental nuclear physics.  For instance, since 1976
+the proton radius and its uncertainty have remained nearly 
+the same, while the models used to extract those values 
+have become increasingly complex and convoluted.  In this work,  
+we clearly demonstrate the importance of balancing bias and variance 
+in model selection and illustrate a straightforward approach 
+to constructing optimal parsimonious models.  As this work connects 
+nuclear and statistical physics, and is applicable to model
+design in other branches of science as well, Phys. Rev. X 
+is the ideal journal for it.

@@ -16,7 +16,7 @@
 \bibliographystyle{apsrev4-1}
 
 \begin{document}
-\title{Bias-Variance Tradeoff in Model Selection for Proton Radius Extractions}
+\title{Bias-Variance Tradeoff and Model Selection for Proton Radius Extractions}
 % a.k.a. How I Learned to Stop Worrying and Love the Bias
 
 \author{Randall Evan McClellan}
@@ -25,8 +25,8 @@
 \affiliation{Jefferson Lab, Newport News, VA 23606}
 \author{Xuefei Yan}
 \affiliation{Duke University, Durham, NC 27708}
+%\affiliation{Jo\v{z}ef Stefan Institute, SI-1000 Ljubljana, Slovenia}
 \author{Miha Mihovilovi\v{c}}
-\affiliation{Jo\v{z}ef Stefan Institute, SI-1000 Ljubljana, Slovenia}
 \author{Simon \v{S}irca}
 \affiliation{Faculty of Mathematics and Physics, University of Ljubljana,
 SI-1000 Ljubljana, Slovenia}
@@ -36,7 +36,8 @@ SI-1000 Ljubljana, Slovenia}
 Intuitively, a scientist might assume that a more complex model will necessarily yield a more 
 accurate description of experimental data.   Herein, we disprove this notion in the context of extracting 
 the proton charge radius from simulated charge form factor data.  We will show that, for a given set of data, 
-a biased parsimonious model can in fact have greater predictive power.  Perhaps more surprising,
+a biased parsimonious model can in fact have greater predictive power than a less-biased, more-complex model.  
+Perhaps more surprising,
 we will also show that in certain cases a parsimonious model can even be a better predictive model 
 than the true generating function.   While illustrated for the case of radius extraction of electron scattering data,
 this result provides an important example of the fact that a scientist cannot achieve a better result by
@@ -63,19 +64,19 @@ cross section data by determining the slope of the electric form factor, $G_E$, 
 limit of four-moment transfer, $Q^2$, approaching zero: 
 \begin{equation}
 \label{eq:radius}
-  r_p \equiv \sqrt{ \langle r^2 \rangle}
-   = \left( -6  \left. \frac{dG_E(Q^2)}{dQ^2}
+  r_p \equiv %\sqrt{ \langle r^2 \rangle} =
+    \left( -6  \left. \frac{dG_E(Q^2)}{dQ^2}
     \right|_{Q^{2}=0} \right)^{1/2} \>.
 \end{equation}
 Of course, electron scattering cannot reach the exact $Q^2 = 0$ limit; thus,
 an extrapolation is required to extract the charge radius from the experimental data.
 
 Many methods have been proposed to make this extrapolation,
-ranging from parsimonious fits of low $Q^2$ data~\cite{Griffioen:2015hta,Horbatsch:2016ilr,Higinbotham:2015rja} 
-to extremely complex models with tens of free parameters~\cite{Bernauer:2013tpr,Lee:2015jqa}.   
-As nicely illustrated in the work of Krauth~{\it{et al.}}~\cite{Krauth:2017ijq}, the 
-parsimonious fits tend to agree with the muonic results while the more complex fits 
-are generally in agreement with the CODATA value.
+ranging from parsimonious fits of low $Q^2$ data~\cite{Rosenfelder:1999cd,Griffioen:2015hta,Horbatsch:2016ilr,Higinbotham:2015rja},
+to extremely complex fits with tens of free parameters~\cite{Bernauer:2013tpr,Lee:2015jqa}.   
+As nicely illustrated in the work of Krauth~{\it{et al.}}~\cite{Krauth:2017ijq}, most of 
+parsimonious fits agree with the muonic results while most of the complex fits 
+are in agreement with the CODATA value.
 
 A general criticism of the parsimonious extractions of the proton radius is the presence of bias~\cite{Sick:2017aor},
 with an implication that bias needs to be avoided in order to successfully extract the true radius from the data.
@@ -95,7 +96,7 @@ is not a property of a single realization but determined by repeated sampling.  
 radius extractions, bias was nicely illustrated by Borkowski~{\it{et al.}}~\cite{Borkowski:1975} and we will
 illustrate their procedure in the following.
 
-Randomly generate pseudo sets of form factor data 
+Randomly generate sets of form factor pseudo data 
 from $\unit[0.1]{fm^{-2}}$ to 0.4, 0.8, 1.2,
 and $\unit[1.6]{fm^{-2}}$ 
 in steps of $\unit[0.05]{fm^{-2}}$ 
@@ -105,7 +106,7 @@ using the standard dipole function:
 G\mathrm{_D}(Q^2) = ( 1 + Q^2/(\unit[18.27]{fm^{-2}}))^{-2},
 \end{equation}
 where the cutoff parameter of 18.27~fm$^{-2}$ corresponds to a radius of 0.8097~fm.
-To mimic real data, the data points were randomly smeared with a normal distrubution
+To mimic real data, the data points were randomly smeared with a normal distribution
 with a sigma of 0.5\%.  
 Next, perform fits on the resulting sets of pseudo data with linear and quadratic functions:
 \begin{align}
@@ -134,7 +135,7 @@ fit: a quadratic charge form factor and three floating normalizations.
 \begin{table}
 \caption{The mean $a_0$ and radius from doing $10^6$ Monte Carlo simulations
 for each interval in $Q^2$
-where Eq.~\ref{sd} was used to generate pseduo data in $\unit[0.05]{fm^{-2}}$ steps
+where Eq.~\ref{sd} was used to generate pseudo data in $\unit[0.05]{fm^{-2}}$ steps
 with each data point smeared by a randomly generated, normally distributed point-to-point 
 uncertainty of 0.5\%.
 The results clearly indicate that the linear fits are biased.   The input
@@ -158,7 +159,7 @@ to be considered when selecting which model to use for extrapolating the radius.
 In particular, one should also consider the variance.
 Table~\ref{fulltable} shows a more complete picture of the simulation results 
 where the width of the fit, sigma, is 
-shown along with the bias.   This is graphically respented in Fig.~1 where it becomes clear that 
+shown along with the bias.   This is graphically represented in Fig.~1 where it becomes clear that 
 for the low $Q^2$ intervals, the linear fits clearly provide results that are closer to
 the input radius than the quadratic fits, while for the larger intervals the quadratic becomes
 the more appropriate function.
@@ -211,10 +212,10 @@ In general, this can be written as
 as illustrated in Fig.~\ref{biasvariance}.
 Thus to quantify the goodness of the fits, we use Root Mean Square Error (RMSE),
 \begin{equation}
-RMSE = \sqrt{ {\mathrm{bias}}^2 + {\mathrm{Sigma}}^2} = \sqrt{{\mathrm{Bias}}^2 + {\mathrm{Variance}}}.
+{\mathrm{RMSE}} = \sqrt{ {\mathrm{bias}}^2 + {\mathrm{Sigma}}^2} = \sqrt{{\mathrm{Bias}}^2 + {\mathrm{Variance}}}.
 \end{equation}
 
-Going back to Table~\ref{fulltable} and checking the Root Mean Square Error, RMSE, one can now qunatify 
+Going back to Table~\ref{fulltable} and checking the Root Mean Square Error, RMSE, one can now quantify 
 that for this example the 0.1 -- 0.8~fm$^{-2}$ interval is optimal for the linear model while the 0.1 -- 1.6~fm$^{-2}$ 
 interval is optimal for the quadratic model. 
 This is in contrast to the conclusion one draws when one only considers bias as presented in Table~\ref{ztable},
@@ -241,18 +242,18 @@ over a range of 0.1 to 1.6~fm$^{-2}$ would produce nearly identical radii if all
 This is visualized in Fig.~\ref{zoptimized} where the linear fit is clearly biased but has a small variance compared to
 the unbiased, large variance quadratic fit.
 
-Thus, the choice of the parsimonious modeler to use the low $Q^2$ data would likely be 
-driven by the recognition that as $Q^2$ increases
-the extraction of a charge form factor is complicated by the growing influence of the magnetic 
-form factor while the use of the larger $Q^2$
-range would likely be driven by a desire to form a more complete picture of the proton's structure: 
-for example one may be interested in not only the proton's radius but also in the higher 
-moments in $r$~\cite{Alarcon:2017hg}.
+The choice of the parsimonious modeler to use the low $Q^2$ data would likely be 
+driven by the recognition of the fact that as $Q^2$ increases
+the extraction of the charge form factor is complicated by the growing influence of the magnetic 
+form factor.   The choice to use a larger $Q^2$ range would likely be driven by a desire 
+to form a more complete picture of the proton's structure.
+For example, the parsimonious modeler may ony be interested in proton's radius while another 
+modeler may be interested in higher order moments~\cite{Alarcon:2017lhg}.
 Thus, the tension in the extractions of the proton radius from electron scattering data is really 
-about the fact that modelers using the low $Q^2$ are getting a systematically different result than
-the modelers doing high $Q^2$ fits, and perhaps points to a systematic problem with our knowledge
-of the magnetic form factor which is only required when preforming the high $Q^2$ fits.
-
+about the fact that modelers using the low $Q^2$ are generally getting a systematically different 
+result than the modelers doing fits which include high $Q^2$ data, and perhaps points to a systematic 
+problem with our knowledge of the magnetic form factor and/or the functional form of the
+form factors.
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{Figure/zoptimized.png}
@@ -265,10 +266,9 @@ tighter cluster of hits but an offset (high bias but low variance).}
 \label{zoptimized}
 \end{figure}
 
-
 \section{The Best Predictive Model}
 
-Selecting between a linear or quadratic regression of a more complex standard dipole function may perhaps seems 
+Selecting between a linear or quadratic regression of the more complex standard dipole function may seem 
 a bit contrived, as one might naively think that just using the generating function itself would always yield the
 best results.   To show that this is not in fact the case, 
 we use the lowest $Q^2$ range, 0.1 -- 0.4 fm$^{-2}$, and replace the quadratic function 
@@ -288,11 +288,11 @@ Hopefully, this example makes it clear that it is not just the number of points 
 but the size of the uncertainties that is a critical parameter in model selection.
 
 Of course for real data, nature hides the true generating function from us, so perhaps it is reassuring to know
-that a reasonable approximation is able to reveal the underlying physics just as well if not better than the
+that a reasonable approximation is able to reveal the underlying physics just as well as, if not better than, the
 true function.   
 To be clear, the lesson is not that one function is better than another; it is that for a given set of data,
 the scientist is challenged to use the most appropriate model (either descriptive or predictive) for
-the task at hand.   Further details behind the general mathematics behind these example problems can be 
+the task at hand.   Further details on the general mathematics behind these example problems can be 
 found in~\cite{Shmueli:2010}.    
 
 \begin{table*}
@@ -319,17 +319,23 @@ Points & Error    & $a_0$ & Radius&a$_1/a_0$&  Bias  & Sigma &  RMSE  & $n_0$ & 
 \end{table*}
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{Figure/linearVSquadratic.pdf}
-\caption{Illistation the effect of the effect renormalizing of data using
-one set of pseudo data, with absolute 0.3\% random point-to-point uncertainty and 0.01 fm$^{-2}$ spacing,
-we show the effect of applying the prior that $G_E(0)=1$.   While the prior is true, using an inappropriate model
-will cause both the radius and normalization to be incorrect.   What is completely neglected is the fact that 
-regressions are only valid over the range of the data and thus the renormalization itself can be inappropriate
-if the function cannot reasonably be expected to extrapolate beyond the data.}
+\includegraphics[width=\columnwidth]{Figure/linearVSquadratic-band.pdf}
+%\includegraphics[width=\columnwidth]{Figure/linearVSquadratic-high.pdf}
+%\includegraphics[width=\columnwidth]{Figure/linearVSquadratic-middle.pdf}
+%\includegraphics[width=\columnwidth]{Figure/linearVSquadratic-low.pdf}
+\caption{Illustation the effect of the effect renormalizing of data.  The
+black points show one set of pseudo data, with absolute 0.3\% random point-to-point 
+uncertainty and 0.01 fm$^{-2}$ spacing that have been renormalized
+by applying the prior that $G_E(0)=1$.    While the prior is true, using an inappropriate model
+can cause both the extracted radius and normalization to be dramatically shifted from the true
+function.   The grey curves were drawn to indicate this results is one of many simulations.   
+See the supplimentary material for an animation of all the individual fits and how overfitting causes
+the normalization and radius to shift dramatically.
+}  
 \label{linearVSquadratic}
 \end{figure}
 
-To be clear, using an innapriate model can lead to erroneous conclusions.
+To be clear, using an inappropriate model can lead to erroneous conclusions.
 In Fig.~\ref{linearVSquadratic} we show an
 example of one set of the pseudo data fit with a linear and quadratic where the prior that the
 $G_E(0)=1$ has been applied (i.e. the data has been divided by the normalization term from the regression
@@ -344,19 +350,29 @@ but in real life the true function is not known.
 While this classic Monte Carlo example problem is over 40 years old, it actually points to exactly the split in 
 the current electron scattering proton radius extraction procedures.     The parsimonious modelers, who are 
 focused solely on extracting a radius, have focused on the low $Q^2$ region accepting a slightly higher 
-level of bias in exchange for low variance while those modelers who are interested in extracting more information 
+level of bias in exchange for low variance; on the other hand, those modelers who are interested in extracting more information 
 about the proton (e.g. higher order moments) fit longer $Q^2$ ranges and have
 focused on complex models which, while lower in bias, come at a cost of higher variance.  
 It fact, the consequence of ever-increasing $Q^2$ ranges requiring increasing complexity have resulted in
 an uncertainty in the extracted radius 
 stuck at $\approx \unit[0.01]{fm}$ since L.~Hand~\textit{et al.}'s original fit in 1963~\cite{Hand:1963zz}.
 
-Also, since we do not know the true model, one cannot in general calculate the RMSE; so while Monte Carlo exercises 
+Also, since we do not know the true model, one cannot in general calculate the RMSE. So, while Monte Carlo exercises 
 like the one described herein are extremely useful for finding reasonable models to consider and understanding
-expected uncertainties; in the end, the data must be used to select the approximate model. 
-For this one can rely on statistical modeling selection techniques such as reduced $\chi^2$ or $F$-tests for
-nested models or the more general Akaike information criterion (AIC)~\cite{Akaike:1974} or Bayesian information criterion (BIC)~\cite{Schwarz:1978} 
-(BIC) to guide our selection of the most appropriate model to describe a given set of data.
+expected uncertainties, the data must be used to select the appropriate model. 
+For this one can rely on statistical modeling selection techniques such as an $F$-test for
+nested models~\cite{Bevington:2003,James:2006,Sirca:2016} or the more general Akaike information criterion (AIC)~\cite{Akaike:1974} 
+or Bayesian information criterion (BIC)~\cite{Schwarz:1978} 
+to guide our selection of the most appropriate model to describe a given set of data.
+These statistical criteria are calcuated as follows: 
+\begin{align}
+\chi^2         & = \sum_{n=1}^{N}((data_i - model) / \sigma_i)^2, \\
+reduced~\chi^2 & = \chi^2/ (N - N_{var}),  \\
+AIC            & = N ln(\chi^2/N) + 2 N_{var}, \\
+BIC            & = N ln(\chi^2/N) + ln(N) N_{var},
+\end{align}
+where $N$ is the number of data points, $data_i$ and $\sigma_i$ are measured values and estimated uncertainties,
+and$N_{var}$ is the number of model parameters.
 Further details about current model selection techniques can be found in~\cite{Ernst:2012}.
 
 One should also always keep in mind that the input models in Monte Carlo simulations are always just an approximation
@@ -396,12 +412,13 @@ From Eq.\ref{Eq:CrossSection} is it clear that as $Q^2$ goes to zero and $\varep
 the terms which include the  magnetic form factor, $G_M$, are not very important which, is why this work has
 focused on simply the charge form factor.
 
-To illustrate the current tension between fit done with different models, in Fig.~\ref{RealData} shows 
+To illustrate the current tension between fit done with different models, Fig.~\ref{RealData} shows 
 104 data points from one full subset from a modern electron scattering 
 experiment~\footnote{Data from Mainz spectrometer B with a beam energy of 315 MeV with Mo and Tsi radiative 
 corrections~\cite{Bernauer:2013tpr}.} 
 that covers a range similar to those range studied herein.  By using a single set, only one floating normalization
 parameter is reguired.
+This one set of data covers a range similar to the 85 data point fits with 6 floating normalizations~\cite{Rosenfelder:1999cd,Hill:2010yb}.
 Along with the data, four represenative functions are shown using Eq.~\ref{Eq:CrossSection} with a standard magnetic form factor and
 four different $G_E$ functions.   Two $G_E$ functions give radii that agree with the CODATA value for the proton
 radius~\cite{Bernauer:2013tpr,Ye:2017gyb} and two that agree with the muonic Lamb shift measurements~\cite{Higinbotham:2015rja,Griffioen:2015hta}.
@@ -426,41 +443,64 @@ f_{\mathrm{cubic}}(Q^2)   & = 1 + a_1 Q^2 + a_2 Q^4 + a_3 Q^6,  \\
 f_{\mathrm{rational}}(Q^2) & = \frac{1+n_1 Q^2}{1+m_1 Q^2},
 \end{align}
 where the radius for the rational function is given by $\sqrt{-6 (n_1 - m_1)}$ and for the polynomials $\sqrt{-6 a_1}$.
+We note that the low order rational function (n=m=1) can be easily extended to give the expected asymtotic behavior
+as $Q^2 -> \inf$ and that the more complex rational function (n=1,m=1,2,3) has been used in global fits~\cite{
+Kelly:2004hm,
+Puckett:2017flj,   
+Gutsche:2017lyu},
+
 The fits were done first with a standard dipole magnetic form factor
 and then repeated with the magnetic form factor from~\cite{Bernauer:2013tpr} and~\cite{Ye:2017gyb}.    
-Using reduced $\chi^2$ or AIC for model selection slightly preferred fits with Eq.~\ref{Eq:quadratic} while the more conservative BIC picked the
-more parsimonious Eq.~\ref{Eq:linear}.      
-For the uncertainties, we used a statistical bootstrap.
+Using an $F$-test, AIC, or BIC for model selection all slightly prefer fits with Eq.~\ref{Eq:quadratic}.
 It is important to note that the use of statistical criteria for model selection helps avoids confirmation bias,
 though one could still be using an inappropriate function for the problem at hand. 
+Uncertainties were determined by applying a statistical bootstrap to the data.   This is done
+by repeatedly randomly sampling the true data with replacement to generate thousands of new sets of N points 
+and refitting those new sets.   This allows one to get uncertainty distributions using the data itself and
+avoids a number of assumptions that are required for $\chi^2$ uncertainty techniques 
+to be valid~\cite{Efron:1979} and, unlike $\chi^2$ technqiues, is also sensitive to overfitting~\cite{Andrae:2010}.
 
 \begin{table}
-\caption{Using three different magnetic form factor parameterizations, we extract the normalization
-and radius using a linear, quadaritic and cubic approximation for the $G_E$ function and Eq.~\ref{Eq:CrossSection}.
-To avoid floating multiple normalizations, the set of 104 data points shown in Fig.~\ref{RealData} is used.
-The parameter uncertainies were obtained using $10^5$ statistical bootstraps of the data.}
-\begin{tabular}{c|ccccc} \hline  \hline
+\caption{Using four different magnetic form factor parameterizations, we extract the normalization
+and radius using a linear, quadaritic, cubic, and rational approximation for the $G_E$ function in 
+Eq.~\ref{Eq:CrossSection}.
+To avoid multipole floating multiple normalizations, the single set of 104 data points 
+shown in Fig.~\ref{RealData} is used.
+The parameter uncertainies were obtained using by performing statistical bootstraps of the data.
+As seen during the Monte Carlo studies, the linear fit over this interval produces a small variance; 
+but is clearly biased from the true 0.84--0.88~fm proton radius, whereas the quadratic with has a 
+larger varainace but gives less biased result.   The cubic fit function is overfitting which is 
+why it produces a huge varaince.   The rational function is nearly as good as the quadratic through
+produces a systmatically larger radius though nicely in the range we expect.}
+\begin{tabular}{ccccccc} \hline  \hline
 \multicolumn{6}{l}{Standard Magnetic Form Factor}      \\  \hline
-$G_E$ Fit & reduced   & AIC    & BIC    & Norm & Radius    \\  
-Function  & $\chi^2$  &        &        &          & [fm]      \\  \hline
-linear    & 1.187     & 19.82  & 25.11  & 1.001(1)    & 0.853(2)   \\
-quadratic & 1.173     & 19.52  & 27.45  & 0.998(2)    & 0.837(10)  \\
-cubic     & 1.174     & 20.59  & 31.18  & 0.998(6)    & 0.788(57)  \\    
-rational  & 1.173     & 19.54  & 27.47  & 0.998(2)    & 0.837(10)    \\    \hline \hline
+$G_E$ Fit & df  & reduced   & AIC    & BIC    & Norm & Radius    \\  
+Function  &     & $\chi^2$  &        &        &          & [fm]      \\  \hline
+linear    & 102 & 1.187     & 50.61  & 55.90  & 0.998(1)    & 0.784(2)   \\
+quadratic & 101 & 1.173     & 19.52  & 27.45  & 1.000(2)    & 0.852(10)  \\
+cubic     & 100 & 1.174     & 20.59  & 31.18  & 0.992(6)    & 0.785(57)  \\    
+rational  & 101 & 1.173     & 19.54  & 27.47  & 1.001(2)    & 0.860(10)    \\    \hline \hline
+\multicolumn{6}{l}{Kelly Magnetic Form Factor}      \\  \hline
+$G_E$ Fit & df  & reduced   & AIC    & BIC    & Norm & Radius    \\  
+Function  &     & $\chi^2$  &        &        &           & [fm]      \\  \hline
+linear    & 102 & 1.648     & 53.95  & 59.24  & 0.987(1)  & 0.780(2)   \\
+quadratic & 101 & 1.182     & 20.34  & 28.27  & 1.000(2)  & 0.852(10)  \\
+cubic     & 100 & 1.173     & 20.55  & 31.13  & 0.992(6)  & 0.785(57)  \\    
+rational  & 101 & 1.188     & 20.87  & 28.80  & 1.001(2)  & 0.861(10)    \\    \hline \hline
 \multicolumn{6}{l}{Bernauer Magnetic Form Factor}      \\  \hline
-$G_E$ Fit & reduced   & AIC    & BIC   & Norm & Radius    \\  
-Function  & $\chi^2$  &        &       &               & [fm]      \\  \hline
-linear    & 1.601     & 50.96  & 56.24 & 0.988(1)       & 0.786(2)     \\
-quadratic & 1.183     & 20.43  & 28.37 & 1.000(4)        & 0.854(10)    \\ 
-cubic     & 1.173     & 20.55  & 31.13        & 0.992(6)        & 0.785(56)    \\ 
-rational  & 1.189     & 20.93        & 28.86    & 1.001(2)        & 0.861(13)    \\    \hline \hline
-\multicolumn{6}{l}{Ye Magnetic Form Factor}      \\  \hline
-$G_E$ Fit  & reduced  & AIC    & BIC   & Norm       & Radius    \\  
-Function  & $\chi^2$  &        &       &            & [fm]      \\  \hline
-linear    & 1.639     & 53.35  & 58.64 & 0.987(1)   & 0.781(2)     \\
-quadratic & 1.182     & 20.33  & 28.26 & 1.000(2)      & 0.852(10)     \\
-cubic     & 1.173     & 20.55  & 31.12 & 0.992(6)  & 0.782(55)    \\ 
-rational  & 1.188     & 20.86        & 28.80        & 1.001(2)    & 0.861(14)    \\    \hline \hline
+$G_E$ Fit & df  &reduced   & AIC    & BIC   & Norm & Radius    \\  
+Function  &     &$\chi^2$  &        &       &               & [fm]      \\  \hline
+linear    & 102 &1.601     & 50.96  & 56.24 & 0.988(1)  & 0.786(2)     \\
+quadratic & 101 &1.183     & 20.43  & 28.37 & 1.000(4)  & 0.854(10)    \\ 
+cubic     & 100 &1.173     & 20.55  & 31.13 & 0.992(6)  & 0.785(56)    \\ 
+rational  & 102 &1.189     & 20.93  & 28.86 & 1.001(2)  & 0.861(13)    \\    \hline \hline
+\multicolumn{6}{l}{Ye Magnetic Form Factor}                    \\ \hline
+$G_E$ Fit & df  & reduced  & AIC    & BIC   & Norm     & Radius    \\  
+Function  &     &$\chi^2$  &        &       &          & [fm]      \\  \hline
+linear    & 102 &1.639 & 53.35  & 58.64 & 0.987(1) & 0.781(2)  \\
+quadratic & 101 &1.182 & 20.33  & 28.26 & 1.000(2) & 0.852(10) \\
+cubic     & 100 &1.173 & 20.55  & 31.12 & 0.992(6) & 0.782(55) \\ 
+rational  & 102 &1.188 & 20.86  & 28.80 & 1.001(2) & 0.861(14) \\    \hline \hline
 \end{tabular}
 \label{datatable}
 \end{table}
@@ -473,7 +513,10 @@ It is of particular note that the quadratic fit is the same function over a simi
 the quadratic fit~\cite{Borkowski:1975} though herein we use a single floating normalization 
 instead of three and the point-to-point errors are smaller.   It is perhaps distressing to note that published values of the 
 radius extracted from electron scattering remained basically unchanged since the 1976 work~\cite{Borkowski:1975} while the 
-functions used to make the extractions and obtained that same radius have became increasingly complex and convoluted.
+functions used to make the extrapolation and obtained that same radius became increasingly complex and convoluted.
+Oddly enough the standard dipole magnetic form factor quadratic fit has the lowest AIC and BIC and gives a result consistant
+with the muonic lamb shift; though the rational function is nearly as good and sitting nearly exactly between the CODATA
+and muonic Lamb shiftvalues.    
 
 
 \section{Summary}
