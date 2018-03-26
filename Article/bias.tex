@@ -19,9 +19,9 @@
 \title{Bias-Variance Tradeoff and Model Selection for Proton Radius Extractions}
 % a.k.a. How I Learned to Stop Worrying and Love the Bias
 
-\author{Randall Evan McClellan}
-\affiliation{Jefferson Lab, Newport News, VA 23606}
 \author{Douglas Weadon Higinbotham}
+\affiliation{Jefferson Lab, Newport News, VA 23606}
+\author{Randall Evan McClellan}
 \affiliation{Jefferson Lab, Newport News, VA 23606}
 \author{Xuefei Yan}
 \affiliation{Duke University, Durham, NC 27708}
@@ -272,7 +272,7 @@ Selecting between a linear or quadratic regression of the more complex standard 
 a bit contrived, as one might naively think that just using the generating function itself would always yield the
 best results.   To show that this is not in fact the case, 
 we use the lowest $Q^2$ range, 0.1 -- 0.4 fm$^{-2}$, and replace the quadratic function 
-with the the generating function and a floating normalization term:
+with the generating function and a floating normalization term:
 \begin{equation}
 \label{eq:fitdipole}
 f_{{\mathrm{Dipole Fit}}}(Q^2) =  n_0 ( 1 - b_1 Q^2 / 2)^{-2},
@@ -309,8 +309,8 @@ Points & Error    & $a_0$ & Radius&a$_1/a_0$&  Bias  & Sigma &  RMSE  & $n_0$ & 
 7      & 0.005    & 0.9995& 0.7946& $-0.1052$& $-0.0045$& 0.0174& 0.0180 & 1.0000& 0.8114& $-0.1097$& $-0.0000$& 0.0194& 0.0194  \\
 7      & 0.003    & 0.9996& 0.7951& $-0.1054$& $-0.0043$& 0.0108& 0.0116 & 1.0000& 0.8114& $-0.1097$& $-0.0000$& 0.0114& 0.0114  \\
 31     & 0.01     & 0.9996& 0.7944& $-0.1052$& $-0.0045$& 0.0186& 0.0191 & 1.0000& 0.8112& $-0.1097$& $-0.0000$& 0.0207& 0.0207  \\
-31     & 0.005    & 0.9995& 0.7951& -0.1054& -0.0043& 0.0093& 0.0102 & 1.0000& 0.8113& -0.1097&  0.0000& 0.0103& 0.0103  \\
-31     & 0.003    & 0.9995& 0.7953& -0.1054& -0.0043& 0.0056& 0.0070 & 1.0000& 0.8113& -0.1097&  0.0000& 0.0062& 0.0062   \\ \hline 
+31     & 0.005    & 0.9995& 0.7951& $-0.1054$& $-0.0043$& 0.0093& 0.0102 & 1.0000& 0.8113& -0.1097&  0.0000& 0.0103& 0.0103  \\
+31     & 0.003    & 0.9995& 0.7953& $-0.1054$& $-0.0043$& 0.0056& 0.0070 & 1.0000& 0.8113& -0.1097&  0.0000& 0.0062& 0.0062   \\ \hline 
 %61     & 0.01     & 0.9995& 0.7949& -0.1053& -0.0044& 0.0135& 0.0142 & 1.0000& 0.8114& -0.1097&  0.0000& 0.0150& 0.0150  \\ 
 %61     & 0.005    & 0.9995& 0.7952& -0.1054& -0.0043& 0.0069& 0.0081 & 1.0000& 0.8114& -0.1097&  0.0000& 0.0073& 0.0073  \\ 
 %61     & 0.003    & 0.9995& 0.7952& -0.1054& -0.0043& 0.0040& 0.0059 & 1.0000& 0.8113& -0.1097& -0.0000& 0.0045& 0.0045  \\ \hline 
@@ -323,15 +323,13 @@ Points & Error    & $a_0$ & Radius&a$_1/a_0$&  Bias  & Sigma &  RMSE  & $n_0$ & 
 %\includegraphics[width=\columnwidth]{Figure/linearVSquadratic-high.pdf}
 %\includegraphics[width=\columnwidth]{Figure/linearVSquadratic-middle.pdf}
 %\includegraphics[width=\columnwidth]{Figure/linearVSquadratic-low.pdf}
-\caption{Illustation the effect of the effect renormalizing of data.  The
+\caption{Illustation of the effect of renormalizing data.  The
 black points show one set of pseudo data, with absolute 0.3\% random point-to-point 
 uncertainty and 0.01 fm$^{-2}$ spacing that have been renormalized
 by applying the prior that $G_E(0)=1$.    While the prior is true, using an inappropriate model
 can cause both the extracted radius and normalization to be dramatically shifted from the true
 function.   The grey curves were drawn to indicate this results is one of many simulations.   
-See the supplimentary material for an animation of all the individual fits and how overfitting causes
-the normalization and radius to shift dramatically.
-}  
+See the supplimentary material for an animation of many the possible outcomes.}  
 \label{linearVSquadratic}
 \end{figure}
 
@@ -366,13 +364,13 @@ or Bayesian information criterion (BIC)~\cite{Schwarz:1978}
 to guide our selection of the most appropriate model to describe a given set of data.
 These statistical criteria are calcuated as follows: 
 \begin{align}
-\chi^2         & = \sum_{n=1}^{N}((data_i - model) / \sigma_i)^2, \\
-reduced~\chi^2 & = \chi^2/ (N - N_{var}),  \\
-AIC            & = N ln(\chi^2/N) + 2 N_{var}, \\
-BIC            & = N ln(\chi^2/N) + ln(N) N_{var},
+\chi^2         & = \sum_{n=1}^{N}((\mathrm{data_i} - \mathrm{model}) / \sigma_i)^2, \\
+reduced~\chi^2 & = \chi^2/ (N - N_{\mathrm{var}}),  \\
+\mathrm{AIC}            & = N \log(\chi^2/N) + 2 N_{\mathrm{var}}, \\
+\mathrm{BIC}            & = N \log(\chi^2/N) + \log(N) N_{\mathrm{var}},
 \end{align}
 where $N$ is the number of data points, $data_i$ and $\sigma_i$ are measured values and estimated uncertainties,
-and$N_{var}$ is the number of model parameters.
+and $N_{\mathrm{var}}$ is the number of model parameters.
 Further details about current model selection techniques can be found in~\cite{Ernst:2012}.
 
 One should also always keep in mind that the input models in Monte Carlo simulations are always just an approximation
@@ -386,7 +384,8 @@ does not imply that it has a negative bias with respect to all possible models.
 This bring us to the real data and the current proton radius extractions.   Many different functions have
 been tried over the years from simple linear fits~\cite{Hand:1963zz,Murphy:1974zz} and continued fractions~\cite{Sick:2003gm} 
 to high order polynomials~\cite{Bernauer:2013tpr,Lee:2015jqa} with and without constraints.   Since obtaining sub-percent
-cross sections is nearly impossible, the absolute normalization of the cross section has typically been floated.  
+level cross sections is nearly impossible, a normalization parameter included to allow an entire set of data to shift
+as was done in the Monte Carlo simulations.   Again, this just allows that the prior $G_E(0)=1$ can be applied.
 
 The measured cross sections, $\sigma_{\mathrm{Meas}}$,  are related to the charge and electric form factors via 
 \begin{equation}
@@ -403,12 +402,12 @@ The Mott cross section, $\sigma_{\text{Mott}}$, with the recoil factor included,
 \begin{equation}
 \sigma_{\text{Mott}}  = \frac{\alpha^2}{4 E^2} \frac{\cos^2{(\theta / 2)}}{\sin^4{(\theta / 2)} ( 1 + \frac{E}{M} (1 - \cos{\theta}))}.
 \end{equation}
-The known $\sigma_{\text{Mott}}$ term and determined normalization can be divided out to report a reduced cross section
+The known $\sigma_{\text{Mott}}$ term and the determined normalization can be divided out to report a reduced cross section
 \begin{equation}
 \sigma_{\text{Reduced}} = \frac{ {\sigma_{\text{Meas}}}}{{n_0 \sigma_{\text{Mott}}}}.
 \label{Eq:Reduced}
 \end{equation}
-From Eq.\ref{Eq:CrossSection} is it clear that as $Q^2$ goes to zero and $\varepsilon$ goes to one (forward angle electron scattering), 
+From Eq.~\ref{Eq:CrossSection} is it clear that as $Q^2$ goes to zero and $\varepsilon$ goes to one (forward angle electron scattering), 
 the terms which include the  magnetic form factor, $G_M$, are not very important which, is why this work has
 focused on simply the charge form factor.
 
@@ -416,38 +415,38 @@ To illustrate the current tension between fit done with different models, Fig.~\
 104 data points from one full subset from a modern electron scattering 
 experiment~\footnote{Data from Mainz spectrometer B with a beam energy of 315 MeV with Mo and Tsi radiative 
 corrections~\cite{Bernauer:2013tpr}.} 
-that covers a range similar to those range studied herein.  By using a single set, only one floating normalization
-parameter is reguired.
+that covers a range similar to the range studied herein.  By using a single set, only one floating normalization
+parameter is required.
 This one set of data covers a range similar to the 85 data point fits with 6 floating normalizations~\cite{Rosenfelder:1999cd,Hill:2010yb}.
-Along with the data, four represenative functions are shown using Eq.~\ref{Eq:CrossSection} with a standard magnetic form factor and
-four different $G_E$ functions.   Two $G_E$ functions give radii that agree with the CODATA value for the proton
+Along with the data, four represenative functions are shown using Eq.~\ref{Eq:CrossSection} with a standard magnetic form factor.
+Two functions give radii that agree with the CODATA value for the proton
 radius~\cite{Bernauer:2013tpr,Ye:2017gyb} and two that agree with the muonic Lamb shift measurements~\cite{Higinbotham:2015rja,Griffioen:2015hta}.
-We note that this figure looks oddly similiar to the psuedo data in Fig.~\ref{linearVSquadratic} but here the true function is an unknown 
-so it is not clear how far or which curves are shifted with respeect to the true reduced cross section values.
+We note that this figure looks oddly similiar to the psuedo data in Fig.~\ref{linearVSquadratic} but here the true function is unknown 
+so it is not clear which curves are shifted with respect to the true reduced cross section values.
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{Figure/RealData.pdf} 
-\caption{Shown is one set of modern cross section data to illistrate the current tension between 
+\caption{Shown is one set of modern cross section data to illustrate the current tension between 
 different models and the effect of floating the normalization of the data.   A standard magnetic
 form factor has been used along with charge form factors from recent publications:  a bounded
-13$^{th}$ order polynimial with a radius of 0.88~fm~\cite{Ye:2017gyb}, a unbounded 10$^{th}$ order polynimal with a radius of 0.88~fm~\cite{Bernauer:2013tpr}, 
+13$^{th}$-order polynomial with a radius of 0.88~fm~\cite{Ye:2017gyb}, a unbounded 10$^{th}$-order polynimal with a radius of 0.88~fm~\cite{Bernauer:2013tpr}, 
 a continued fraction with a radius of 0.84~fm~\cite{Griffioen:2015hta}, and a dipole function with a radius of 0.84~fm~\cite{Higinbotham:2015rja}. }
 \label{RealData}
 \end{figure}
 
-Following the logic of this work, we try fitting the cross section data shown in Fig.~\ref{RealData} with  Eq.~\ref{Eq:CrossSection} where
-$G_E$ has been approximated by Eq.~\ref{Eq:linear} and Eq.~\ref{Eq:quadratic} though with the normalization now subsumed in Eq.~\ref{Eq:CrossSection}.    
+Following the logic of this work, we try fitting the cross section data shown in Fig.~\ref{RealData} with  Eq.~\ref{Eq:CrossSection}, where
+$G_E$ has been approximated by Eq.~\ref{Eq:linear} and Eq.~\ref{Eq:quadratic}, though with the normalization now subsumed in Eq.~\ref{Eq:CrossSection}.    
 Additionally, we performed fits with the following two commonly used functions:
 \begin{align}
 f_{\mathrm{cubic}}(Q^2)   & = 1 + a_1 Q^2 + a_2 Q^4 + a_3 Q^6,  \\
 f_{\mathrm{rational}}(Q^2) & = \frac{1+n_1 Q^2}{1+m_1 Q^2},
 \end{align}
-where the radius for the rational function is given by $\sqrt{-6 (n_1 - m_1)}$ and for the polynomials $\sqrt{-6 a_1}$.
-We note that the low order rational function (n=m=1) can be easily extended to give the expected asymtotic behavior
-as $Q^2 -> \inf$ and that the more complex rational function (n=1,m=1,2,3) has been used in global fits~\cite{
+where the radius for the rational function is given by $\sqrt{-6 (n_1 - m_1)}$ and for the polynomials by $\sqrt{-6 a_1}$.
+We note that the low order rational function ($n=m=1$) can easily be extended to give the expected asymtotic behavior
+as $Q^2 \to \inf$ and that the more complex rational function ($n=1,m=1,2,3$) has been used in global fits~\cite{
 Kelly:2004hm,
 Puckett:2017flj,   
-Gutsche:2017lyu},
+Gutsche:2017lyu}.
 
 The fits were done first with a standard dipole magnetic form factor
 and then repeated with the magnetic form factor from~\cite{Bernauer:2013tpr} and~\cite{Ye:2017gyb}.    
@@ -514,9 +513,9 @@ the quadratic fit~\cite{Borkowski:1975} though herein we use a single floating n
 instead of three and the point-to-point errors are smaller.   It is perhaps distressing to note that published values of the 
 radius extracted from electron scattering remained basically unchanged since the 1976 work~\cite{Borkowski:1975} while the 
 functions used to make the extrapolation and obtained that same radius became increasingly complex and convoluted.
-Oddly enough the standard dipole magnetic form factor quadratic fit has the lowest AIC and BIC and gives a result consistant
-with the muonic lamb shift; though the rational function is nearly as good and sitting nearly exactly between the CODATA
-and muonic Lamb shiftvalues.    
+Oddly enough the standard dipole magnetic form factor quadratic fit has the lowest AIC and BIC values and gives a result consistent
+with the muonic Lamb shift; though the rational function is nearly as good and is nearly exactly between the CODATA
+and muonic Lamb shift values.    
 
 
 \section{Summary}
