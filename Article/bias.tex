@@ -287,6 +287,7 @@ variance; bringing the root mean square error very close for all the test cases.
 Hopefully, this example makes it clear that it is not just the number of points that matter, 
 but the size of the uncertainties that is a critical parameter in model selection.
 
+
 Of course for real data, nature hides the true generating function from us, so perhaps it is reassuring to know
 that a reasonable approximation is able to reveal the underlying physics just as well as, if not better than, the
 true function.   
@@ -333,6 +334,15 @@ See the supplimentary material for an animation of many the possible outcomes.}
 \label{linearVSquadratic}
 \end{figure}
 
+\begin{figure}[htb]
+\includegraphics[width=\columnwidth]{Figure/frequentist-band.pdf}
+\caption{Instead of applying the prior that $Q^2$ = 0 as done in Fig.~\cite{linearVSquadratic}, it is more natural to
+just fit the data.  In fact, a frequentist would correctly simply check that the function reasonibly points to one.
+This version is also far more intitiive and more clearly shows how the quadratic function can bend as it extrapolates 
+beyond the data.
+}
+\end{figure}
+
 To be clear, using an inappropriate model can lead to erroneous conclusions.
 In Fig.~\ref{linearVSquadratic} we show an
 example of one set of the pseudo data fit with a linear and quadratic where the prior that the
@@ -341,6 +351,10 @@ so the function goes to the known limiting value at the origin).
 Since here we know the function that generated the pseudo data, it is clear that the quadratic
 fit has caused the data to be inappropriately shifted and will generate an unusually large radius, 
 but in real life the true function is not known.
+
+In Fig.~\ref{}
+Note that we have left the initial normalization a constant since while the absolute normalization may be
+unknown at the few percent level for a cross section measurement, relalitive uncertainties can be 
 
 
 \section{Model Selection}
@@ -518,8 +532,45 @@ Oddly enough the standard dipole magnetic form factor quadratic fit has the lowe
 with the muonic Lamb shift; though the rational function is nearly as good and is nearly exactly between the CODATA
 and muonic Lamb shift values.    
 
+\section{Graphs in Statistical Analysis}
+
+Beyond simply checking statstic criteria, it is important to check the statistical analysis graphically~\cite{Anscombe:1973}.
+The graphs help ensure that our underlying assumptions about the data are reasonably correct and help ensure that the results
+aren't being overly influanced by a single point.   This is particularly important when doing $\chi^2$ minimizations where a
+clear outlier can easily have an undue weight.    This is not to imply that one should simply remove an outlier, but it does
+mean that one might wish to study the effect of fitting with and without the outlining point to clearly show its effect on 
+the result.   The research can also review their notes to ensure that wasn't a mistake in the reporting of that point.
+
+In Fig.~\ref{residual}, the reported data is shown along with the best fit curve from Table~\ref{datatable} and while a residual
+is perhaps the most common statistical analysis graph, it is not found.   In fact, some papers have no data qualtiy plots at all 
+(e.g.~\cite{Rosenfelder:1999cd}) and residuals cannot be found in many of the most cited works~\cite{}.
+
+\begin{figure}[htb]
+\includegraphics[width=\columnwidth]{Figure/NewVsOld.pdf}
+\caption{Data and the best fit curve.}
+\label{residual}
+\end{figure}
+
+This plot allows one to see if the data plausibly come from a normal disutribition.
+\begin{figure}[htb]
+\includegraphics[width=\columnwidth]{Figure/NormQQ.pdf}
+\caption{Normal-QQ plot.}
+\label{normqq}
+\end{figure}
+
+It is important to note while these fits look beautiful.   The extraction of the radius is an
+extrapolation our belief that we can reasonably expect our function to extropolate is based
+on the Monte Carlo study at the beginning of the paper.    And while it is certaintly reasonable
+to assume the the charge form factor will smoothly continue to $Q^2$ = 0,
+nature will do as it wishes and data covering the 0 to 0.1~fm$^{-2}$ range is 
+certaintly desirable to ensure that our ansatz is in fact correct.   Also, strickly speaking, the
+uncertainties from the regressions are only valid over the range of the data, so again our 
+belief that we are obtaining reasonble uncertains links back to the Monte Carlo study of the
+radius extraction using different functions.
+
 
 \section{Summary}
+
 
 For the specific example of electron scattering, we have revisited a classic Monte Carlo study and shown
 the common practice of simply concluding that one should reject regression models with a bias is incorrect; 
