@@ -51,7 +51,8 @@ over-parameterization or over-elaboration.
 High-precision Lamb shift experiments on muonic atoms have determined the proton radius to 
 be 0.84087(39)~fm~\cite{Pohl:2010zza,Antognini:1900ns}.   This result is in stark contrast to the current
 CODATA recommended value of 0.875~fm~\cite{Mohr:2015ccw} which comes from an average of atomic 
-Lamb shift and electron scattering results.  
+Lamb shift and electron scattering results.    This difference has become known in the literature as
+the proton radius puzzle~\cite{}.
 
 While initial efforts to understand this puzzle focused on the details of the muonic experiment, attention has
 now turned to re-examining the atomic and electron scattering results.   In fact, the first of the
@@ -73,7 +74,7 @@ an extrapolation is required to extract the charge radius from the experimental 
 
 Many methods have been proposed to make this extrapolation,
 ranging from parsimonious fits of low $Q^2$ data~\cite{Rosenfelder:1999cd,Griffioen:2015hta,Horbatsch:2015qda,Higinbotham:2015rja},
-to extremely complex fits with tens of free parameters~\cite{Bernauer:2013tpr,Lee:2015jqa}.
+to extremely complex fits with tens of free parameters~\cite{Bernauer:2010wm,Bernauer:2013tpr,Lee:2015jqa,Graczyk:2014lba,Lorenz:2014vha}.
 In additional to statistical modeling, there are of course 
 theory inspired extractions of the radius~\cite{Belushkin:2006qa,Horbatsch:2016ilr}.   These also tend to favor the 
 muonic radius, leading to a conclusion that either there is a problem with the parsinomious low $Q^2$ fits or physics beyond
@@ -83,8 +84,8 @@ parsimonious fits agree with the muonic results while most of the complex fits
 are in agreement with the CODATA value.   
 
 
-In fact, a general criticism of the parsimonious extractions of the proton radius is the presence of bias~\cite{Sick:2017aor,Sick:2018fzn},
-with an implication that bias needs to be avoided in order to successfully extract the true radius from the data.
+A general criticism of the parsimonious extractions of the proton radius is the presence of bias~\cite{Sick:2017aor,Sick:2018fzn},
+with an implication that bias needs to be completely avoided in order to successfully extract the true radius from the data.
 The use of bias to reject parasimonious proton radius extraction methods dates back to the classic Monte Carlo 
 study of Borkowski~{\it{et al.}}~\cite{Borkowski:1975} where linear extrapolates were flatly rejected in favor of quadriatic
 expolations.  Herein we will show that when using a Monte Carlo study to test a model's ability
@@ -448,7 +449,9 @@ so it is not clear which curves are shifted with respect to the true reduced cro
 \begin{figure}
 \includegraphics[width=\columnwidth]{Figure/RealData.pdf} 
 \caption{Shown is one set of modern cross section data to illustrate the current tension between 
-different models and the effect of floating the normalization of the data.   A standard magnetic
+different models and the effect of the normalization parameter.   In elecctron scattering data, the
+point-to-point uncertainties can be rather small, compared to the typical normalization uncertainty
+of a few perecent.   A standard magnetic
 form factor has been used along with charge form factors from recent publications:  a bounded
 13$^{th}$-order polynomial with a radius of 0.88~fm~\cite{Ye:2017gyb}, a unbounded 10$^{th}$-order polynimal with a radius of 0.88~fm~\cite{Bernauer:2013tpr}, 
 a continued fraction with a radius of 0.84~fm~\cite{Griffioen:2015hta}, and a dipole function with a radius of 0.84~fm~\cite{Higinbotham:2015rja}. }
@@ -579,20 +582,28 @@ It is important to note while these fits look beautiful, the extraction of the r
 extrapolation our belief that we can reasonably expect our function to extropolate is based
 on the Monte Carlo study at the beginning of the paper.    And while it is certaintly reasonable
 to assume the the charge form factor will smoothly continue to $Q^2$ = 0,
-nature will do as it wishes and data covering the 0 to 0.1~fm$^{-2}$ range is 
-certaintly desirable to ensure that our ansatz is in fact correct.   Also, strickly speaking, the
+nature will do as it wishes and new data covering the 0 to 0.1~fm$^{-2}$ range is 
+certaintly desirable to ensure that our ansatz is in fact correct~\cite{
+Gasparian:2014rna,
+Peng:2016szv,
+Mihovilovic:2016rkr
+}.   
+Also, strickly speaking, the
 uncertainties from the regressions are only valid over the range of the data, so again our 
 belief that we are obtaining reasonble uncertains links back to the Monte Carlo study of the
-radius extraction using different functions.
+radius extraction using different functions and the relatively short distance of the extrapolation.
 
 This work was in not meant to be an exhaustive study of the world electron scattering data; but 
 instead to explore the concept of bias-variance trade-off as it relates to the extraction of the proton 
 radius from electron scattering and show that parismonious modeling can in fact have better 
-predictive power then a more baroque models.   
+predictive power then a more baroque models in certain situations.   Thus the model selection techniques
+presented herein provide a rigous method of selecting the most appropriate model to discribe a given
+set a data.
 
-Using one set of electron scattering data, we illistrated model selection techniques as well as 
+Also, using a set of electron scattering data with its single normalization paraemter, we 
+illistrated these model selection techniques as well as 
 some key statistial analysis plots that should be produced in order to ensure a reasonable fit.   
-While just a single realization of the data, this example serves to illastrute the current tenation 
+While just a single realization of the data, this example serves to illistrate the current tenation 
 between electron scattering fitters who are actually not just differing about the radius of the
 proton but also on the absolute normalization of the electron scattering data.
 It is interesting to note that while the Frequentist
