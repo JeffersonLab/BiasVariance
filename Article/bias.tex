@@ -72,20 +72,27 @@ Of course, electron scattering cannot reach the exact $Q^2 = 0$ limit; thus,
 an extrapolation is required to extract the charge radius from the experimental data.
 
 Many methods have been proposed to make this extrapolation,
-ranging from parsimonious fits of low $Q^2$ data~\cite{Rosenfelder:1999cd,Griffioen:2015hta,Horbatsch:2016ilr,Higinbotham:2015rja},
-to extremely complex fits with tens of free parameters~\cite{Bernauer:2013tpr,Lee:2015jqa}.   
+ranging from parsimonious fits of low $Q^2$ data~\cite{Rosenfelder:1999cd,Griffioen:2015hta,Horbatsch:2015qda,Higinbotham:2015rja},
+to extremely complex fits with tens of free parameters~\cite{Bernauer:2013tpr,Lee:2015jqa}.
+In additional to statistical modeling, there are of course 
+theory inspired extractions of the radius~\cite{Belushkin:2006qa,Horbatsch:2016ilr}.   These also tend to favor the 
+muonic radius, leading to a conclusion that either there is a problem with the parsinomious low $Q^2$ fits or physics beyond
+what is included in current calculations~\cite{Carlson:2015jba,Liu:2016qwd}.
 As nicely illustrated in the work of Krauth~{\it{et al.}}~\cite{Krauth:2017ijq}, most of 
 parsimonious fits agree with the muonic results while most of the complex fits 
-are in agreement with the CODATA value.
+are in agreement with the CODATA value.   
 
-A general criticism of the parsimonious extractions of the proton radius is the presence of bias~\cite{Sick:2017aor},
+
+In fact, a general criticism of the parsimonious extractions of the proton radius is the presence of bias~\cite{Sick:2017aor,Sick:2018fzn},
 with an implication that bias needs to be avoided in order to successfully extract the true radius from the data.
-In fact, the use of bias to reject statistical models dates back to the classic Monte Carlo 
-study of Borkowski~{\it{et al.}}~\cite{Borkowski:1975}. 
-We will show in this work that when using a Monte Carlo study to test a model's ability
-to extract the proton radius, one needs to consider not only bias but also the variance.
-We will also illustrate how a biased parsimonious model can in fact have a higher predictive 
-validity than an unbiased less parsimonious model.
+The use of bias to reject parasimonious proton radius extraction methods dates back to the classic Monte Carlo 
+study of Borkowski~{\it{et al.}}~\cite{Borkowski:1975} where linear extrapolates were flatly rejected in favor of quadriatic
+expolations.  Herein we will show that when using a Monte Carlo study to test a model's ability
+to extract the proton radius, one needs to consider not only bias but also the variance and illistrate how 
+the best predicitve model to use will depend on the range, quanity and precision of the data.
+This will illustrate how a biased parsimonious model can in fact have a higher predictive 
+validity than an unbiased less parsimonious model.   In additon, we will then apply these ideas to model selection with real
+data, where instead of millions of Monte Carlo results, we get but a single realization of the possible outcomes.  
 
 
 \section{Bias}
@@ -287,7 +294,6 @@ variance; bringing the root mean square error very close for all the test cases.
 Hopefully, this example makes it clear that it is not just the number of points that matter, 
 but the size of the uncertainties that is a critical parameter in model selection.
 
-
 Of course for real data, nature hides the true generating function from us, so perhaps it is reassuring to know
 that a reasonable approximation is able to reveal the underlying physics just as well as, if not better than, the
 true function.   
@@ -321,16 +327,14 @@ Points & Error    & $a_0$ & Radius&a$_1/a_0$&  Bias  & Sigma &  RMSE  & $n_0$ & 
 
 \begin{figure}[htb]
 \includegraphics[width=\columnwidth]{Figure/linearVSquadratic-band.pdf}
-%\includegraphics[width=\columnwidth]{Figure/linearVSquadratic-high.pdf}
-%\includegraphics[width=\columnwidth]{Figure/linearVSquadratic-middle.pdf}
-%\includegraphics[width=\columnwidth]{Figure/linearVSquadratic-low.pdf}
 \caption{Illustation of the effect of renormalizing data.  The
 black points show one set of pseudo data, with absolute 0.3\% random point-to-point 
 uncertainty and 0.01 fm$^{-2}$ spacing that have been renormalized
 by applying the prior that $G_E(0)=1$.    While the prior is true, using an inappropriate model
 can cause both the extracted radius and normalization to be dramatically shifted from the true
-function.   The grey curves were drawn to indicate this results is one of many simulations.   
-See the supplimentary material for an animation of many the possible outcomes.}  
+function.   
+The grey bands were created by preforming of 250 simulations and are presented as
+an animation in the supplemental material~\cite{Supplement}.}
 \label{linearVSquadratic}
 \end{figure}
 
@@ -339,8 +343,11 @@ See the supplimentary material for an animation of many the possible outcomes.}
 \caption{Instead of applying the prior that $Q^2$ = 0 as done in Fig.~\cite{linearVSquadratic}, it is more natural to
 just fit the data.  In fact, a frequentist would correctly simply check that the function reasonibly points to one.
 This version is also far more intitiive and more clearly shows how the quadratic function can bend as it extrapolates 
-beyond the data.
-}
+beyond the data.   
+The grey bands were created using the same pseduo data as
+as used in Fig.~\cite{linearVSquadratic}. 
+and are presented as
+an animation in the supplemental material~\cite{Supplement}. }
 \end{figure}
 
 To be clear, using an inappropriate model can lead to erroneous conclusions.
@@ -416,11 +423,11 @@ The Mott cross section, $\sigma_{\text{Mott}}$, with the recoil factor included,
 \begin{equation}
 \sigma_{\text{Mott}}  = \frac{\alpha^2}{4 E^2} \frac{\cos^2{(\theta / 2)}}{\sin^4{(\theta / 2)} ( 1 + \frac{E}{M} (1 - \cos{\theta}))}.
 \end{equation}
-The known $\sigma_{\text{Mott}}$ term and the determined normalization can be divided out to report a reduced cross section
-\begin{equation}
-\sigma_{\text{Reduced}} = \frac{ {\sigma_{\text{Meas}}}}{{n_0 \sigma_{\text{Mott}}}}.
-\label{Eq:Reduced}
-\end{equation}
+%The known $\sigma_{\text{Mott}}$ term and the determined normalization can be divided out to report a renormalized reduced cross section
+%\begin{equation}
+%\sigma_{\text{Reduced}} = \frac{1}{n_0} \frac{ {\sigma_{\text{Meas}}}}{{\sigma_{\text{Mott}}}}.
+%\label{Eq:Reduced}
+%\end{equation}
 From Eq.~\ref{Eq:CrossSection} is it clear that as $Q^2$ goes to zero and $\varepsilon$ goes to one (forward angle electron scattering), 
 the terms which include the  magnetic form factor, $G_M$, are not very important which, is why this work has
 focused on simply the charge form factor.
@@ -541,24 +548,34 @@ clear outlier can easily have an undue weight.    This is not to imply that one 
 mean that one might wish to study the effect of fitting with and without the outlining point to clearly show its effect on 
 the result.   The research can also review their notes to ensure that wasn't a mistake in the reporting of that point.
 
-In Fig.~\ref{residual}, the reported data is shown along with the best fit curve from Table~\ref{datatable} and while a residual
-is perhaps the most common statistical analysis graph, it is not found.   In fact, some papers have no data qualtiy plots at all 
-(e.g.~\cite{Rosenfelder:1999cd}) and residuals cannot be found in many of the most cited works~\cite{}.
+In top half of Fig.~\ref{residual}, the reported data is shown along with the quadratic fit:  best fit from Table~\ref{datatable} based
+on AIC and BIC.   In the bottom half, the residual, a difference between the data and the model, is shown.     While these two plots
+are perhaps the most common statistical analysis graph, they are not found in many highly cited proton radius papers and in fact some
+paper  have no data qualtiy plots at all (e.g.~\cite{Rosenfelder:1999cd}).
+As the human eye will find patterns in statistical noise, the normal Q-Q plot is an important tool to check if in the fact the 
+data is normally distributed~\cite{Wilk:1968}.   This is done in Fig.~\cite{normqq}, where the sorted residuals plotted against an normal distribution
+and are shown to follow a normal distribution.   There are of course more formal statistical tests one can apply, but in general the
+visualizations of the data can quickly reveal if there are any major problems.   In particular, with least squares fitting, one should
+be mindful that a single outlier can skew the results.
 
 \begin{figure}[htb]
 \includegraphics[width=\columnwidth]{Figure/NewVsOld.pdf}
-\caption{Data and the best fit curve.}
+\caption{The cross section data and the quadratic fit curve are shown in the upper plot and the residual, the differnce between
+the data and fit, are shown in the lower plot.    If an appriate fit function was used, the Residuals should be randomly dispersed
+dispersed around the horizontal axis.}
 \label{residual}
 \end{figure}
 
-This plot allows one to see if the data plausibly come from a normal disutribition.
 \begin{figure}[htb]
 \includegraphics[width=\columnwidth]{Figure/NormQQ.pdf}
-\caption{Normal-QQ plot.}
+\caption{In order to check if the distribution of the resdiuals are plausibly normally distributed, one can make a Noraml
+ quantile-quantile, Q-Q, plot.
+This is done by sorting the residuals from lowest to highest and plotting the ordered residuals against a theoretical 
+normal distribution.   The resulting plot is a beautiful example of normally distributed residuals.}
 \label{normqq}
 \end{figure}
 
-It is important to note while these fits look beautiful.   The extraction of the radius is an
+It is important to note while these fits look beautiful, the extraction of the radius is an
 extrapolation our belief that we can reasonably expect our function to extropolate is based
 on the Monte Carlo study at the beginning of the paper.    And while it is certaintly reasonable
 to assume the the charge form factor will smoothly continue to $Q^2$ = 0,
@@ -568,9 +585,23 @@ uncertainties from the regressions are only valid over the range of the data, so
 belief that we are obtaining reasonble uncertains links back to the Monte Carlo study of the
 radius extraction using different functions.
 
+This work was in not meant to be an exhaustive study of the world electron scattering data; but 
+instead to explore the concept of bias-variance trade-off as it relates to the extraction of the proton 
+radius from electron scattering and show that parismonious modeling can in fact have better 
+predictive power then a more baroque models.   
+
+Using one set of electron scattering data, we illistrated model selection techniques as well as 
+some key statistial analysis plots that should be produced in order to ensure a reasonable fit.   
+While just a single realization of the data, this example serves to illastrute the current tenation 
+between electron scattering fitters who are actually not just differing about the radius of the
+proton but also on the absolute normalization of the electron scattering data.
+It is interesting to note that while the Frequentist
+seeks the best model to describe the data, a Bayesian would likely look at the collection of results as  
+subset of the possible ways the data can be normalized and the radius extracted (e.g. guassian process 
+regression~\cite{Rasmussen:2005}).    
+
 
 \section{Summary}
-
 
 For the specific example of electron scattering, we have revisited a classic Monte Carlo study and shown
 the common practice of simply concluding that one should reject regression models with a bias is incorrect; 
