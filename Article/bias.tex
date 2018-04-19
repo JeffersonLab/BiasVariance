@@ -23,6 +23,8 @@
 \affiliation{Jefferson Lab, Newport News, VA 23606}
 \author{Randall Evan McClellan}
 \affiliation{Jefferson Lab, Newport News, VA 23606}
+\author{Stephen Shamaiengar}
+\affiliation{Jefferson Lab, Newport News, VA 23606}
 \author{Xuefei Yan}
 \affiliation{Duke University, Durham, NC 27708}
 %\affiliation{Jo\v{z}ef Stefan Institute, SI-1000 Ljubljana, Slovenia}
@@ -57,10 +59,11 @@ Lamb shift and electron scattering results.    This difference has become known 
 the proton radius puzzle~\cite{Pohl:2013yb}.
 
 While initial efforts to understand this puzzle focused on the details of the muonic experiment, attention has
-now turned to re-examining the atomic and electron scattering results.   In fact, the first of the
-new generation of published atomic Lamb shift measurements is in statistical agreement with the muonic 
-result~\cite{Beyer79} though preliminary findings from another group agree with the classic atomic 
-results~\cite{fleurbaey:tel-01633631}.
+now turned to re-examining the atomic and electron scattering results~\cite{Kelkar:2016tcx}.   The first of the
+new generation of atomic Lamb shift measurements is in statistical agreement with the muonic 
+result~\cite{Beyer79} while the second findings from another group agree with the classic atomic 
+results~\cite{fleurbaey:tel-01633631,Fleurbaey:2018}.   Thus, the first of the next generation of
+atomic Lamb shift result are also in disagreement.
 
 For the electron scattering data, the proton's charge radius, $r_p$, is extracted from
 cross section data by determining the slope of the electric form factor, $G_E$, in the
@@ -87,7 +90,7 @@ and the ChPT inspired modeling tend to agree with the $\mu H$ result, while the 
 tends to agree with the CODATA value.   The detail that is effecting all the results is how the normalization
 of the experimental data is handled.
 
-\begin{figure}
+\begin{figure}[htb]
 \includegraphics[width=\columnwidth]{Figure/ScatteringResults.png}
 \caption{Collection of radii extracted from electron scattering data:  
 Horbatsch~2016~{\cite{Horbatsch:2016ilr}}
@@ -121,6 +124,24 @@ Murphy~1974~\cite{Murphy:1974zz}, and
 Frerejacque~1965~\cite{Frerejacque:1965ic}, and
 Hand~1963~\cite{Hand:1963zz}.}
 \label{collection}
+\end{figure}
+
+To visualize the current disagreement between electron scattering fit, we plot a representive set of curves in Fig.~\ref{TwoOrders}.
+Aside from the classic standard dipole which uses the 1963 radius~\cite{Hand:1963zz}, it is  prehaps surprising is to see that 
+in general the current charge form factor functions agree rather well out past 14~fm$^{-2}$ and the current disagreement about the
+radius extracted from electron scattering data can only be clearly seen by zooming-in to the low $Q^2$ region.
+In a broad sense, the fits can be classified into parsimoinious fits with few parameters and in general focused on low $Q^2$ and
+those that fit the entire range $Q^2$ data which extents past 100~fm$^{-2}$.
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{Figure/TwoOrders.pdf}
+\caption{The 0.81~fm radius standard dipole function is shown along with four current charge functions.
+Three from fits, 0.84~fm dipole function~\cite{Higinbotham:2015rja}, 0.84~fm radius continued fraction~\cite{Griffioen:2015hta},
+and a 0.88~fm 10$^th$ order polynomial function~\cite{Bernauer:2010wm} along with a global fit where the radius was fixed
+to the CODATA value of 0.875~fm~\cite{Ye:2017gyb}.   In the upper plot, only the standard dipole function can be seen clearly
+seperated from the other four curves, while by zooming in to very low $Q^2$ curves with different radii can be seen clearly
+seperated.}
+\label{TwoOrders}
 \end{figure}
 
 A general criticism of the parsimonious extractions of the proton radius is the presence of bias~\cite{Sick:2017aor,Sick:2018fzn},
@@ -744,37 +765,87 @@ same ones as those making the data selection decisions.
 It is worth noting, that the PRad collaboration has come up with their model selection techniques
 prior to looking at the real data~\cite{Yan:2018bez}.
 
-\section{Higher Order Terms}
+\section{Theory}
 
-For higher order terms, we turn to theory instead of continuing with polynomial fitting. 
+As Enrio Fermi so eliquiently reminded Freeman Dyson, one can approach a physics problem from two points
+of view: one having a physical picture in mind and the other having a firm mathmetical basis~\cite{Dyson:2004}.  
+Thus far in the this work, we have approached the problem of extracting the proton radius from a nearly pure 
+mathmetical point view using statistical analysis techniques.  And as Fermi preferred, it would be best to
+approach from a theory point of view or at the very least compare the regression results with a modern
+calcuation.
+
+This bring us back to an extremely important point, regressions are only valid over the range of the data;
+beyond that it is an extrapolation problem and the uncertain .
+With that idea in mind, we show the best fits  each range is analigous to a puzzle piece.
+
+\begin{figure}[htb]
+\includegraphics[width=\columnwidth]{Figure/FitsAndTheory.pdf}
+\label{FitsAndTheory}
+\end{figure}
+
+\begin{figure}[htb]
+\includegraphics[width=\columnwidth]{Figure/FitsAndTheoryLowest.pdf}
+\label{FitsAndTheory}
+\end{figure}
+
+The two low $Q^2$ data sets presented have the advantage of being relatively insensitive to the magnetic form 
+factor as shown in Table~\ref{RealData} and \ref{LowRealData}.   Nevertheless, these two sets alone compress
+over 15\% of the full Mainz 1422 data set and with the use of high order polynomanials and numerous normalizations
+we have shown that the simplest possible fit not only agrees with the muonic results, it is also beautifully in
+agreement with modern theory calculations.   The reader should realize that the larger radii from electron scattering
+are being generating by including significanlty higher $Q^2$ data and effectly the data far from the extrapolation
+point to driving the fit.
+
+
+We note that Wong~\cite{Wong:1994sy} had an eligant solution to this problem by including a penalty 
+term in his regressions so that the points far from the extrapolation point cannot overly influance 
+the extrapolation:
+\begin{equation}
+\chi^2_mod = \sum{i=1}{n} ((model(G_{E~i})-data_i)/sigma_i^{mod})^2
+\end{equation}
+with the modified error function of
+\begin{equation}
+\sigma_i^{mod} = \sigma (Q^2_i/(Q^2_1)
+\end{equation}
+This allows a greater preference to be given to data nearest to the extrapolation point.
+
 
 \section{Summary}
 
 This work was in not meant to be an exhaustive study of the world electron scattering data; but 
 instead explore the concept of bias-variance trade-off as it relates to the extraction of the proton 
-radius from electron scattering data and show that parsimonious modeling can in fact have better 
-predictive power then a more baroque models in certain situations.   Thus the model selection techniques
-presented herein provide a rigorous method of selecting the most appropriate model to describe a given
-set a data.
+radius from electron scattering data.
+To do this, we have revisited a classic Monte Carlo study~\cite{Borkowski:1975ume} and shown
+the common practice of simply concluding that one should reject models with a bias is incorrect
+as it the assumption that you can add more regression parameters simply because you have more data.  
+We also illustrated how parsimonious models can in fact have better 
+predictive power then even true underlying model in certain situations. 
 
-Also, using a set of electron scattering data with its single normalization parameter, we 
-illustrated these model selection techniques as well as 
-some key statistical analysis plots that should be produced in order to ensure a reasonable fit.   
-While just a single realization of the data, this example serves to illustrate the current tension 
-between electron scattering fitters who are actually not just differing about the radius of the
-proton but also on the absolute normalization of the electron scattering data.
+Next, we carefully studied the high precision low $Q^2$ data from Mainz~\cite{} which covered a range
+very similar to the Monte Carlo study.  The the model selection techniques
+presented herein provide a rigorous method of selecting the most appropriate model to describe a given
+set a data.  We have illustrated how these model selection techniques as well as some key statistical 
+analysis plots that should be produced in order to ensure a reasonable fit.   
 It is interesting to note that while the Frequentest
 seeks the best model to describe the data, a Bayesian would likely look at the collection of results as  
 subset of the possible ways the data can be normalized and the radius extracted (e.g. Gaussian process 
 regression~\cite{Rasmussen:2005}).    
 
-For the specific example of electron scattering, we have revisited a classic Monte Carlo study and shown
-the common practice of simply concluding that one should reject models with a bias is incorrect
-as it the assumption that you can add more regression parameters simply because you have more data.  
+Finally, we compare the results of our regressions, which strickly speaking are only valid over the
+range of the data, and compared them to a modern physical model of the proton charge form factor
+and find that though the extrapolated radii from the regressions can vary getting, the simplest
+linear fit is in fact perfectly compatible with an extremely complex theorestic calculation; leaving
+us to concluded that the low $Q^2$ electron scattering data gives a radius of 0.841(8)fm and is thus
+consistant with the muonic Lamb shift results.
+
 These idea are not constrained to the physical sciences, but also extends 
 to quantitative analysis~\cite{Brighton:2015} and it is at the heart of statistical 
-learning~\cite{Hastie:2009}.
-This important concept of the power of parsimonious modeling was nicely 
+learning~\cite{Hastie:2009} with the overfitting perhaps more problematic now then
+in the past due modern computing power~\cite{Cawley:2010}.   It is amusing to note it
+was just 1985 when Feynman noted that computers could not bet human at the
+game of Go~\cite{Feynman:2008}, while today computers dominate even this complicated game~\cite{Silver:2016,Barradas:2018}.
+With all this computer power avaliable, it is perhaps more neccisary then ever
+to keep in mind the power and importance of parsimonious modeling as nicely 
 summarized by the renowned statistician George Box: 
 ``Since all models are wrong the scientist cannot obtain a `correct' one
 by excessive elaboration.  On the contrary, following William of Occam, 
@@ -788,15 +859,16 @@ the mark of mediocrity.''~\cite{Box76}
 The regressions done in this work were done in Python making use of the
 outstanding LMFIT package~\cite{Newville:2014} to interface with SciPy
 libraries~\cite{Jones:2001}.  Non-linear regressions were done using the
-Levenberg–Marquardt method~\cite{Marquardt:1963}.
+Levenberg–Marquardt method~\cite{Levenberg:1944,Marquardt:1963}.  Special
+thanks to Edward Tufte and his efforts to prompt visualization of evidence~\cite{Tufte:2006}.
 This work was supported by the U.S.  Department of Energy contract DE-AC05-06OR23177
 under which Jefferson Science Associates operates the Thomas Jefferson National 
 Accelerator Facility and contract DE-FG02-03ER4123 at Duke University.
 \end{acknowledgments}
 
 
-\appendix*
-\section{Anscombe Quartet}
+\begin{appendix}
+\section{Anscombe's Quartet}
 
 As nuclear physicists tend to use reduced $\chi^2$ instead of R$^2$, we have taken the 1973 example
 problem of F. J. Anscombe~\cite{Anscombe:1973} and added uncertainties to the data points.
@@ -829,17 +901,18 @@ easily seen by graphing the data~\ref{SameChi2}.
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{Figure/SameChi2.pdf}
-\caption{Four sets}
+\caption{Graphs of the four sets of data.}
 \label{SameChi2}
 \end{figure}
 
+\begin{figure}
+\includegraphics[width=\columnwidth]{Figure/SameChi2Residual.pdf}
+\caption{Graphs of the residuals of the four sets of data.}
+\label{SameChi2}
+\end{figure}
+\end{appendix}
 
-
-
-
-
-
-
+%\clearpage
 
 \bibliography{elastic}
 
