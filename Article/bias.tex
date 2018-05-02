@@ -37,13 +37,14 @@ the proton charge radius from charge form factor data.   Using Monte Carlo techn
 for a given set of data, a biased parsimonious model can in fact have greater predictive power than a 
 less-biased, more-complex model.  Perhaps even more surprising, we will also show that in certain cases a simple model 
 can even be a better predictive model than the true generating function.   While illustrated for the case of proton
-radius extraction from electron scattering data, this result provides an important example of the concept that a scientist 
-cannot achieve a better result by over-parameterization or over-elaboration.   With these ideas in mind, we take a careful 
-step-by-step look at high precision, low $Q^2$ electron scattering data and using Bayesian Information Critian for model selection
-extract a proton radius of 0.842(8)~fm.  Combining the lowest and next lowest set gives a radius of 0.858(8)~fm.  Keeping in mind 
-that we are expolating, we compare these resultis to a state-of-the-art thoery calculation and find they are consistant with
-calculations of the proton radius using ChPT and dispersion relations with radius of 0.85(1)~fm.   We also show that these
-result are rather insenstive to the choice of magnetic form factor.
+radius extraction from electron scattering data, this result provides an important example of the concept that 
+a scientist cannot achieve a better result by over-parameterization or over-elaboration. 
+With these ideas in mind, we focus on low $Q^2$ data, which we explicately show is insenstive to the choice of magnet form factor, 
+and using Bayesian Information Critian, using a function that was also justified by Monte Carlo studies, find a 
+a proton radius of 0.842(8)~fm.    Recognizing that we are nevertheless exptraolating, we then compare our 
+results to a ChPT plus dispersion relation model nuclear theory calculation and find that our statistical analysis 
+results are consident with a theoretical proton radius of 0.85(1)~fm.   
+
 \end{abstract}
 
 \maketitle
@@ -53,7 +54,7 @@ result are rather insenstive to the choice of magnetic form factor.
 High-precision Lamb shift experiments on muonic hydgrogen atoms have determined the proton radius to 
 be 0.84087(39)~fm~\cite{Pohl:2010zza,Antognini:1900ns}.   This result is in stark contrast to the
 CODATA-2014 recommended value of 0.8751(61)~fm~\cite{Mohr:2015ccw} which comes from an average of atomic 
-transition frequencies and electron scattering results~\cite{Mohr:2012tt,Arrington:2015ria}.    The difference between the muonic and other types of 
+transition frequencies~\cite{Boshier:1989zz,Weitz:1994zz,Berkeland:1995dyd,Bourzeix:1996zz,Udem:1997zz} and electron scattering results~\cite{Mohr:2012tt,Arrington:2015ria}.    The difference between the muonic and other types of 
 proton radius extractionhas become known as the proton radius puzzle~\cite{Pohl:2013yb,Carlson:2015jba,Gao:2015aax,Pohl:2016tqq,Nez:2011zz}.
 
 While initial efforts to understand this puzzle focused on the details of the muonic experiment, attention has
@@ -145,7 +146,7 @@ seperated.}
 A general criticism of the parsimonious extractions of the proton radius is the presence of bias~\cite{Sick:2017aor,Sick:2018fzn},
 with an implication that bias needs to be completely avoided in order to successfully extract the true radius from the data.
 The use of bias to reject parsimonious proton radius extraction methods dates back to the classic Monte Carlo 
-study of Borkowski~{\it{et al.}}~\cite{Borkowski:1975} where linear extrapolates were flatly rejected in favor of quadratic
+study of Borkowski~{\it{et al.}}~\cite{Borkowski:1975ume} where linear extrapolates were flatly rejected in favor of quadratic
 extrapolations.  Herein we will show that when using a Monte Carlo study to test a model's ability
 to extract the proton radius, one needs to consider not only bias but also the variance and illustrate how 
 the best predictive model to use will depend on the range, quantity and precision of the data.
@@ -710,7 +711,7 @@ rational  & 103 &  67.1    & 0.652     &$-42.43$&$-34.44$& 1.006(3)  & 0.937(55)
           &     & \multicolumn{6}{c}{without Coulomb correction}                 & \multicolumn{6}{|c}{with Coulomb correction} \\
 $G_E$ Fit & df  & $\chi^2$ & reduced   & AIC    & BIC    & Norm      & Extrapolated  & $\chi^2$ & reduced   & AIC    & BIC    & Norm      & Extrapolated      \\  
 Function  &     &          &$\chi^2$   &        &        &           & Radius [fm]   &          & $\chi^2$  &        &        &           & Radius [fm]            \\ \hline
-linear    & 104 &  69.2    & 0.665     &$-41.19$&$-35.87$& 1.001(1)  & 0.826(8)  &  69.9    & 0.669     &$-40.59$&$-35.26$& 0.984(1)  & 0.842(8)    \\
+linear    & 104 &  69.2    & 0.665     &$-41.19$&$-35.87$& 1.001(1)  & 0.826(8)  &  69.9    & 0.669     &$-40.59$&$-35.26$& 0.998(1)  & 0.842(8)    \\
 quadratic & 103 &  67.0    & 0.651     &$-42.58$&$-34.59$& 1.006(2)  & 0.923(50) &  66.9    & 0.649     &$-42.80$&$-34.81$& 1.004(4)  & 0.948(50)    \\ 
 cubic     & 102 &  66.2    & 0.650     &$-41.79$&$-31.13$& 0.996(6)  & 0.598(nan)&  66.2    & 0.649     &$-41.95$&$-31.30$& 0.994(6)  & 0.645(nan)    \\ 
 rational  & 103 &  67.1    & 0.652     &$-42.44$&$-34.44$& 1.007(3)  & 0.936(55) &  67.0    & 0.650     &$-42.63$&$-34.64$& 0.999(3)  & 0.964(55)    \\ \hline \hline
@@ -757,11 +758,15 @@ such as Alarcon and Weiss~\cite{}, the moments of the generating function are fa
 by fitting.  Also, as pointed out on page XXX of \cite{}, moments do not uniquely define functions, so the best
 we can do for the higher order terms is determine the shape of the data and then compare with theory.
 
-Another problem is the human-in-the-loop factor~\cite{Daee:2018:UMA:3172944.3172989}.   It is clear 
-reading through the literature, that often the people fitting the data are the
-same ones as those making the data selection decisions.
+
+%One can of course try to combine the two though this can easily turn into an exercise in overfitting
+%and it has the inherent problem of 
+%human-in-the-loop factor~\cite{Daee:2018:UMA:3172944.3172989}.   It is clear 
+%reading through the literature, that often the people fitting the data are the
+%same ones as those making the data selection decisions.
+
 It is worth noting, that the PRad collaboration has come up with their model selection techniques
-prior to looking at the data~\cite{Yan:2018bez}.
+prior to looking at the data~\cite{Yan:2018bez}.   This 
 
 \section{Theory}
 
@@ -782,51 +787,51 @@ other small radius fits~\ref{FitsAndOtherFits}.
 \begin{figure}[htb]
 \includegraphics[width=\columnwidth]{Figure/FitsAndTheory.pdf}
 \caption{Shown are the error band from the fits of the 180~MeV and 315~MeV data sets along with a state-of-the-art
-calculation for a proton radius of 0.85~fm.   Within uncertainties, the fits and the theory are all consistant.}
+calculation for a proton radius of 0.85~fm (black) and 0.88~fm (grey).   Within uncertainties, the 0.85~fm result is
+consistant between experiment and theory while the 0.88~fm theory result is clearly rejected by the data.}
 \label{FitsAndTheory}
 \end{figure}
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{Figure/FitsAndTheoryLowest.pdf}
-\caption{Zooming in to the lowest $Q^2$ region, one can see how the error band is consistant not only with the
-thoery calculation, but the "smaller" radius fits.   While not often a focus of the fitters, the low $Q^2$ 
-extrapolation should be able to get the correct normalizationo and it is the normalization and not the higher
-order moments that is driving the agreement with the smaller radius.}
+\includegraphics[width=\columnwidth]{Figure/FitsAndFits.pdf}
+\caption{Shown are the pairs of fits from the beginning of the paper.   It is interesting to note that while the
+low $Q^2$ fit clearly favored the smaller radius; the four curves are fall within the one sigma band (shown as a blue box) 
+of the quadratic fit of the 315 MeV data.   This is very different from the theory calculation where the 0.88~fm result
+is clearly disfavored.}
 \label{FitsAndOtherFits}
 \end{figure}
 
 The two low $Q^2$ data sets presented have the advantage of being relatively insensitive to the magnetic form 
-factor as shown in Table~\ref{RealData} and \ref{LowRealData}.   Nevertheless, these two sets alone compress
-over 15\% of the full Mainz 1422 data set and with the use of high order polynomanials and numerous normalizations
-we have shown that the simplest possible fit not only agrees with the muonic results, it is also beautifully in
-agreement with modern theory calculations.   The reader should realize that the larger radii from electron scattering
-are being generating by including significanlty higher $Q^2$ data and effectly the data far from the extrapolation
-point to driving the fit.
-
-If instead of comparing to theory we do a four parameter fit of the two data sets,
-two normalization parameters and a quadratic function, 
-using the magnetic form factor from Bernauer {\it{et a.l}}~\cite{Bernauer:2010wm}
-one obtains a $\chi^2$ of 189 for 210 data points for a reduced $\chi^2$ of 0.915 with 
-normalizations of 0.998 and 1.001 with a radius of 0.858(8)fm and a quadratic term of
-0.0124(12) which is also consistent with the theory calculations high order moment.
+factor as shown in Table~\ref{RealData} and \ref{LowRealData} and make up over
+15\% of the full Mainz point 1422 data set.   It should be made that by using the full set with two 10th order polynomanials
+(one for $G_E$ and one for $G_M$) and 31 normalization parameters it is possible to get a proton radius from the electron
+scattering data that agrees with the 
+CODATA value.     On the other hand,  the parsimonious fits presented herein not only agrees with the muonic results, but are also in
+agreement with modern nuclear theory calculations.
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{Figure/RealMoments.png}
+\includegraphics[width=\columnwidth]{Figure/RealMoments.pdf}
 \caption{Real moments.}
 \end{figure}
 
-We would like to point out that while the model of Alarcon and Weiss has an increbily complex series
-of moments; those moments alternate in sign and the sum of the moments at low $Q^2$ is extremely small.   
-It is perhaps misleading to show  the moments as absolute values and a percent of the linear term
-(e.g. \cite{Sick:2017aor,Sick:2018fzn}) as it leaves impression that all the moments are 
-important when in fact the sum of the alternating terms is in fact deminishingly important.  
-Even more disterbing it using values of the charge polynomial fits and claiming they are moments when
-the simulationly determined magnetic tersm do not alternate in sign~\cite{Bernauer:2010zga}; implying 
-that the values are simply discriptive modeling with a minimax function and not the moments of a 
-generating function.
-And though it should be obvious, the discussion in the literature about these higher order moments has 
-completely overshadowed the issues of the normalziations; yet the normalization has a far larger effect 
-on the results and requires an extrapolation.
+We would like to point out that those who point to the 10th order polynomial fits of $G_E$~\cite{Sick:2017aor,Sick:2018fzn}
+ignore the fact that even the low order terms of $G_M$ do not alternate in sign as one would expect~\cite{Bernauer:2010zga}; 
+thus it should be clear that these terms are simply parameters of curve fitting and not 
+moments of an underlying true function.   This observation is in fact in line with nuclear theory which has shown 
+that it take hundreds of moments to fully discribe the range of the Mainz data.
+In fact, the discussion in the literature about higher order moments seem to have
+completely overshadowed the issues of the normalziations which have a huge effect on the results and are clearly 
+coming from explations often with completley inappropriate functions for extrapolating and no reconition of the fact
+that regression parameters aren't valid beyond the range of the data.
+
+Also, in no way does the use of conformal mapping eleviate the issue of model selection presented herein nor does
+putting the term "model independent" in the tilte of an article and then proceeding to do regressions with high 
+order polynomials for no appearent reason other then it gives the answer that agrees with the current CODATA value.
+
+The selection of the appropriate regression model for the task at had not only requires a rigorous mathemateical basis
+and should either follow a standard proceedure and indeely be defined prior to seeing the experimental data.
+It is worth noting, that the PRad collaboration has come up with their model selection techniques
+prior to looking at the data~\cite{Yan:2018bez}.
 
 
 \section{Summary}
@@ -955,37 +960,65 @@ can be removed and one will obtain nearly the same result.   Thus, for this data
 four it should be pointed out that a single observation plays a critical role
 in the result.
 
-\section{Statistical Bootstrap}
-
-\begin{table}[htb]
-\caption{Four data sets of (x,y,dy) values.}
-\begin{tabular}{lrrrrrrrrrrr}
-%\multicolumn{12}{l}{Original Set} \\
-Original Set: & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
- & & & & & & & & & & & \\
-%\multicolumn{12}{l}{Example Bootstrap Sets} \\
-Example   & 3 & 2 & 7 & 5 & 10 & 4 & 1 & 10 & 7 & 8  & 11 \\
-Bootstrap & 3 & 2 & 7 & 5 & 10 & 4 & 1 & 10 & 7 & 1  & 4 \\
-Sets      & 3 & 2 & 7 & 5 & 10 & 4 & 1 & 10 & 7 & 8  & 2 \\
-          & 3 & 2 & 7 & 5 & 10 & 4 & 1 & 10 & 7 & 5  & 9 \\
-          & 3 & 2 & 7 & 5 & 10 & 4 & 1 & 10 & 7 & 9  & 7 \\
-          & 3 & 2 & 7 & 5 & 10 & 4 & 1 & 10 & 7 & 11 & 5 \\
-          & 3 & 2 & 7 & 5 & 1  & 1 & 1 & 1  & 7 & 3  & 3 \\ \hline
- & & & & & & & & & & & \\
-\end{tabular}
-\label{bootquartet}
-\end{table}
-
-The standard error is only valid if the data are normal
-
-%\section{Forward Stepwise Regression}
+%%\section{Statistical Bootstrap}
 %
-%In this paper, we have proceeded as is natural for a human researcher.  Starting from a simple
-%linear approximation and then adding additional terms in $Q^2$ as needed. 
+%\begin{table}[htb]
+%\caption{Four data sets of (x,y,dy) values.}
+%\begin{tabular}{lrrrrrrrrrrr}
+%%\multicolumn{12}{l}{Original Set} \\
+%Original Set: & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+% & & & & & & & & & & & \\
+%%\multicolumn{12}{l}{Example Bootstrap Sets} \\
+%Example   & 3 & 2 & 7 & 5 & 10 & 4 & 1 & 10 & 7 & 8  & 11 \\
+%Bootstrap & 3 & 2 & 7 & 5 & 10 & 4 & 1 & 10 & 7 & 1  & 4 \\
+%Sets      & 3 & 2 & 7 & 5 & 10 & 4 & 1 & 10 & 7 & 8  & 2 \\
+%          & 3 & 2 & 7 & 5 & 10 & 4 & 1 & 10 & 7 & 5  & 9 \\
+%          & 3 & 2 & 7 & 5 & 10 & 4 & 1 & 10 & 7 & 9  & 7 \\
+%          & 3 & 2 & 7 & 5 & 10 & 4 & 1 & 10 & 7 & 11 & 5 \\
+%          & 3 & 2 & 7 & 5 & 1  & 1 & 1 & 1  & 7 & 3  & 3 \\ \hline
+% & & & & & & & & & & & \\
+%\end{tabular}
+%\label{bootquartet}
+%\end{table}
+%
+%The standard error is only valid if the data are normal
+
+\section{Stepwise Regression}
+%
+In this paper, we have proceeded as is natural for a human statistical modeler, starting from a simple
+linear approximation and then adding additional terms in $Q^2$ as needed; of course nothing
+says that the best fit is actually the next time in some idealistic determination of moments,
+in fact, this is perhaps the root cause of some many different functions and methods being used
+over the years to extract the proton radius from electron scattering data.   And in fact, questions
+anyone using an experimental moment as a model constraint.
+
+In Ref.~\cite{Higinbotham:2015rja} the authors used forward stepwise regression on the Mainz
+Rosenbluth data~\cite{Bernauer:2010wm} and the code returned a beautiful alternating sign power 
+series which is what one would expect if the power series fit was in fact extracting moments
+of a generating function.   
+
+Interesting, when applying the same stepwise regression code to very low $Q^2$ data can give
+some seemly non-sensitcal results; though the linear term will remain essentially unchanged.   
+For example, using stepwise regression with AIC as the
+model selection critiria on the $G_E$ data from Griffioen, 
+Carlson and Maddox~\cite{griffieon:2015 } over a range from $0.1 < Q^2 < 0.8$ fm$^{-2}$ one
+obtains that following result:
+
+\begin{equation}
+G_E \approx 1 - 0.1173 Q^2 + 0.006 Q^8 for 0.1 < Q^2 < 0.8
+\end{equation}
+
+While if one things this fit show look like the moments of a generating function it is laughable; on the other
+hand, if one is thinking about fits as approximations only valid over its range of the data, the stepwise
+regression code has returned a function and errors and when one terns to theory can takes a realistic
+function one suprising finds that the code has in fact returned a function that agrees with theory
+within errors.
+
+Indeed it is the fact, that there is nearly an infinite set of functions that can fit within the error bands
+of the data that makes Monte Carlo modeling and the use of model selection critiria so important; otherwise
+one is simply doing a deep search inorder to find a particular solution.
 
 \end{appendix}
-
-%\clearpage
 
 \bibliography{elastic}
 
