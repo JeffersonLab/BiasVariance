@@ -6,6 +6,7 @@
 
 \documentclass[10pt,aps,prc,twocolumn]{revtex4-1}
 
+\usepackage{fancyvrb}
 \usepackage{tabularx} 
 \usepackage{graphicx} 
 \usepackage{hyperref}  
@@ -1004,19 +1005,152 @@ model selection critiria on the $G_E$ data from Griffioen,
 Carlson and Maddox~\cite{griffieon:2015 } over a range from $0.1 < Q^2 < 0.8$ fm$^{-2}$ one
 obtains that following result:
 
+\begin{Verbatim}[fontsize=\footnotesize]
+
+Start:  AIC=36.47
+data$y ~ data$x
+
+               Df Sum of Sq    RSS    AIC
++ I(data$x^4)   1    9.1204 357.98 30.090
++ I(data$x^3)   1    9.1063 358.00 30.104
++ I(data$x^5)   1    8.9767 358.13 30.224
++ I(data$x^2)   1    8.8697 358.23 30.324
++ I(data$x^6)   1    8.7322 358.37 30.451
++ I(data$x^7)   1    8.4320 358.67 30.730
++ I(data$x^8)   1    8.1084 359.00 31.030
++ I(data$x^9)   1    7.7822 359.32 31.333
++ I(data$x^10)  1    7.4655 359.64 31.626
++ I(data$x^11)  1    7.1643 359.94 31.905
+<none>                      367.10 36.468
+
+Step:  AIC=30.09
+data$y ~ data$x + I(data$x^4)
+
+               Df Sum of Sq    RSS    AIC
+<none>                      357.98 30.090
++ I(data$x^2)   1  0.028238 357.96 32.064
++ I(data$x^8)   1  0.021000 357.96 32.071
++ I(data$x^7)   1  0.020418 357.96 32.071
++ I(data$x^9)   1  0.020399 357.96 32.071
++ I(data$x^3)   1  0.018965 357.96 32.073
++ I(data$x^6)   1  0.018854 357.96 32.073
++ I(data$x^10)  1  0.018801 357.96 32.073
++ I(data$x^5)   1  0.017067 357.97 32.075
++ I(data$x^11)  1  0.016573 357.97 32.075
+
+Weighted Residuals:
+     Min       1Q   Median       3Q      Max 
+-3.01533 -0.73635 -0.08819  0.66435  3.08064 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.9988295  0.0003569  2798.9  < 2e-16 ***
+data$x      -0.1172160  0.0011112  -105.5  < 2e-16 ***
+I(data$x^4)  0.0061991  0.0021379     2.9  0.00399 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.042 on 330 degrees of freedom
+Multiple R-squared:  0.9931,  Adjusted R-squared:  0.993 
+F-statistic: 2.37e+04 on 2 and 330 DF, p-value: < 2.2e-16
+
+\end{Verbatim}
+
+\begin{figure}[htb]
+\includegraphics[width=\columnwidth]{Figure/R-stepwise.png}
+\end{figure}
+
+While for one thinking of these regressions giving moments of a generating function, the result
+of the stepwise regression laughable; on the other hand, if one is simple thinking about these fits 
+as approximations only valid over its range of the data, the stepwise
+regression has returned a function and errors that discribes the data.
+
+In fact, it is the fact that there is nearly an infinite set of functions that can fit the data within the 
+error bands that makes the Monte Carlo modeling and the use of model selection critiria so important; otherwise
+one is simply doing a deep search in order to find a particular solution. 
+
+\section{Conformal Mapping}
+
+It has been argued that use of conformal mapping can improve the sigition; but while some authors of this
+techique confine themselves to low $Q^2$ and model constrained parameters, others seem to use the
+the mapping bfuscate clear overfitting.    For example in Table~XXX of \cite{}
+the authors act as if there is no way to pick which function to used.
+Using the selection criteria provided herein, one instead finds that the two parameter
+fits are sufficent and that results in general give 0.86(2)fm for the radius.
+
 \begin{equation}
-G_E \approx 1 - 0.1173 Q^2 + 0.006 Q^8 for 0.1 < Q^2 < 0.8
+z(t,t_{\rm cut},t_0) = {\sqrt{t_{\rm cut} - t} - \sqrt{t_{\rm cut} - t_0} \over \sqrt{t_{\rm cut} - t} + \sqrt{t_{\rm cut} - t_0}  } \,,  
 \end{equation}
+where for this case $t_{\rm cut} = 4m_\pi^2$, and $t_0$ is a free parameter 
+representing the point mapping onto $z=0$.   By the choice 
+$t_0^{\rm opt} = t_{\rm cut} \left( 1 - \sqrt{1+ Q^2_{\rm max}/t_{\rm cut}} \right)$ where
+$t=q^2=-Q^2$.
 
-While if one things this fit show look like the moments of a generating function it is laughable; on the other
-hand, if one is thinking about fits as approximations only valid over its range of the data, the stepwise
-regression code has returned a function and errors and when one terns to theory can takes a realistic
-function one suprising finds that the code has in fact returned a function that agrees with theory
-within errors.
+It is also argued that ``the curvature is smaller in the
+z variable than in the $Q^2$ variable''.
+Taking exactly the same data as 
+fit by stepwise regession and preforming the standard mapping, one can show that this statement is domonstatiely
+false. 
 
-Indeed it is the fact, that there is nearly an infinite set of functions that can fit within the error bands
-of the data that makes Monte Carlo modeling and the use of model selection critiria so important; otherwise
-one is simply doing a deep search inorder to find a particular solution.
+\begin{Verbatim}[fontsize=\footnotesize]
+
+
+Start:  AIC=62.02
+data$y ~ data$x
+
+               Df Sum of Sq    RSS    AIC
++ I(data$x^2)   1    36.992 358.23 31.779
++ I(data$x^3)   1    35.577 359.65 33.092
++ I(data$x^4)   1    33.518 361.71 34.993
++ I(data$x^5)   1    31.295 363.93 37.034
++ I(data$x^6)   1    29.136 366.09 39.003
++ I(data$x^7)   1    27.125 368.10 40.827
++ I(data$x^8)   1    25.277 369.95 42.495
++ I(data$x^9)   1    23.582 371.64 44.017
++ I(data$x^10)  1    22.026 373.20 45.408
++ I(data$x^11)  1    20.595 374.63 46.683
+<none>                      395.23 62.019
+
+Step:  AIC=31.78
+data$y ~ data$x + I(data$x^2)
+
+               Df Sum of Sq    RSS    AIC
+<none>                      358.23 31.779
++ I(data$x^7)   1   0.46895 357.77 33.828
++ I(data$x^6)   1   0.46636 357.77 33.830
++ I(data$x^8)   1   0.46557 357.77 33.831
++ I(data$x^9)   1   0.46025 357.77 33.836
++ I(data$x^10)  1   0.45531 357.78 33.840
++ I(data$x^5)   1   0.45194 357.78 33.844
++ I(data$x^11)  1   0.45177 357.78 33.844
++ I(data$x^4)   1   0.41901 357.82 33.874
++ I(data$x^3)   1   0.36310 357.87 33.926
+
+Weighted Residuals:
+     Min       1Q   Median       3Q      Max
+-3.07706 -0.75955 -0.09171  0.67092  3.04833
+
+Coefficients:
+              Estimate Std. Error  t value Pr(>|t|)
+(Intercept)  0.9992836  0.0005757 1735.683  < 2e-16 ***
+data$x      -0.9741340  0.0256596  -37.964  < 2e-16 ***
+I(data$x^2) -1.5340681  0.2627947   -5.838 1.27e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.042 on 330 degrees of freedom
+Multiple R-squared:  0.9932,  Adjusted R-squared:  0.9932
+F-statistic: 2.412e+04 on 2 and 330 DF, p-value: < 2.2e-16
+
+\end{Verbatim}
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{Figure/ztransform-R-fit.png}
+\caption{Add caption.}
+\end{figure}
+
+Assumingly, if one simply uses this result to extract the radius, one finds
+a 0.85(1)~fm,  a result consistant with the muonic Lamb shift.
 
 \end{appendix}
 
