@@ -32,8 +32,8 @@
 \affiliation{Jo\v{z}ef Stefan Institute, SI-1000 Ljubljana, Slovenia}
 
 \begin{abstract}
-Intuitively, a scientist might assume that a more complex model will necessarily yield a more 
-accurate description of experimental data.   Herein, we disprove this notion in the context of extracting 
+Intuitively, a scientist might assume that a more complex model will necessarily yield a better
+predictive model of experimental data.   Herein, we disprove this notion in the context of extracting 
 the proton charge radius from charge form factor data.   Using Monte Carlo techniques, we will show that 
 for a given set of data, a biased parsimonious model can have greater predictive power than a 
 less-biased, more-complex model.  Perhaps even more surprising, we will also show that in certain cases a simple model 
@@ -76,18 +76,19 @@ limit of four-moment transfer, $Q^2$, approaching zero:
 Of course, electron scattering cannot reach the exact $Q^2 = 0$ limit; thus,
 an extrapolation is required to extract the charge radius from the experimental data.
 
-Many methods have been proposed to make this extrapolation,
-ranging from parsimonious fits of low $Q^2$ data~\cite{Rosenfelder:1999cd,Griffioen:2015hta,Horbatsch:2015qda,Higinbotham:2015rja},
-to extremely complex fits with tens of free parameters~\cite{Bernauer:2010wm,Bernauer:2013tpr,Lee:2015jqa,Graczyk:2014lba,Lorenz:2014vha}.
-In additional to statistical modeling, there are of course 
-theory inspired extractions of the radius~\cite{Belushkin:2006qa,Horbatsch:2016ilr}.   These also tend to favor the 
-muonic radius, leading to a conclusion that either there is a problem with the parsimonious low $Q^2$ fits or physics beyond
-what is included in current calculations~\cite{Carlson:2015jba,Liu:2016qwd}.
-Inspired by the illustration in Krauth~{\it{et al.}}~\cite{Krauth:2017ijq}, we made a collection
-of the proton radius extractions in Fig.~\ref{collection}.    In general, the low $Q^2$ parsimonious fits
-and the effective field theory and dispersion relation inspired modeling tend to agree 
-with the $\mu H$ result, while the more complex fitting
-tends to agree with the CODATA value.   One detail that is affecting all the results is how the normalization
+The various proton radius values that have been extracted from electron scattering data
+are shown in Fig.~\ref{collection}.    
+In general, the parsimonious fits of low $Q^2$ data~\cite{Rosenfelder:1999cd,Griffioen:2015hta,Horbatsch:2015qda,Higinbotham:2015rja}
+tend towards a smaller radius while the more complex fits with tens of free 
+parameters~\cite{Bernauer:2010wm,Bernauer:2013tpr,Lee:2015jqa,Graczyk:2014lba,Lorenz:2014vha} tend to extract a large
+proton radius from the data..
+In additional to statistical modeling, there are included in the Fig.~\ref{collection}
+theory inspired extractions of the radius~\cite{Hohler:1976ax,Belushkin:2006qa,Horbatsch:2016ilr} which tend to
+favor a smaller radius.
+%Inspired by the illustration in Krauth~{\it{et al.}}~\cite{Krauth:2017ijq},
+Thus, one finds that the low $Q^2$ parsimonious fits and the effective field theory and dispersion relation 
+inspired modeling tend to agree with the $\mu H$ result, while the more complex fitting
+tends to agree with the CODATA value.   One technical detail that is affecting all these results is how the normalization
 of the experimental data is handled.
 
 \begin{figure}[htb]
@@ -149,7 +150,7 @@ with an implication that bias needs to be completely avoided in order to success
 The use of bias to reject parsimonious proton radius extraction methods dates back to the classic Monte Carlo 
 study of Borkowski~{\it{et al.}}~\cite{Borkowski:1975ume} where linear extrapolates were flatly rejected in favor of quadratic
 extrapolations.  Herein we will show that when using a Monte Carlo study to test a model's ability
-to extract the proton radius, one needs to consider not only bias but also the variance. We will illustrate how 
+to extract the proton radius, one needs to consider not only bias but also the variance.  We will illustrate how 
 the best predictive model to use will depend on the range, quantity and precision of the data.
 This will illustrate how a biased parsimonious model can have a higher predictive 
 validity than an unbiased less parsimonious model.   In addition, we will then apply these ideas to model selection with real
@@ -459,6 +460,8 @@ For example, just because the linear model has a negative bias when compared to 
 does not imply that it has a negative bias with respect to all possible models.
 
 
+
+
 \section{Real Data}
 
 This bring us to the real data and the current proton radius extractions.   Many different functions have
@@ -677,7 +680,8 @@ the lowest $Q^2$ set of data.   The lowest set comes from a run with 180 MeV
 and covers a range from 0.090 to 0.330 fm$^{-2}$.   This range is particularly intriguing as it has been shown to be
 low enough that even a linear regression should be able to extract the radius; though instead of just relying on the Monte
 Carlo study to make that choice, we once again systematically look at the data with various function and variance choices
-for the magnetic form factor in Table~\ref{lowestdatatable}.
+for the magnetic form factor in Table~\ref{lowestdatatable}.   The residuals and norm-qq plots for the AIC and BIC selected
+models are shown in Fig.~\ref{residual-lowest} and \ref{normqq-lowest} respectively.
 
 \begin{table*}
 \caption{Using four different magnetic form factor parameterizations, we extract the normalization
@@ -732,14 +736,14 @@ rational  & 103 &  67.1    & 0.652     &$-42.43$&$-34.44$& 1.007(3)  & 0.936(55)
 \includegraphics[width=\columnwidth]{Figure/BestLow.pdf}
 \caption{The cross section data and the quadratic fit curve are shown in the upper plot and the residual, the difference between
 the data and fit, are shown in the lower plot.}
-\label{residual}
+\label{residual-lowest}
 \end{figure}
 
 \begin{figure}[htb]
 \includegraphics[width=\columnwidth]{Figure/LowNormQQ.pdf}
 \caption{
 The low $Q^2$ data quite as normally distributed residuals though still reasonable close to what one would expect.}
-\label{normqq}
+\label{normqq-lowest}
 \end{figure}
 
 Although these fits look beautiful, the extraction of the radius depends on
@@ -814,16 +818,14 @@ function~\cite{Alarcon:2017lhg}.}
 \end{figure}
 
 In the high-order polynomial fits of $G_E$ and $G_M$~\cite{Sick:2017aor,Sick:2018fzn},
-even the low order terms of $G_M$ do not alternate in sign as one would expect~\cite{Bernauer:2010zga}.
-Therefore, we claim that these terms are simply parameters of curve fitting and not 
-moments of an underlying true function.   This observation is in line with nuclear theory, which has shown 
-that it take hundreds of moments to fully describe the range of the Mainz data.
-HERE HERE HERE
-The selection of the appropriate regression model for a particular task requires a rigorous mathematical basis
-following standard statistical criteria. Idealy, the procedure should be defined prior to seeing the experimental data.
-For example, the PRad collaboration has come up with their model selection techniques
-prior to looking at the data~\cite{Yan:2018bez}.
-
+We note that the low order terms of $G_M$ do not alternate in sign as one would expect
+of moments of a generating function~\cite{Bernauer:2010zga}.
+This fact is ignored by those claim the $G_E$ term of the same order should
+be interpreted as moments~\cite{Sick:2017aor,Sick:2018fzn}.   This is logically inconsistant
+and we instead simply claim that the terms in the polynomail fits are curve fitting parameters.
+This observation is in line with nuclear theory, which has shown 
+that it would take tens of moments to fully describe even a fraction of the $Q^2$ 
+range of the Mainz data~\cite{Alarcon:2018irp}.
 
 \section{Summary}
 
@@ -841,10 +843,6 @@ very similar to the Monte Carlo study.  The model selection techniques
 presented herein provide a rigorous method of selecting the most appropriate model to describe a given set of data.  
 We have illustrated that these model selection techniques along with some key statistical 
 analysis plots can help to ensure a reasonable fit.   
-While the Frequentist
-seeks the best model to describe the data, a Bayesian would likely look at the collection of results as  
-a subset of the possible ways the data can be normalized and the radius extracted (e.g. Gaussian process 
-regression~\cite{Rasmussen:2005}).    
 
 Finally, we compare the results of our regressions, which strickly speaking are only valid over the
 range of the data, to a modern physical model of the proton charge form factor.
@@ -868,7 +866,6 @@ by excessive elaboration.  On the contrary, following William of Occam,
 Just as the ability to devise simple but evocative models is the signature of the
 great scientist so over-elaboration and over-parameterization is often
 the mark of mediocrity.''~\cite{Box76}
-
 
 \begin{acknowledgments}
 The regressions done in the body of this work were done in Python making use of the
@@ -926,12 +923,6 @@ of data is distributed in an ideal way around the fit function~\ref{SameChi2}.
 \caption{Graphs of the four sets of data.}
 \label{SameChi2}
 \end{figure}
-
-%\begin{figure}[htb]
-%\includegraphics[width=\columnwidth]{Figure/SameChi2Residual.pdf}
-%\caption{Graphs of the residuals of the four sets of data.}
-%\label{SameChi2R}
-%\end{figure}
 
 Data set two clearly has a curved residual yet has exactly the 
 same mean, errors, $\chi^2$ as the first fit.   This suggests that the fitter 
@@ -1070,7 +1061,7 @@ As described in the text, this same effect is seen with real $G_E$ data.}
 The transformation from $Q^2$ to the mapped parameter $z$ is done by:
 
 \begin{equation}
-z(t,t_{\rm cut},t_0) = {\sqrt{t_{\rm cut} - t} - \sqrt{t_{\rm cut} - t_0} \over \sqrt{t_{\rm cut} - t} + \sqrt{t_{\rm cut} - t_0}  } \,,  
+\frac{ z(t,t_{\rm cut},t_0) = {\sqrt{t_{\rm cut} - t} - \sqrt{t_{\rm cut} - t_0} }{ \sqrt{t_{\rm cut} - t} + \sqrt{t_{\rm cut} - t_0}  } },  
 \end{equation}
 where $t=-Q^2$, $t_{\rm cut} = 4m_\pi^2$, and $t_0$ is a free parameter 
 representing the point being map onto $z=0$.   
@@ -1144,6 +1135,9 @@ r_p = \frac{\sqrt{-6data\$x}}{4 m_{\pi}}
 \end{equation}
 Thus one finds 0.85(1)~fm,  a result again consistent with the muonic Lamb shift result,
 as well as the other results shown in this work.
+These ideas can be taken further and one could use ideas such as Gaussian process 
+regression to calculate many possible extrapolating paths and then assign relative 
+probabilites~\cite{Rasmussen:2005}..    
 
 \end{appendix}
 
