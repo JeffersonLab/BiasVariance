@@ -42,7 +42,7 @@ radius extraction from electron scattering data, this result exemplifies the con
 a scientist cannot achieve a better result by over-parameterization or over-elaboration. 
 With these ideas in mind, we focus on low $Q^2$ data, which we explicitly show is insensitive to the choice of 
 magnetic form factor, and using Bayesian Information Criterion, using a function that was also justified by Monte Carlo 
-studies, find a a proton radius of 0.842(8)~fm.    Recognizing that we are nevertheless extrapolating, 
+studies, find a proton radius of 0.842(8)~fm.    Recognizing that we are nevertheless extrapolating, 
 we then compare our results to a state-of-the-art theory calculation where the radius was left as a free parameter
 and find that our statistical analysis results are consistent with a theoretical proton radius of 0.85(1)~fm.   
 \end{abstract}
@@ -74,7 +74,7 @@ limit of four-moment transfer, $Q^2$, approaching zero:
     \right|_{Q^{2}=0} \right)^{1/2} \>.
 \end{equation}
 Of course, electron scattering cannot reach the exact $Q^2 = 0$ limit; thus,
-an extrapolation is required to extract the charge radius from the experimental data.
+an extrapolation is required to determine the charge radius from the experimental data.
 
 The various proton radius values that have been extracted from electron scattering data
 are shown in Fig.~\ref{collection}.    
@@ -327,7 +327,8 @@ form factors.
 \begin{figure}
 \includegraphics[width=\columnwidth]{Figure/zoptimized.png}
 \caption{The result of a million simulations and fits of linear fits over the $Q^2$ range 
-of0.1 -- 0.8~fm$^{-2}$ and quadratic fits over 0.1 -- 1.6~fm$^{-2}$, both with 31 uniformly spaced data points.    Using root mean
+of 0.1 -- 0.8~fm$^{-2}$ and quadratic fits over 0.1 -- 1.6~fm$^{-2}$, both with 31 uniformly 
+spaced data points.    Using root mean
 square error as the matrix, neither example is significantly better than the other for exacting the proton
 radius.   This is analogous to a dart game between two equally skilled players: one who hits the bulls eye more 
 often yet has a large spread (low bias but high variance), and another, equally skilled, player who has a 
@@ -840,7 +841,7 @@ predictive power than even the true underlying model in certain situations.
 
 Next, we carefully studied the high precision, low $Q^2$ data from Mainz~\cite{Bernauer:2010wm} which covered a range
 very similar to the Monte Carlo study.  The model selection techniques
-presented herein provide a rigorous method of selecting the most appropriate model to describe a given set of data.  
+presented herein provide a rigorous method of selecting an appropriate model to describe a given set of data.  
 We have illustrated that these model selection techniques along with some key statistical 
 analysis plots can help to ensure a reasonable fit.   
 
@@ -848,12 +849,12 @@ Finally, we compare the results of our regressions, which strickly speaking are 
 range of the data, to a modern physical model of the proton charge form factor.
 We find that though the extrapolated radii from the regressions can vary significantly, the simplest
 linear fit is perfectly compatible with an extremely complex theoretical calculation.
-We therefore conclude that the low $Q^2$ electron scattering data gives a radius that is
-consistant with the muonic Lamb shift results.
+%We therefore conclude that the low $Q^2$ electron scattering data gives a radius that is
+%consistant with the muonic Lamb shift results.
 
-These ideas are not limited to the physical sciences, but also extend
+These ideas and techniques of model selection are not limited to the physical sciences, but also extend
 to quantitative analysis~\cite{Brighton:2015}, and sit the heart of statistical 
-learning~\cite{Hastie:2009}. It has been argued that overfitting is perhaps more problematic now than
+learning~\cite{Hastie:2009}.  It has been argued that overfitting is perhaps more problematic now than
 in the past due modern computing power~\cite{Cawley:2010}.   It is amusing to note it
 was just 1985 when Feynman noted that computers could not beat humans at the
 game of Go~\cite{Feynman:2008}, while today computers dominate even this complicated game~\cite{Silver:2016,Barradas:2018}.
