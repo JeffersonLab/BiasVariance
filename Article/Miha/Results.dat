@@ -1,0 +1,13 @@
+Info in <TCanvas::Print>: eps file ./Figures/fig_CurrentState.eps has been created
+------- Chi2: 8.63047
+ FCN=8.64276 FROM HESSE     STATUS=OK             30 CALLS          71 TOTAL
+                     EDM=1.93989    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                INTERNAL      INTERNAL  
+  NO.   NAME      VALUE            ERROR       STEP SIZE       VALUE   
+   1  GE(Q2=0.015000)   9.94000e-01     fixed    
+   2  GE(Q2=0.016000)   9.82875e-01   4.81821e-03   8.98449e-04  -5.71158e-02
+   3  GE(Q2=0.017000)   9.79202e-01   3.67949e-03   6.29921e-04  -6.93823e-02
+   4  GE(Q2=0.018000)   9.91796e-01   3.63053e-03   6.51267e-04  -2.73495e-02
+   5  GE(Q2=0.020000)   9.92000e-01     fixed    
+(int)15701568
+

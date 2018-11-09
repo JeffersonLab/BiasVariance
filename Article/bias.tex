@@ -4,7 +4,7 @@
 % Topics: Nuclear Physics & Statistical Physics 
 %
 
-\documentclass[10pt,aps,prc,twocolumn]{revtex4-1}
+\documentclass[10pt,superscriptaddress,aps,prc,twocolumn]{revtex4-1}
 
 \usepackage{fancyvrb}
 \usepackage{tabularx} 
@@ -17,34 +17,35 @@
 \bibliographystyle{apsrev4-1}
 
 \begin{document}
-\title{Bias-Variance Tradeoff and Model Selection for Proton Radius Extractions}
+\title{Bias-Variance Trade-off and Model Selection for Proton Radius Extractions}
 
-\author{Douglas Weadon Higinbotham}
-\author{Randall Evan McClellan}
+\author{Douglas W. Higinbotham}
 \affiliation{Jefferson Lab, Newport News, VA 23606}
 
-\author{Xuefei Yan}
-\affiliation{Duke University, Durham, NC 27708}
+\author{Randall E. McClellan}
+\affiliation{Jefferson Lab, Newport News, VA 23606}
 
 \author{Miha Mihovilovi\v{c}}
+\affiliation{Faculty of Mathematics and Physics, University of Ljubljana, SI-1000 Ljubljana, Slovenia}
+\affiliation{Jo\v{z}ef Stefan Institute, SI-1000 Ljubljana, Slovenia}
+\affiliation{Institut f\"{u}r Kernphysik, Johannes-Gutenberg-Universit ̈at Mainz, D-55128 Mainz, Germany}
+
 \author{Simon \v{S}irca}
 \affiliation{Faculty of Mathematics and Physics, University of Ljubljana, SI-1000 Ljubljana, Slovenia}
 \affiliation{Jo\v{z}ef Stefan Institute, SI-1000 Ljubljana, Slovenia}
+
+\author{Xuefei Yan}
+\affiliation{Duke University, Durham, NC 27708}
 
 \begin{abstract}
 Intuitively, a scientist might assume that a more complex model will necessarily yield a better
 predictive model of experimental data.   Herein, we disprove this notion in the context of extracting 
 the proton charge radius from charge form factor data.   Using Monte Carlo techniques, we will show that 
-for a given set of data, a biased parsimonious model can have greater predictive power than a 
-less-biased, more-complex model.  Perhaps even more surprising, we will also show that in certain cases a simple model 
-can even be a better predictive model than the true generating function.   While illustrated for the case of proton
+for a given set of data, a simpler model can have greater predictive power than a 
+more-complex model.   Perhaps even more surprising, we will also show that in certain cases the simple model 
+can even be a better predictive model than the true function.   While illustrated for the case of proton
 radius extraction from electron scattering data, this result exemplifies the concept that 
 a scientist cannot achieve a better result by over-parameterization or over-elaboration. 
-With these ideas in mind, we focus on low $Q^2$ data, which we explicitly show is insensitive to the choice of 
-magnetic form factor, and using Bayesian Information Criterion, using a function that was also justified by Monte Carlo 
-studies, find a proton radius of 0.842(8)~fm.    Recognizing that we are nevertheless extrapolating, 
-we then compare our results to a state-of-the-art theory calculation where the radius was left as a free parameter
-and find that our statistical analysis results are consistent with a theoretical proton radius of 0.85(1)~fm.   
 \end{abstract}
 
 \maketitle
@@ -53,18 +54,16 @@ and find that our statistical analysis results are consistent with a theoretical
 
 High-precision Lamb shift experiments on muonic hydrogen atoms have determined the proton radius to 
 be 0.84087(39)~fm~\cite{Pohl:2010zza,Antognini:1900ns}.   This result is in stark contrast to the
-CODATA-2014 recommended value of 0.8751(61)~fm~\cite{Mohr:2015ccw} which comes from an average of atomic 
-transition frequencies~\cite{Boshier:1989zz,Weitz:1994zz,Berkeland:1995dyd,Bourzeix:1996zz,Udem:1997zz} and electron scattering results~\cite{Mohr:2012tt,Arrington:2015ria}.    The difference between the muonic and other types of 
-proton radius extraction has become known as the proton radius puzzle~\cite{Pohl:2013yb,Carlson:2015jba,Gao:2015aax,Pohl:2016tqq,Nez:2011zz}.
-
+CODATA-2014 recommended value of 0.8751(61)~fm~\cite{Mohr:2015ccw} which comes 
+from electron scattering results and an average of atomic transition 
+frequencies~\cite{Boshier:1989zz,Weitz:1994zz,Berkeland:1995dyd,Bourzeix:1996zz,Udem:1997zz}.
+The discrepancy between these radius values has become known as the proton 
+radius puzzle~\cite{Pohl:2013yb,Carlson:2015jba,Gao:2015aax,Pohl:2016tqq,Nez:2011zz,Krauth:2017ijq}.
 While initial efforts to understand this puzzle focused on the details of the muonic experiment, attention has
-now turned to re-examining the atomic and electron scattering results~\cite{Kelkar:2016tcx}.   The first of the
-new generation of atomic Lamb shift measurements is in statistical agreement with the muonic 
-result~\cite{Beyer79} while the second findings from another group agree with the classic atomic 
-results~\cite{fleurbaey:tel-01633631,Fleurbaey:2018}.   Thus, the first of the next generation of
-atomic Lamb shift result are also in disagreement.
+now turned to re-examining the atomic and electron scattering 
+results~\cite{Kelkar:2016tcx,Beyer79,fleurbaey:tel-01633631,Fleurbaey:2018fih}.   
 
-For the electron scattering data, the proton's charge radius, $r_p$, is extracted from
+For the electron scattering data, the proton charge radius, $r_p$, is extracted from
 cross section data by determining the slope of the electric form factor, $G_E$, in the
 limit of four-moment transfer, $Q^2$, approaching zero: 
 \begin{equation}
@@ -73,99 +72,145 @@ limit of four-moment transfer, $Q^2$, approaching zero:
     \left( -6  \left. \frac{dG_E(Q^2)}{dQ^2}
     \right|_{Q^{2}=0} \right)^{1/2} \>.
 \end{equation}
-Of course, electron scattering cannot reach the exact $Q^2 = 0$ limit; thus,
+Electron scattering experiments cannot reach the $Q^2 = 0$ limit; thus,
 an extrapolation is required to determine the charge radius from the experimental data.
 
 The various proton radius values that have been extracted from electron scattering data
 are shown in Fig.~\ref{collection}.    
-In general, the parsimonious fits of low $Q^2$ data~\cite{Rosenfelder:1999cd,Griffioen:2015hta,Horbatsch:2015qda,Higinbotham:2015rja}
-tend towards a smaller radius while the more complex fits with tens of free 
-parameters~\cite{Bernauer:2010wm,Bernauer:2013tpr,Lee:2015jqa,Graczyk:2014lba,Lorenz:2014vha} tend to extract a large
-proton radius from the data..
-In additional to statistical modeling, there are included in the Fig.~\ref{collection}
-theory inspired extractions of the radius~\cite{Hohler:1976ax,Belushkin:2006qa,Horbatsch:2016ilr} which tend to
-favor a smaller radius.
-%Inspired by the illustration in Krauth~{\it{et al.}}~\cite{Krauth:2017ijq},
-Thus, one finds that the low $Q^2$ parsimonious fits and the effective field theory and dispersion relation 
-inspired modeling tend to agree with the $\mu H$ result, while the more complex fitting
-tends to agree with the CODATA value.   One technical detail that is affecting all these results is how the normalization
-of the experimental data is handled.
+In general, $r_p$ extractions using simple statistical modeling of the 
+low $Q^2$ data~\cite{Horbatsch:2015qda,Rosenfelder:1999cd,Griffioen:2015hta,Higinbotham:2015rja}
+tend towards a smaller radius while the more complex statistical model, with many free 
+parameters, tend to extract a large proton 
+radius~\cite{Bernauer:2010wm,Bernauer:2013tpr,Lee:2015jqa,Graczyk:2014lba,Lorenz:2014vha}.
+Nuclear theory constrained extractions of the radius tend to 
+favor a smaller radius~\cite{Hohler:1976ax,Belushkin:2006qa,Horbatsch:2016ilr}.
+One technical detail that is affecting all 
+these results is how the normalization of the experimental data is handled.
+
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{Figure/ScatteringResults.png}
-\caption{Collection of radii extracted from electron scattering data:  
-Horbatsch~2016~{\cite{Horbatsch:2016ilr}}
-Higinbotham~2016~{\cite{Higinbotham:2015rja}},
-Griffioen~2016~{\cite{Griffioen:2015hta}},
-Lee~2015~{\cite{Lee:2015jqa}},
-Arrington~2015~{\cite{Arrington:2015ria}},
-Lorenz~2015~{\cite{Lorenz:2014yda,Lorenz:2014vha}},
-Lorenz~2012~{\cite{Lorenz:2012tm}},
-Adamuscin~2012~{\cite{Adamuscin:2012zz}},
-Sick~2012~{\cite{Sick:2012zz}},
-Zhan~2011~{\cite{Zhan:2011ji}},
-Ron~2011~{\cite{Ron:2011rd}},
-Borisyuk~2010~{\cite{Borisyuk:2009mg}},
-Hill~2010~{\cite{Hill:2010yb}},
-Bernauer~2010~{\cite{Bernauer:2010wm}},
-Belushkin~2006~{\cite{Belushkin:2006qa}},
-Blunden~2005~{\cite{Blunden:2005jv}},
-Sick~2003~{\cite{Sick:2003gm}},
-Eschrich~2001~\cite{GoughEschrich:2001ji},
-Rosenfelder~2000~{\cite{Rosenfelder:1999cd}},
-Mergell~1996~{\cite{Mergell:1995bf}},
-Wong~1994~\cite{Wong:1994sy},
-McCord~1991~\cite{McCord:1991sd},
-Simon~1980~\cite{Simon:1980hu},
-Hohler~1976~\cite{Hohler:1976ax},
-Borkowski~1975~\cite{Borkowski:1975ume},
-Borkowski~1974~\cite{Borkowski:1974tm,Borkowski:1974mb}
-Akimov~1972~\cite{Akimov:1972nu},
-Murphy~1974~\cite{Murphy:1974zz}, and
-Frerejacque~1965~\cite{Frerejacque:1965ic}, and
-Hand~1963~\cite{Hand:1963zz}.}
+\includegraphics[width=\columnwidth]{Figure/ScatteringResults.pdf}
+\caption{Shown are the radii extracted from electron scattering 
+data~\cite{Horbatsch:2016ilr,
+Higinbotham:2015rja,
+Griffioen:2015hta,
+Lee:2015jqa,
+Arrington:2015ria,
+Graczyk:2014lba,
+Lorenz:2014yda,Lorenz:2014vha,
+Lorenz:2012tm,
+Adamuscin:2012zz,
+Sick:2012zz,
+Zhan:2011ji,
+Ron:2011rd,
+Borisyuk:2009mg,
+Hill:2010yb,
+Bernauer:2010wm, Bernauer:2013tpr,
+Belushkin:2006qa,
+Blunden:2005jv,
+Kelly:2004hm,
+Sick:2003gm,
+GoughEschrich:2001ji,
+Rosenfelder:1999cd,
+Mergell:1995bf,
+Wong:1994sy,
+McCord:1991sd,
+Simon:1980hu,
+Hohler:1976ax,
+Borkowski:1975ume,
+Borkowski:1974tm,Borkowski:1974mb,
+Akimov:1972nu,
+Murphy:1974zz,
+Frerejacque:1965ic,
+Hand:1963zz}.
+%Horbatsch~2017~{\cite{Horbatsch:2016ilr}}
+%Higinbotham~2016~{\cite{Higinbotham:2015rja}},
+%Griffioen~2016~{\cite{Griffioen:2015hta}},
+%Lee~2015~{\cite{Lee:2015jqa}},
+%Arrington~2015~{\cite{Arrington:2015ria}},
+%Lorenz~2015~{\cite{Lorenz:2014yda,Lorenz:2014vha}},
+%Lorenz~2012~{\cite{Lorenz:2012tm}},
+%Adamuscin~2012~{\cite{Adamuscin:2012zz}},
+%Sick~2012~{\cite{Sick:2012zz}},
+%Zhan~2011~{\cite{Zhan:2011ji}},
+%Ron~2011~{\cite{Ron:2011rd}},
+%Borisyuk~2010~{\cite{Borisyuk:2009mg}},
+%Hill~2010~{\cite{Hill:2010yb}},
+%Bernauer~2010~{\cite{Bernauer:2010wm}},
+%Belushkin~2007~{\cite{Belushkin:2006qa}},
+%Blunden~2005~{\cite{Blunden:2005jv}},
+%Kelly~2004~{\cite{Kelly:2004hm}},
+%Sick~2003~{\cite{Sick:2003gm}},
+%Eschrich~2001~\cite{GoughEschrich:2001ji},
+%Rosenfelder~2000~{\cite{Rosenfelder:1999cd}},
+%Mergell~1996~{\cite{Mergell:1995bf}},
+%Wong~1994~\cite{Wong:1994sy},
+%McCord~1991~\cite{McCord:1991sd},
+%Simon~1980~\cite{Simon:1980hu},
+%Hohler~1976~\cite{Hohler:1976ax},
+%Borkowski~1975~\cite{Borkowski:1975ume},
+%Borkowski~1974~\cite{Borkowski:1974tm,Borkowski:1974mb}
+%Akimov~1972~\cite{Akimov:1972nu},
+%Murphy~1974~\cite{Murphy:1974zz}, and
+%Frerejacque~1965~\cite{Frerejacque:1965ic}, and
+%Hand~1963~\cite{Hand:1963zz}.
+The vertical lines indicate the√value and uncertainty of the
+proton radius from muonic hydrogen~\cite{Pohl:2010zza,Antognini:1900ns} and 
+CODATA-2014~\cite{Mohr:2015ccw}.
+}
 \label{collection}
 \end{figure}
 
-To visualize the current disagreement between electron scattering fits, we plot a representative set of curves in Fig.~\ref{TwoOrders}.
-Aside from the classic standard dipole which uses the 1963 radius~\cite{Hand:1963zz}, it is  perhaps surprising is to see that 
-in general the current charge form factor functions agree rather well out past 14~fm$^{-2}$ and the current disagreement about the
-radius extracted from electron scattering data can only be clearly seen by zooming-in to the low $Q^2$ region.
-In a broad sense, the fits can be classified into parsimonious fits with few parameters and in general focused on low $Q^2$ and
-those that fit the entire range $Q^2$ data which extents past 100~fm$^{-2}$.
+To visualize how normalization differences causes the disagreement between electron scattering fits, 
+we plot a representative set of curves in Fig.~\ref{TwoOrders}.
+Aside from the classic standard dipole which uses the 1963 radius~\cite{Hand:1963zz}, 
+the charge form factor functions, regardless of radius,
+agree rather well at large $Q^2$ and the differences between functions
+can only be clearly seen examining the very low $Q^2$ region where slope
+and normalization are systematically linked together.
+In a broad sense, the smaller radius functions are using low order extrapolating functions
+while the larger radius fits are using very flexible high order polynomial functions.
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{Figure/TwoOrders.pdf}
 \caption{The 0.81~fm radius standard dipole function is shown along with four current charge functions.
 Three from fits, 0.84~fm dipole function~\cite{Higinbotham:2015rja}, 0.84~fm radius continued fraction~\cite{Griffioen:2015hta},
-and a 0.88~fm 10$^th$ order polynomial function~\cite{Bernauer:2010wm} along with a global fit where the radius was fixed
+and a 0.88~fm 10$^{th}$ order polynomial function~\cite{Bernauer:2010wm} along with a global fit where the radius was fixed
 to the CODATA value of 0.875~fm~\cite{Ye:2017gyb}.   In the upper plot, only the standard dipole function can be seen clearly
 separated from the other four curves, while by zooming in to very low $Q^2$ curves with different radii can be seen clearly
 separated.}
 \label{TwoOrders}
 \end{figure}
 
-A general criticism of the parsimonious extractions of the proton radius is the presence of bias~\cite{Sick:2017aor,Sick:2018fzn},
-with an implication that bias needs to be completely avoided in order to successfully extract the true radius from the data.
-The use of bias to reject parsimonious proton radius extraction methods dates back to the classic Monte Carlo 
-study of Borkowski~{\it{et al.}}~\cite{Borkowski:1975ume} where linear extrapolates were flatly rejected in favor of quadratic
-extrapolations.  Herein we will show that when using a Monte Carlo study to test a model's ability
-to extract the proton radius, one needs to consider not only bias but also the variance.  We will illustrate how 
-the best predictive model to use will depend on the range, quantity and precision of the data.
-This will illustrate how a biased parsimonious model can have a higher predictive 
-validity than an unbiased less parsimonious model.   In addition, we will then apply these ideas to model selection with real
-data, where instead of millions of Monte Carlo results, we get but a single realization of the possible outcomes.  
+A general criticism of the small radius extractions of the proton radius is 
+the presence of statistical bias~\cite{Sick:2017aor,Sick:2018fzn},
+with an implication that bias needs to be completely avoided in order to 
+successfully extract the true radius from the data.
+The use of bias to reject simple proton radius extraction methods
+originated with the classic Monte Carlo study of Borkowski~{\it{et al.}}~\cite{Borkowski:1975ume} 
+where linear extrapolations were flatly rejected in favor of quadratic
+extrapolations.  
 
+We will show in this work that when using a Monte Carlo study to test a model's ability
+to extract the proton radius, one needs to consider not only bias but also the variance.  
+We will also illustrate that one must consider 
+the range, quantity and precision of the data
+when determining the best predictive statistical model
+and show that simple biased statistical models can have a higher predictive 
+validity than an unbiased more complex models~\cite{Shmueli:2010}.   We will then 
+apply these ideas to model selection with real
+data, where instead of millions of Monte Carlo results, we get but a single realization of the possible outcomes.  
 
 \section{Bias}
 
-In the English language bias is often used as a pejorative term. In the context of regression, it is simply
-an offset from the ideal distribution.   Since it is part of a distribution, it
-is not a property of a single realization, but can only be determined by repeated sampling.    In the context of the proton 
+In the English language, bias is often used as a pejorative term. 
+In the context of regression, it is simply an offset from the mean from the true central value.
+Since it is part of a distribution, it
+is not a property of a single realization, but can be determined only by repeated sampling.    In the context of the proton 
 radius extractions, bias was nicely illustrated by Borkowski~{\it{et al.}}~\cite{Borkowski:1975ume} and we will
-illustrate their procedure in the following.
+describe their procedure in the following paragraphs.
 
-Randomly generate sets of form factor pseudo data 
+Form factor pseudo-data is first systematically generated 
 from $\unit[0.1]{fm^{-2}}$ to 0.4, 0.8, 1.2,
 and $\unit[1.6]{fm^{-2}}$ 
 in steps of $\unit[0.05]{fm^{-2}}$ 
@@ -174,32 +219,36 @@ using the standard dipole function:
 \label{sd}
 G\mathrm{_D}(Q^2) = ( 1 + Q^2/(\unit[18.27]{fm^{-2}}))^{-2},
 \end{equation}
-where the cutoff parameter of 18.27~fm$^{-2}$ corresponds to a radius of 0.8097~fm.
-To mimic real data, the data points were randomly smeared with a normal distribution
-with a sigma of 0.5\%.  
-Next, perform fits on the resulting sets of pseudo data with linear and quadratic functions:
+where the cutoff parameter of 18.27~fm$^{-2}$ corresponds to a radius of 0.8113~fm.
+
+Next to mimic real data, the pseudo data points are each randomly shifted using a 
+normal distribution with a sigma of 0.5\%. 
+Then the pseudo data sets are then fit using both linear and quadratic functions:
 \begin{align}
 f_{\mathrm{linear}}(Q^2) &  = a_0 + a_1 Q^2, \label{Eq:linear} \\
 f_{\mathrm{quadratic}}(Q^2) & = a_0 + a_1 Q^2 + a_2 Q^4. \label{Eq:quadratic}
 \end{align}
-These functions are written so that they are linear in the fit coefficients.  
-This allows the $\chi^2$ minimization to be performed exactly
-and also allowing the normalization to float.   Since it is known that
-G$_E$(0) = 1, it is common practice to factor out the normalization term, $a_0$, and 
-then the slope of G$_E$(0) is given by $a_1/a_0$ and can be used in Eq.~\ref{eq:radius} 
-to determine the radius.
+These functions are written so that they are linear in the fit coefficients,
+which
+allows the $\chi^2$ minimization to be performed exactly
+while also allowing the normalization to float.
+To obtain the physical G$_E$(0) = 1 behavior, one simply divides these functions 
+by the normalization term, $a_0$, to find the slope of G$_E$(0) given by $a_1/a_0$
+which can be used in Eq.~\ref{eq:radius} to determine the radius.
 
-This procedure was done with $10^6$ sets of pseudo data to 
+This procedure was repeated with $10^6$ sets of pseudo data to 
 precisely determine the mean of the extracted 
-radii for these two models.   Since we used standard dipole as the input function, one would expect an unbiased 
-function to return a radius of 0.8097~fm.
-Table~\ref{ztable} reproduces the original result~\cite{Borkowski:1975ume} and
-an example code is provided in the supplemental material of our paper.  
-As the table shows, the mean of linear fits shows a clear bias. 
-Accordingly, the authors of the original work concluded that the linear models 
-should always be rejected in favor of the lower-bias quadratic function.
-They then proceeded to extract the proton charge radius from real data using a five parameter 
-fit: a quadratic charge form factor and three floating normalizations.
+radii for these two functions.   Since the standard dipole was used as the input function, one would expect an unbiased 
+function to return a radius of 0.8113~fm.
+Table~\ref{ztable} reproduces the original result~\cite{Borkowski:1975ume}.
+As the table shows, the mean values of $a_0$ and $r_p$ show a clear bias. 
+Based on this study, the authors of the original work erroneously concluded 
+that the linear models should always be rejected in favor of the lower-bias 
+quadratic function.
+%
+%The problem with their logic was they ignored the varaiance
+%in the distributions.
+%
 
 \begin{table}
 \caption{The mean $a_0$ and radius from doing $10^6$ Monte Carlo simulations
@@ -223,26 +272,30 @@ fm$^{-2}$      & $a_0$      & Radius [fm]          & $a_0$    & Radius [fm] \\ \
 
 \section{Variance}
 
-While it is true that the linear fit exhibits a bias, it is not the only parameter that needs
-to be considered when selecting which model to use for extrapolating the radius.
-In particular, one should also consider the variance.
+While the linear fit does exhibit a bias, it is not the only quantity that must
+be considered when selecting an appropriate statistical model to use.
+In particular, along with the offset from the mean, bias, one must also consider the 
+distribution of the outcomes, the variance.   Where variance is the square of
+the standard deviation, sigma, of the statistical distribution.
 Table~\ref{fulltable} shows a more complete picture of the simulation results 
-where the width of the fit, sigma, is 
-shown along with the bias.   This is graphically represented in Fig.~1 where it becomes clear that 
-for the low $Q^2$ intervals, the linear fits provide results that are closer to
-the input radius than the quadratic fits, while for the larger intervals the quadratic becomes
-the more appropriate function.
-Thus this simple example problem becomes a nearly textbook illustration of the trade-off between 
-variance and bias with the linear fit having a relatively high bias with a low variance, while the 
-quadratic fits have a low bias and high variance.
+where the sigma of the results is shown along with the bias and is
+graphically represented in Fig.~\ref{mc-results}. 
+
+For all $Q^2$ intervals, the linear fits provide significantly smaller sigma's
+then the more complex quadratic fits.     Though picking the function to use
+based solely on variance would also be incorrect.  
+Thus this seemingly simple example has turned into a nearly textbook illustration 
+of the trade-off between variance and bias with the linear fits having a relatively 
+high bias with a low variance, while the quadratic fits have a low bias and high variance.
 
 \begin{table*}
 \caption{An expanded version of Table~\ref{ztable} where instead of just showing the mean offset of the 
 fit results, the bias, we also indicate the width of the fit results, sigma.   Also shown is the
 root mean square error, RMSE, which can be used to quantify the best function for a given interval.}
 \begin{tabular}{cc|cccccc|cccccc} \hline
-Data   & Interval     & \multicolumn{6}{c|}{linear fit}                       & \multicolumn{6}{c}{quadratic fit}                    \\ 
-Points & fm$^{-2}$ &   $a_0$  & Radius [fm]&  $a_1/a_0$ &  Bias  & Sigma &  RMSE  &   $a_0$  & Radius [fm]& $a_1/a_0$  &  Bias  & Sigma &  RMSE \\  \hline
+       &           & \multicolumn{6}{c|}{linear fit}                       & \multicolumn{6}{c}{quadratic fit}                    \\ 
+Data   & Interval  & $a_0$ & Radius &  $a_1/a_0$ &  Bias  & Sigma &  RMSE  & $a_0$ & Radius & $a_1/a_0$ &  Bias & Sigma &  RMSE \\  
+Points & fm$^{-2}$ &       & [fm]   &   [fm]     & [fm]   &  [fm] &  [fm]  &       & [fm]   &  [fm]     & [fm]  &  [fm] &  [fm] \\  \hline
 7      & 0.1 -- 0.4 & 0.9995& 0.7948& $-0.1053$& $-0.0044$& 0.0184& 0.0189 & 1.0000& 0.8063& $-0.1084$& $-0.0013$& 0.1094& 0.1094\\
 15     & 0.1 -- 0.8 & 0.9987& 0.7828& $-0.1021$& $-0.0076$& 0.0057& 0.0095 & 1.0000& 0.8096& $-0.1092$& $-0.0005$& 0.0281& 0.0281\\
 22     & 0.1 -- 1.2 & 0.9975& 0.7712& $-0.0991$& $-0.0106$& 0.0030& 0.0110 & 0.9999& 0.8089& $-0.1090$& $-0.0007$& 0.0138& 0.0138\\
@@ -255,13 +308,15 @@ Points & fm$^{-2}$ &   $a_0$  & Radius [fm]&  $a_1/a_0$ &  Bias  & Sigma &  RMSE
 \includegraphics[width=\columnwidth]{Figure/zresult.png}
 \caption{A graphic representation of the Monte Carlo results showing how the linear fits tend to have a relatively
 high bias though a low variance, while the quadratic fits tend to have a relatively low bias but a large variance.}
+\label{mc-results}
 \end{figure}
 
 \begin{table*}
 \caption{Same as Table~\ref{fulltable}, but now with equal number of data points of each range.}
 \begin{tabular}{cc|cccccc|cccccc} \hline
-Data   & Interval  & \multicolumn{6}{c|}{linear fit}                       & \multicolumn{6}{c}{quadratic fit}                    \\ 
-Points & fm$^{-2}$ &   $a_0$  & Radius [fm]&  $a_1/a_0$ &  Bias  & Sigma &  RMSE  &   $a_0$  & Radius [fm]& $a_1/a_0$  &  Bias  & Sigma &  RMSE \\  \hline
+       &           & \multicolumn{6}{c|}{linear fit}                       & \multicolumn{6}{c}{quadratic fit}                    \\ 
+Data   & Interval  & $a_0$ & Radius &  $a_1/a_0$ &  Bias  & Sigma &  RMSE  & $a_0$ & Radius & $a_1/a_0$ &  Bias & Sigma &  RMSE \\  
+Points & fm$^{-2}$ &       & [fm]   &   [fm]     & [fm]   &  [fm] &  [fm]  &       & [fm]   &  [fm]     & [fm]  &  [fm] &  [fm] \\  \hline
 31& 0.1 -- 0.4 & 0.9995& 0.7951& $-0.1054$& $-0.0043$& 0.0098& 0.0107 & 1.0000& 0.8090& $-0.1091$& $-0.0006$& 0.0629& 0.0629 \\
 31& 0.1 -- 0.8 & 0.9987& 0.7829& $-0.1021$& $-0.0076$& 0.0041& 0.0086 & 1.0000& 0.8099& $-0.1093$& $-0.0004$& 0.0208& 0.0208  \\
 31& 0.1 -- 1.2 & 0.9974& 0.7712& $-0.0991$& $-0.0106$& 0.0026& 0.0109 & 0.9999& 0.8089& $-0.1091$& $-0.0006$& 0.0121& 0.0121  \\
@@ -270,23 +325,33 @@ Points & fm$^{-2}$ &   $a_0$  & Radius [fm]&  $a_1/a_0$ &  Bias  & Sigma &  RMSE
 \label{equaldatatable}
 \end{table*}
 
+
+
 \section{Goldilocks Dilemma}
 
 For any given set of statistical models, the goal is to find the optimal balance between bias and variance.   
-As was noted by George Box, all models are wrong, thus the goal is to find the most appropriate one. 
+As was noted by George Box, all models are wrong, thus the goal is to find the most appropriate model~\cite{Box76}. 
 In general, this can be written as
 \begin{equation}
 \frac{d {\mathrm{Bias}^2 }}{ d {\mathrm{Complexity}}} = \frac{- d {\mathrm{Variance}} }{ d {\mathrm{Complexity}}},
 \end{equation}
 as illustrated in Fig.~\ref{biasvariance}.
-Thus to quantify the goodness of the fits, we use Root Mean Square Error (RMSE),
+Thus to quantify the goodness of the fits, we use Root Mean Square Error (RMSE)~\cite{Hastie:2009,James:2014},
 \begin{equation}
 {\mathrm{RMSE}} = \sqrt{ {\mathrm{bias}}^2 + {\mathrm{Sigma}}^2} = \sqrt{{\mathrm{Bias}}^2 + {\mathrm{Variance}}}.
 \end{equation}
 
-Going back to Table~\ref{fulltable} and checking the Root Mean Square Error, RMSE, one can now quantify 
-that for this example the 0.1 -- 0.8~fm$^{-2}$ interval is optimal for the linear model while the 0.1 -- 1.6~fm$^{-2}$ 
-interval is optimal for the quadratic model. 
+\begin{figure}[htbp]
+\includegraphics[width=\columnwidth]{Figure/PlotBiasVariance-2.eps}
+\caption{A graphic showing how as one goes to higher and higher $Q^2$ the same point-to-point uncertainty of spacing 
+         an ever more complex model is needed to represent the data.}
+\label{mihaplot}
+\end{figure}
+
+Using the RMSE values in Table~\ref{fulltable}, one can now quantify 
+that for this example the 0.1--0.8~fm$^{-2}$ interval is the preferred range for the linear model 
+while the 0.1--1.6~fm$^{-2}$ interval is the preferred range for the quadratic model.   Going to even
+high $Q^2$ will require even more complex models as illustrated in Fig.~\ref{mihaplot}.
 This is in contrast to the conclusion one draws when one only considers bias as presented in Table~\ref{ztable},
 though consistent with the observation that the optimal specific form of the parameterization 
 may depend on the $Q^2$ region being fit~\cite{Alberico:2008sz}.
@@ -307,7 +372,7 @@ and thus it is easy to obtain more low $Q^2$ data.
 This is shown in Table~\ref{equaldatatable} and now the picture is even grayer as the RMSE of the linear 
 fit is nearly equal to the quadratic, thus, assuming that the standard dipole was the true generating function,  experiments
 with 31 data points and an uncertainty of 0.005 per point over a range of 0.1 to 0.8~fm$^{-2}$ and a different experiment
-over a range of 0.1 to 1.6~fm$^{-2}$ would produce nearly identical radii if all other things were equal.
+over a range of 0.1 to 1.6~fm$^{-2}$ would on average produce nearly identical radii if all other things were equal.
 This is visualized in Fig.~\ref{zoptimized} where the linear fit is clearly biased but has a small variance compared to
 the unbiased, large variance quadratic fit.
 
@@ -329,7 +394,7 @@ form factors.
 \caption{The result of a million simulations and fits of linear fits over the $Q^2$ range 
 of 0.1 -- 0.8~fm$^{-2}$ and quadratic fits over 0.1 -- 1.6~fm$^{-2}$, both with 31 uniformly 
 spaced data points.    Using root mean
-square error as the matrix, neither example is significantly better than the other for exacting the proton
+square error as the metric, neither example is significantly better than the other for exacting the proton
 radius.   This is analogous to a dart game between two equally skilled players: one who hits the bulls eye more 
 often yet has a large spread (low bias but high variance), and another, equally skilled, player who has a 
 tighter cluster of hits but an offset (high bias but low variance).}
@@ -348,14 +413,16 @@ with the generating function and a floating normalization term:
 f_{{\mathrm{Dipole Fit}}}(Q^2) =  n_0 ( 1 - b_1 Q^2 / 2)^{-2},
 \end{equation}
 where $n_0$ is the normalization factor and the radius is given by $\sqrt{-6 b_1}$.
-Absolute random errors of 0.01, 0.005 and 0.003 with two different spacing of the data: 
-0.05 fm$^{-2}$ spacing with 7 points and 0.005 fm$^{-2}$ 
-spacing with 31 points.       
+Pseudo data is generated for absolute random errors of 0.01, 0.005 and 0.003 
+with three different spacings: 
+0.05 fm$^{-2}$ spacing with 7 points, 0.01 fm$^{-2}$ spacing with 31 points, and 
+0.005 fm$^{-2}$ spacing with 61 points.       
 The results of fitting these pseudo data sets are shown in Table~\ref{simpleVSperfect}.    
-While the linear fit always has the greater bias, the dipole fit has the greater 
-variance; bringing the root mean square error very close for all the test cases.   
-Hopefully, this example makes it clear that it is not just the number of points that matter, 
-but the size of the uncertainties that is a critical parameter in model selection.
+For a given row in the Table, the linear fit has the greater bias and the dipole fit always
+has the greater variance; bringing the root mean square error very close for all the test cases.   
+This example also makes it clear that it is not just the number of points that matter, 
+but the size of the uncertainties and the range of the data that will also be critical parameters
+in model selection.
 
 Of course for real data, nature hides the true generating function from us, so perhaps it is reassuring to know
 that a reasonable approximation is able to reveal the underlying physics just as well as, if not better than, the
@@ -368,13 +435,14 @@ found in~\cite{Shmueli:2010}.
 \begin{table*}
 \caption{For the lowest Q$^2$ interval, 0.1 to 0.4 fm$^{-2}$, we compare regressions with
 a linear function (Eq.~\ref{Eq:linear}) to the dipole fit function (Eq.~\ref{eq:fitdipole}).   Keeping the range
-fixed, a spacing of 0.05~fm$^{-2}$ (7 points) and 0.01~fm$^{-2}$ (31 points) was used
-with various absolute random errors.  In several of these cases, the simple linear 
+fixed, a spacing of 0.05~fm$^{-2}$ (7 points), 0.01~fm$^{-2}$ (31 points) and 0.005~fm$^{-2}$ (61 points)
+was used with various absolute random errors.  In several of these cases, the simple linear 
 function provides a better predictive model then the true functional form and is never 
 far from the true function.}
 \begin{tabular}{cc|cccccc|cccccc} \hline
-Data   & Random   & \multicolumn{6}{c|}{linear fit}                       & \multicolumn{6}{c}{dipole fit}            \\ 
-Points & Error    & $a_0$ & Radius&a$_1/a_0$&  Bias  & Sigma &  RMSE  & $n_0$ & Radius& $b_1$  &  Bias  & Sigma &  RMSE   \\  \hline
+       &          & \multicolumn{6}{c|}{linear fit}                       & \multicolumn{6}{c}{dipole fit}                     \\ 
+Data   & Random   & $a_0$ & Radius &  $a_1/a_0$ &  Bias  & Sigma &  RMSE  & $a_0$ & Radius & $a_1/a_0$ &  Bias & Sigma &  RMSE \\  
+Points & Error    &       & [fm]   &   [fm]     & [fm]   &  [fm] &  [fm]  &       & [fm]   &  [fm]     & [fm]  &  [fm] &  [fm] \\  \hline
 7      & 0.01     & 0.9995& 0.7941& $-0.1051$& $-0.0046$& 0.0359& 0.0361 & 1.0001& 0.8108& $-0.1096$& $-0.0001$& 0.0378& 0.0378  \\ 
 7      & 0.005    & 0.9995& 0.7946& $-0.1052$& $-0.0045$& 0.0174& 0.0180 & 1.0000& 0.8114& $-0.1097$& $-0.0000$& 0.0194& 0.0194  \\
 7      & 0.003    & 0.9996& 0.7951& $-0.1054$& $-0.0043$& 0.0108& 0.0116 & 1.0000& 0.8114& $-0.1097$& $-0.0000$& 0.0114& 0.0114  \\ \hline
@@ -403,14 +471,17 @@ an animation in the supplemental material~\cite{Supplement}.}
 
 \begin{figure}[htb]
 \includegraphics[width=\columnwidth]{Figure/frequentist-band.pdf}
-\caption{Instead of applying the prior that $Q^2$ = 0 as done in Fig.~\ref{linearVSquadratic}, it is more natural to
-just fit the data.  In fact, a frequentest would correctly simply check that the function reasonably points to one.
-This version is also far more intuitive and more clearly shows how the quadratic function can bend as it extrapolates 
-beyond the data.   
-The grey bands were created using the same pseudo data as
+\caption{Instead of immediately applying the prior that $Q^2$ = 0 as done in Fig.~\ref{linearVSquadratic}, 
+it is more intuitive to simple fit the data allowing the end-point to float.  
+In fact, a frequentest would correctly simply check that the function reasonably points to one within
+the normaliztion uncertainty.
+The grey bands were created using the same pseudo data 
 as used in Fig.~\ref{linearVSquadratic}. 
 and are presented as
 an animation in the supplemental material~\cite{Supplement}. }
+While these two figure may look different, as far as the extracted radius goes, 
+these two different ways of presenting the pseudo data
+give exactly the same results.
 \end{figure}
 
 Using an inappropriate model can lead to erroneous conclusions.
@@ -419,11 +490,10 @@ example of one set of the pseudo data fit with a linear and quadratic where the 
 $G_E(0)=1$ has been applied (i.e. the data has been divided by the normalization term from the regression
 so the function goes to the known limiting value at the origin).
 Since here we know the function that generated the pseudo data, it is clear that the quadratic
-fit has caused the data to be inappropriately shifted and will generate an unusually large radius, 
-but in real life the true function is not known.
-Note that we have left the initial normalization a constant since while the absolute normalization may be
-unknown at the few percent level for a cross section measurement, its relative value for a given measurement
-can be precisely monitored. 
+fit can cause the data to be inappropriately shifted and can generate an large variations
+in the radius. 
+Of course in real world, the true function is not known; thus with a single relation of real data
+would require model selection in order to determine the appropriate function. 
 
 \section{Model Selection}
 
@@ -467,9 +537,12 @@ does not imply that it has a negative bias with respect to all possible models.
 
 This bring us to the real data and the current proton radius extractions.   Many different functions have
 been tried over the years from simple linear fits~\cite{Hand:1963zz,Murphy:1974zz} and continued fractions~\cite{Sick:2003gm} 
-to high order polynomials~\cite{Bernauer:2013tpr,Lee:2015jqa} with and without constraints.   Since obtaining sub-percent
-level cross sections is nearly impossible, a normalization parameter is included to allow an entire set of data to shift
+to high order polynomials with~\cite{Bernauer:2013tpr} and without constraints~\cite{Lee:2015jqa}.
+Since obtaining sub-percent
+level absolute cross sections is nearly impossible, a normalization parameter is included to allow an entire set of data to shift
 as was done in the Monte Carlo simulations.   Again, this just allows that the prior, $G_E(0)=1$, can be applied.
+To be clear, in this work, when referring to a set of experimental data we are referring to a group of data
+with a single normalization parameter.
 
 The measured cross sections, $\sigma_{\mathrm{Meas}}$,  are related to the charge and electric form factors via 
 \begin{equation}
@@ -481,7 +554,7 @@ where $n_0$ is a normalization factor and the kinematic quantities $Q^2$ and $\v
 Q^2 & = \frac{2M E^2 (1 - \cos{\theta})}{M + E (1 - \cos{\theta})}, \\
 \varepsilon & = \left[1 + 2(1 + \frac{Q^2}{4M^2}  \tan^2{\frac{\theta}{2}})\right]^{-1}
 \end{align}
-where E is the incident electron beam energy, $M$~is the proton mass, $\theta$~is the measured electron scattering angle. 
+where $E$ is the incident electron beam energy, $M$~is the proton mass, $\theta$~is the measured electron scattering angle. 
 The Mott cross section, $\sigma_{\text{Mott}}$, with the recoil factor included, is given by
 \begin{equation}
 \sigma_{\text{Mott}}  = \frac{\alpha^2}{4 E^2} \frac{\cos^2{(\theta / 2)}}{\sin^4{(\theta / 2)} ( 1 + \frac{E}{M} (1 - \cos{\theta}))}.
@@ -491,9 +564,9 @@ The Mott cross section, $\sigma_{\text{Mott}}$, with the recoil factor included,
 %\sigma_{\text{Reduced}} = \frac{1}{n_0} \frac{ {\sigma_{\text{Meas}}}}{{\sigma_{\text{Mott}}}}.
 %\label{Eq:Reduced}
 %\end{equation}
-From Eq.~\ref{Eq:CrossSection} is it clear that as $Q^2$ goes to zero and $\varepsilon$ goes to one (forward angle electron scattering), 
-the terms which include the  magnetic form factor, $G_M$, are not very important. This is why this work has
-focused on the charge form factor.
+From Eq.~\ref{Eq:CrossSection} is it clear that as $Q^2$ goes to zero and $\varepsilon$ goes to one 
+(forward angle electron scattering), 
+the terms which include the  magnetic form factor, $G_M$, become relatively unimportant.
 
 To illustrate the current tension between fits done with different models, Fig.~\ref{RealData} shows 
 104 data points from one full subset from a modern electron scattering 
@@ -512,8 +585,8 @@ so it is not clear which curves are shifted with respect to the true reduced cro
 \caption{Shown is one set of modern cross section data to illustrate the current tension between 
 different models and the effect of the normalization parameter.   In electron scattering data, the
 point-to-point uncertainties can be rather small, compared to the typical normalization uncertainty
-of a few percent.   A standard magnetic
-form factor has been used along with charge form factors from recent publications:  a bounded
+of a few percent.   To make the curves, the standard dipole magnetic
+form factor has been used along with charge form factors from several recent publications:  a bounded
 13$^{th}$-order polynomial with a radius of 0.88~fm~\cite{Ye:2017gyb}, a unbounded 10$^{th}$-order polynomial with a radius of 0.88~fm~\cite{Bernauer:2013tpr}, 
 a continued fraction with a radius of 0.84~fm~\cite{Griffioen:2015hta}, and a dipole function with a radius of 0.84~fm~\cite{Higinbotham:2015rja}. }
 \label{RealData}
@@ -528,17 +601,17 @@ f_{\mathrm{rational}}(Q^2) & = \frac{1+n_1 Q^2}{1+m_1 Q^2},
 \end{align}
 where the radius for the rational function is given by $\sqrt{-6 (n_1 - m_1)}$ and for the polynomials by $\sqrt{-6 a_1}$.
 The low order rational function ($n=m=1$) can easily be extended to give the expected asymptotic behavior
-as $Q^2 \to \inf$ and that the more complex rational function ($n=1,m=1,2,3$) has been used in global fits~\cite{
-Kelly:2004hm,
-Puckett:2017flj,   
-Gutsche:2017lyu}.
+as $Q^2 \to \infty$ by using a more complex rational function where $m=n+2$ such 
+as in~\cite{Kelly:2004hm,Puckett:2017flj,Gutsche:2017lyu}.
 
-The fits were done first with a standard dipole magnetic form factor
+In order to check on the influence of the magnetic form factor on the results, 
+several different magnetic form factor functions were used.
+First the fits were done with a standard dipole magnetic form factor
 and then repeated with the magnetic form factor from~\cite{Bernauer:2013tpr} and~\cite{Ye:2017gyb}.    
 The $F$-test, AIC, or BIC model selection techniques all slightly prefer fits with Eq.~\ref{Eq:quadratic}.
 The use of statistical criteria for model selection helps avoids confirmation bias,
 though one could still be using an inappropriate function for the problem at hand. 
-Uncertainties were determined by applying a statistical bootstrap to the data.   This is done
+Uncertainties were determined by applying a statistical bootstrap to the data~\cite{Efron:1979}.   This is done
 by repeatedly randomly sampling the true data with replacement to generate thousands of new sets of N points 
 and refitting those new sets.   This allows one to get uncertainty distributions using the data itself and
 avoids a number of assumptions that are required for $\chi^2$ uncertainty techniques 
@@ -552,9 +625,10 @@ To avoid multiple floating multiple normalizations, the single set of 104 data p
 shown in Fig.~\ref{RealData} is used.
 The parameter uncertainties were obtained using by performing statistical bootstraps of the data.
 As seen during the Monte Carlo studies, the linear fit over this interval produces a small variance; 
-but is clearly biased from the true 0.84--0.88~fm proton radius, whereas the quadratic with has a 
-larger variance but gives less biased result.   The cubic fit function is over-fitting which is 
-why it produces a huge variance.   The rational function is nearly as good as the quadratic through
+but is clearly biased from the true 0.84--0.88~fm proton radius, whereas the quadratic fit has a 
+larger variance but gives less biased result.   
+The cubic fit function over-fits and thus produces a huge variance.   
+The rational function is nearly as good as the quadratic through
 produces a systematically larger radius though nicely in the range we expect.}
 \begin{tabular}{cc|cccccl|cccccl}                                                  \hline \hline
 \multicolumn{14}{l}{Standard Magnetic Form Factor}                                 \\ \hline
@@ -564,7 +638,7 @@ Function  &     &          & $\chi^2$  &        &        &           & Radius [f
 linear    & 102 & 162.6    & 1.594     & 50.47  & 55.74  & 0.988(1)  & 0.785(2)  & 167.2    & 1.639     & 53.35  & 58.64  & 0.985(1)  & 0.790(2)    \\
 quadratic & 101 & 119.4    & 1.182     & 20.35  & 28.29  & 1.000(2)  & 0.852(10) & 119.0    & 1.178     & 20.00  & 27.93  & 0.998(2)  & 0.860(10)   \\
 cubic     & 100 & 117.3    & 1.173     & 20.51  & 31.13  & 0.990(6)  & 0.785(57) & 117.1    & 1.171     & 20.33  & 30.90  & 0.990(6)  & 0.797(57)   \\    
-rational  & 101 & 120.0    & 1.188     & 20.83  & 28.76  & 1.001(2)  & 0.860(10) & 119.6    & 1.184     & 20.50  & 58.64  & 0.999(2)  & 0.869(10)   \\ \hline \hline
+rational  & 101 & 120.0    & 1.188     & 20.83  & 28.76  & 1.001(2)  & 0.860(10) & 119.6    & 1.184     & 20.50  & 28.64  & 0.999(2)  & 0.869(10)   \\ \hline \hline
 \multicolumn{14}{l}{Kelly Magnetic Form Factor}                                   \\ \hline
           &     & \multicolumn{6}{c}{without Coulomb correction}                 & \multicolumn{6}{|c}{with Coulomb correction} \\
 $G_E$ Fit & df  & $\chi^2$ & reduced   & AIC    & BIC    & Norm      & Extrapolated    & $\chi^2$ & reduced   & AIC    & BIC    & Norm      & Extrapolated     \\  
@@ -627,7 +701,8 @@ rational  & 102 & 119.8    & 1.188    & 20.87  & 28.80 & 1.001(2)    & 0.860(14)
 %cubic-   & {\bf{1.011}}    & 4.143 & 12.077       & fixed-          & 0.832(5)     \\ 
 %cubic+   & {\bf{1.103}}    &13.192 & 21.126       & fixed+          & 0.863(6)     \\ \hline \hline
 
-It is of particular note that the quadratic fit is the same function over a similar range as found in the original 1976 work opting for
+It is of particular note that the quadratic fit is the same function over a similar 
+range as found in the original 1976 work opting for
 the quadratic fit~\cite{Borkowski:1975ume} though herein we 
 use a single floating normalization instead of three and the point-to-point errors are smaller.   
 It is perhaps distressing that published values of the 
@@ -645,11 +720,12 @@ The graphs help ensure that our underlying assumptions about the data are reason
 aren't being overly influenced by a single point.   This is particularly important when doing $\chi^2$ minimizations where a
 clear outlier can easily have an undue weight.    This is not to imply that one should simply remove an outlier, but it does
 mean that one might wish to study the effect of fitting with and without the outlining point to clearly show its effect on 
-the result.   The researcher can also review their notes to ensure that wasn't a mistake in the reporting of that point.
+the result.   The researcher can also review their notes to ensure that nothing odd happened during the taking of that data
+point.
 
 In top half of Fig.~\ref{residual}, the reported data is shown along with the quadratic fit:  best fit from Table~\ref{datatable} based
 on AIC and BIC.   In the bottom half, the residual, a difference between the data and the model, is shown.     While these two plots
-are perhaps the most common statistical analysis graphs, they are not found in many highly cited proton radius papers.  In fact, some
+are perhaps the most common statistical analysis graphs, they are not found in many cited proton radius papers.  In fact, some
 papers have no data quality plots at all (e.g.~\cite{Rosenfelder:1999cd}).
 As the human eye will find patterns in statistical noise, the normal Q-Q plot is an important tool to check whether or not the 
 data is normally distributed~\cite{Wilk:1968}.   This is done in Fig.~\ref{normqq}, where the sorted residuals are plotted against,
@@ -676,7 +752,7 @@ normal distribution.   The resulting plot is a beautiful example of normally dis
 
 \section{Lowest $Q^2$ Data} 
 
-While the set of Mainz data studied above had a range similar to the large range of classic Monte Carlo studies, it wasn't
+While the set of Mainz data studied above had a range similar to the large range of our Monte Carlo studies, it is not
 the lowest $Q^2$ set of data.   The lowest set comes from a run with 180 MeV 
 and covers a range from 0.090 to 0.330 fm$^{-2}$.   This range is particularly intriguing as it has been shown to be
 low enough that even a linear regression should be able to extract the radius; though instead of just relying on the Monte
@@ -805,7 +881,7 @@ is clearly disfavored.}
 \end{figure}
 
 The two low $Q^2$ data sets presented have the advantage of being relatively insensitive to the magnetic form 
-factor as shown in Table~\ref{RealData} and \ref{LowRealData} and make up over
+factor as shown in Table~\ref{datatable} and \ref{lowestdatatable} and make up over
 15\% of the full Mainz 1422-point data set.   By using the full set with two 10th order polynomials
 (one for $G_E$ and one for $G_M$) and 31 normalization parameters it is possible to get a proton radius from the electron
 scattering data that agrees with the 
@@ -822,15 +898,15 @@ In the high-order polynomial fits of $G_E$ and $G_M$~\cite{Sick:2017aor,Sick:201
 We note that the low order terms of $G_M$ do not alternate in sign as one would expect
 of moments of a generating function~\cite{Bernauer:2010zga}.
 This fact is ignored by those claim the $G_E$ term of the same order should
-be interpreted as moments~\cite{Sick:2017aor,Sick:2018fzn}.   This is logically inconsistant
-and we instead simply claim that the terms in the polynomail fits are curve fitting parameters.
+be interpreted as moments~\cite{Sick:2017aor,Sick:2018fzn}.   This is logically inconsistent
+and we instead simply claim that the terms in the polynomial fits are curve fitting parameters.
 This observation is in line with nuclear theory, which has shown 
 that it would take tens of moments to fully describe even a fraction of the $Q^2$ 
 range of the Mainz data~\cite{Alarcon:2018irp}.
 
 \section{Summary}
 
-This work was in not meant to be an exhaustive study of the world electron scattering data; but 
+This work was not meant to be an exhaustive study of the world electron scattering data; but 
 instead an exploration of bias-variance trade-off as it relates to the extraction of the proton 
 radius from electron scattering data.
 To do this, we have revisited a classic Monte Carlo study~\cite{Borkowski:1975ume} and shown
@@ -839,13 +915,14 @@ Although adding more regression parameters usually reduces the bias, it comes at
 We also illustrated how parsimonious models can have better 
 predictive power than even the true underlying model in certain situations. 
 
-Next, we carefully studied the high precision, low $Q^2$ data from Mainz~\cite{Bernauer:2010wm} which covered a range
-very similar to the Monte Carlo study.  The model selection techniques
+Next, we carefully studied high precision sets of Mainz low $Q^2$ data~\cite{Bernauer:2010wm} 
+which covered a range very similar to the Monte Carlo study where be defined a set to be a
+group of data with the same normalization parameter.  The model selection techniques
 presented herein provide a rigorous method of selecting an appropriate model to describe a given set of data.  
 We have illustrated that these model selection techniques along with some key statistical 
 analysis plots can help to ensure a reasonable fit.   
 
-Finally, we compare the results of our regressions, which strickly speaking are only valid over the
+Finally, we compare the results of our regressions, which strictly speaking are only valid over the
 range of the data, to a modern physical model of the proton charge form factor.
 We find that though the extrapolated radii from the regressions can vary significantly, the simplest
 linear fit is perfectly compatible with an extremely complex theoretical calculation.
@@ -854,11 +931,11 @@ linear fit is perfectly compatible with an extremely complex theoretical calcula
 
 These ideas and techniques of model selection are not limited to the physical sciences, but also extend
 to quantitative analysis~\cite{Brighton:2015}, and sit the heart of statistical 
-learning~\cite{Hastie:2009}.  It has been argued that overfitting is perhaps more problematic now than
+learning~\cite{Hastie:2009}.  It has been argued that over-fitting is perhaps more problematic now than
 in the past due modern computing power~\cite{Cawley:2010}.   It is amusing to note it
 was just 1985 when Feynman noted that computers could not beat humans at the
 game of Go~\cite{Feynman:2008}, while today computers dominate even this complicated game~\cite{Silver:2016,Barradas:2018}.
-With all this computer power avaliable, it is perhaps more necessary then ever
+With all this computer power available, it is perhaps more necessary then ever
 to keep in mind the power and importance of parsimonious modeling as nicely 
 summarized by the renowned statistician George Box: 
 ``Since all models are wrong the scientist cannot obtain a `correct' one
@@ -885,8 +962,8 @@ Accelerator Facility and contract DE-FG02-03ER4123 at Duke University.
 
 \section{Anscombe's Quartet}
 
-With the power of modern computering, one can be tempted to blindly assume the results of
-a calculation are correct; but this can be extremely misleading~\cite{Sirca:2012}.  To illistrate
+With the power of modern computing, one can be tempted to blindly assume the results of
+a calculation are correct; but this can be extremely misleading~\cite{Sirca:2012}.  To illustrate
 this point we use the Anscombe quartet~\cite{Anscombe:1973}, though as nuclear physicists tend 
 to use reduced $\chi^2$ instead of R$^2$, we have taken the 1973 example
 problem and added uncertainties to the points as shown in Table~\ref{quartet}.
@@ -914,7 +991,7 @@ Obs. no. 1: & 10.0 & 8.04 & 9.14 & 7.46 & 8.0 & 6.58 & 1.235 \\
 \end{table}
 
 These four sets of (x,y,dy) values give to three significant figures the
-same statistical quantites: mean, variance, $\chi^2$, reduced $\chi^2$, etc.
+same statistical quantities: mean, variance, $\chi^2$, reduced $\chi^2$, etc.
 So if one fails to make graphical checks, one can be completely fooled into thinking
 the fits are all equally good; but by simply graphing one can see that only the first set 
 of data is distributed in an ideal way around the fit function~\ref{SameChi2}.   
@@ -931,7 +1008,7 @@ should likely add a quadratic term to the regression as well as check that
 the uncertainties have been correctly reported.
 
 Data set three illustrates the effect of an outlier on the regression.
-Of course, the scientist doesn't simply throw out an outliner.
+Of course, the scientist doesn't simply throw out an outlier.
 Instead one should report on the outlier's influence on the result.   For example,
 in data set three it would be worth noting that if the outlier is removed, the data
 exactly follow a line of $y = 4 + 0.346 x$ and that that measurement should be repeated.
@@ -959,7 +1036,7 @@ of a generating function.
 Interesting, when applying the same stepwise regression code to very low $Q^2$ data can give
 some seemly nonsensical results; though the linear term will remain essentially unchanged.   
 As an example, using R~\cite{R} with the CAR package~\cite{car} to preform stepwise regression with AIC as the
-model selection critiria on the $G_E$ data from Griffioen, 
+model selection criteria on the $G_E$ data from Griffioen, 
 Carlson and Maddox~\cite{Griffioen:2015hta} with $Q^2 < 0.8$ fm$^{-2}$, to match a range studied
 in the Monte Carlo simulations, one obtains the following result:
 
@@ -1013,11 +1090,11 @@ F-statistic: 2.37e+04 on 2 and 330 DF, p-value: < 2.2e-16
 \end{Verbatim}
 
 Unlike the previous studies in this work where test were simply made by increasing the order of the power series
-by one, the forward stepwsie regression scans over all possible next
-terms in the power series upto a user defined 11$^{th}$ order.     The results shown above are in the algebraic 
+by one, the forward stepwise regression scans over all possible next
+terms in the power series up to a user defined 11$^{th}$ order.     The results shown above are in the algebraic 
 notation of R and the x term is $Q^2$.   Starting from a linear function, different combinations higher order functions
 are tried by adding and removing terms, in order to find the best performing predictive model.   The final result
-of the fit is illistrated in Fig.~\ref{R-stepwise} and code to preform the fits can be found on github~\cite{Higinbotham:2016github}.
+of the fit is illustrated in Fig.~\ref{R-stepwise} and code to preform the fits can be found on github~\cite{Higinbotham:2016github}.
 
 \begin{figure}[htb]
 \includegraphics[width=\columnwidth]{Figure/R-stepwise.png}
@@ -1036,18 +1113,18 @@ one is simply doing a deep search in order to find a particular solution.
 \section{Conformal Mapping}
 
 It has been argued that use of conformal mapping can improve the situation; but while some authors of this
-techique confine themselves to low $Q^2$ and model constrained parameters, others seem to use the
-mapping to obfuscate clear overfitting.    
+technique confine themselves to low $Q^2$ and model constrained parameters, others seem to use the
+mapping to obfuscate clear over-fitting.    
 For example, in Table~1 of~\cite{Hill:2010yb}
 the authors do various fits up to fifth order with no clear model selection technique in mind.
 By simply using the selection criteria provided herein, AIC or BIC, one finds that
-in general the two parameter fits are sufficent and the data used therein 
+in general the two parameter fits are sufficient and the data used therein 
 give 0.86(2)fm for the radius.   By model selection criteria, all the fits beyond second 
-order are simply overfitting the data.   
+order are simply over-fitting the data.   
 
 On the other hand, the idea of conformal mapping is very powerful.   From a pure mathematical point
 of view, it can take a function, like $G_E(Q^2)$ that goes from zero in infinity and map it onto a
-finite range where one could use orthogonal polynominal to describe data.   It can also be used to
+finite range where one could use orthogonal polynomial to describe data.   It can also be used to
 avoid the effects of poles when doing polynomial regressions, though it is worth noting
 that rational functions also have that property~\cite{NR}.
 
@@ -1062,14 +1139,14 @@ As described in the text, this same effect is seen with real $G_E$ data.}
 The transformation from $Q^2$ to the mapped parameter $z$ is done by:
 
 \begin{equation}
-\frac{ z(t,t_{\rm cut},t_0) = {\sqrt{t_{\rm cut} - t} - \sqrt{t_{\rm cut} - t_0} }{ \sqrt{t_{\rm cut} - t} + \sqrt{t_{\rm cut} - t_0}  } },  
+z(t,t_{\rm cut},t_0) = \frac{\sqrt{t_{\rm cut} - t} - \sqrt{t_{\rm cut} - t_0} }{ \sqrt{t_{\rm cut} - t} + \sqrt{t_{\rm cut} - t_0}  },  
 \end{equation}
 where $t=-Q^2$, $t_{\rm cut} = 4m_\pi^2$, and $t_0$ is a free parameter 
 representing the point being map onto $z=0$.   
 Herein we have used $t_0$ = 0.  
 It is argued without proof that ``the curvature is smaller in the
 z variable than in the $Q^2$ variable''~\cite{Hill:2010yb}, yet by taking 
-exactly the same data as before and fitting with stepwise regession
+exactly the same data as before and fitting with stepwise regression
 one gets the following result:
 
 \begin{Verbatim}[fontsize=\footnotesize]
@@ -1127,7 +1204,7 @@ F-statistic: 2.41e+04 on 2 and 330 DF, p-value: < 2.2e-16
 \end{figure}
 
 Thus the stepwise regression shows that the transformation
-has increased the curvative to the data and turned the slightly
+has increased the curvature to the data and turned the slightly
 convex data in $Q^2$ to clearly concave data in $z$.
 Assuming that a quadratic can be used to make a reasonable extrapolation, one can
 use this result to extract a radius:
@@ -1138,7 +1215,7 @@ Thus one finds 0.85(1)~fm,  a result again consistent with the muonic Lamb shift
 as well as the other results shown in this work.
 These ideas can be taken further and one could use ideas such as Gaussian process 
 regression to calculate many possible extrapolating paths and then assign relative 
-probabilites~\cite{Rasmussen:2005}..    
+probabilities~\cite{Rasmussen:2005}.
 
 \end{appendix}
 

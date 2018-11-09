@@ -1,0 +1,117 @@
+\author{Reynier Cruz} \affiliation{ Torres Massachusetts Institute of Technology, Cambridge, MA  }
+\author{Shujie Li} \affiliation{ University of New Hampshire, Durham, NH (also RC) }
+\author{Sheren Alsalmi } \affiliation{ Kent State University, Kent, OH    }
+\author{Jason Bane} \affiliation{ University of Tennessee, Knoxville, TN (also RC)  }
+\author{Scott Barcus} \affiliation{ College of William and Mary    }
+\author{Jonathan Castellanos} \affiliation{ Florida International University, Miami, FL    }
+\author{Thir Narayan} \affiliation{ Gautam Hampton University , Hampton, VA   }
+\author{Tyler Hague} \affiliation{ Kent State University, Kent, OH (also RC)  }
+\author{Tyler Kutz} \affiliation{ Stony Brook, State University of New York  }
+\author{Hanjie Liu} \affiliation{ Columbia University ,New York, NY    }
+\author{Dien Nguyen} \affiliation{ University of Virginia, Charlottesville, VA 15 22  }
+\author{Michael Nycz} \affiliation{ Kent State University, Kent, OH    }
+\author{Nathaly Santiesteban} \affiliation{ University of New Hampshire, Durham, NH 14 20.5 }
+\author{Douglas Higinbotham} \affiliation{ Jefferson Lab       }
+\author{Carlos Ayerbe} \affiliation{ Gayoso The College of William and Mary, Williamsburg, }
+\author{Florian Hauenstein} \affiliation{ Old Dominion University      }
+\author{Eric Fuchey} \affiliation{ University of Connecticut, Storrs, CT    }
+\author{Dave Meekins} \affiliation{ Jefferson Lab       }
+\author{Evan McClellan} \affiliation{ Jefferson Lab       }
+\author{Zhihong Ye} \affiliation{ Argonne National Lab      }
+\author{Ciprian Gal} \affiliation{ University of Virginia, Charlottesville, VA    }
+\author{Vishvas Pandey} \affiliation{ Virginia Tech       }
+\author{Sanghwa Park} \affiliation{ Stony Brook, State University of New York  }
+\author{Barak Schmookler} \affiliation{ Massachusetts Institute of Technology, Cambridge, MA   }
+\author{Axel Schmidt} \affiliation{ Massachusetts Institute of Technology, Cambridge, MA   }
+\author{Or Hen} \affiliation{ Massachusetts Institute of Technology, Cambridge, MA   }
+\author{Larry Weinstein} \affiliation{ Old Dominion University      }
+\author{Daniel Abrams} \affiliation{ University of Virginia, Charlottesville, VA    }
+\author{Hisham Albataineh} \affiliation{ Texas A & M University, Kingsville, TX  }
+\author{Darko Androic} \affiliation{ University of Zagreb, Zagreb, Croatia    }
+\author{Konrad Aniol} \affiliation{ California State University , Los Angeles, CA  }
+\author{Whitney Armstrong} \affiliation{ Temple University, Philadelphia, PA     }
+\author{Hamza Atac} \affiliation{ Temple University, Philadelphia, PA     }
+\author{Todd Averett} \affiliation{ The College of William and Mary, Williamsburg, VA }
+\author{Xinzhan Bai} \affiliation{ University of Virginia, Charlottesville, VA    }
+\author{Arie Beck} \affiliation{ Massachusetts Institute of Technology, Cambridge, MA   }
+\author{Sharon Beck} \affiliation{ Massachusetts Institute of Technology, Cambridge, MA   }
+\author{Vincenzo Bellini} \affiliation{ INFN Sezione di Catania     }
+\author{Hem Bhatt} \affiliation{ Mississippi State University, Miss. State, MS   }
+\author{Deepak Bhetuwal} \affiliation{ Mississippi State University, Miss. State, MS   }
+\author{Debaditya Biswas} \affiliation{ Hampton University , Hampton, VA    }
+\author{David Blyth} \affiliation{ Argonne National Laboratory, Argonne, IL    }
+\author{Werner Boeglin} \affiliation{ Florida International University      }
+\author{Dilini Bulumulla} \affiliation{ Old Dominion University      }
+\author{Alexandre Camsonne} \affiliation{ Jefferson Lab       }
+\author{Jian-Ping Chen} \affiliation{ Thomas Jefferson National Accelerator Facility, Newport News  }
+\author{Silviu Covrig} \affiliation{ Dusa Jefferson Lab      }
+\author{Kayla Craycraft} \affiliation{ University of Tennessee, Knoxville, TN    }
+\author{Bishoy Dongwi} \affiliation{ Hampton University , Hampton, VA    }
+\author{Burcu Duran} \affiliation{ Temple University, Philadelphia, PA     }
+\author{Dipangkar Dutta} \affiliation{ Mississippi State University, Miss. State, MS   }
+\author{Kondo Gnanvo} \affiliation{ University of Virginia, Charlottesville, VA    }
+\author{Toshiyuki Gogami} \affiliation{ Tohoku University, Sendai, Japan     }
+\author{Javier Gomez} \affiliation{ Jefferson Lab       }
+\author{Chao Gu} \affiliation{ University of Virginia, Charlottesville, VA    }
+\author{Anusha Habarakada} \affiliation{ Liyanage Hampton University , Hampton, VA   }
+\author{Ole Hansen} \affiliation{ Thomas Jefferson National Accelerator Facility, Newport News  }
+\author{Mohammad Hattawy} \affiliation{ Argonne National Laboratory, Argonne, IL    }
+\author{Emlyn Hughes} \affiliation{ Columbia University ,New York, NY    }
+\author{Charles Hyde} \affiliation{ Old Dominion University 1     }
+\author{Hassan Ibrahim} \affiliation{ Abdalla Cairo University, Cairo, Egypt    }
+\author{Siyu Jian} \affiliation{ University of Virginia, Charlottesville, VA    }
+\author{Sylvester Joosten} \affiliation{ Temple University, Philadelphia, PA     }
+\author{Abishek Karki} \affiliation{ Mississippi State University, Miss. State, MS   }
+\author{Bishnu Karki} \affiliation{ Ohio University, Athens, OH     }
+\author{Mina Katramatou} \affiliation{ Kent State University, Kent, OH    }
+\author{Cynthia Keppel} \affiliation{ Thomas Jefferson National Accelerator Facility, Newport News  }
+\author{Mariana Khachatryan} \affiliation{ Old Dominion University      }
+\author{Vardan Khachatryan} \affiliation{ Stony Brook, State University of New York  }
+\author{Achyut Khanal} \affiliation{ Florida International University      }
+\author{David King} \affiliation{ Syracuse University, Syracuse, NY     }
+\author{Paul King} \affiliation{ Ohio University, Athens, OH     }
+\author{Igor Korover} \affiliation{ Nuclear Research Center -Negev, Beer-Sheva, Israel   }
+\author{Krishna Kumar} \affiliation{ Stony Brook, State University of New York  }
+\author{Nathaniel Lashley-Colthirst} \affiliation{ Hampton University , Hampton, VA    }
+\author{Wenliang Li} \affiliation{ University of Regina, Regina, SK , Canada  }
+\author{Nilanga Liyanage} \affiliation{ University of Virginia, Charlottesville, VA    }
+\author{Pete Markowitz} \affiliation{ Florida International University, Miami, FL    }
+\author{Zein-Eddine Meziani} \affiliation{ Temple University, Philadelphia, PA     }
+\author{Robert Michaels} \affiliation{ Thomas Jefferson National Accelerator Facility, Newport News  }
+\author{Miha Mihovilovic} \affiliation{ Jozef Stefan Institute      }
+\author{Rashad Mohamed} \affiliation{ Nuhman Old Dominion University     }
+\author{Vladimir Nelyubin} \affiliation{ University of Virginia, Charlottesville, VA    }
+\author{Nuruzzaman Nuruzzaman} \affiliation{ Hampton University , Hampton, VA    }
+\author{Richard Obrecht} \affiliation{ University of Connecticut, Storrs, CT    }
+\author{Michael Olson} \affiliation{ Saint Norbert College      }
+\author{Victoria Owen} \affiliation{ The College of William and Mary   }
+\author{Bishnu Pandey} \affiliation{ Hampton University , Hampton, VA    }
+\author{Afroditi Papadopoulou} \affiliation{ Massachusetts Institute of Technology, Cambridge, MA   }
+\author{Sebouh Paul} \affiliation{ The College of William and Mary   }
+\author{Makis Petratos} \affiliation{ Kent State University, Kent, OH    }
+\author{Roman Pomatsalyuk} \affiliation{ Institute of Physics and Technology, Kharkov 310108, Ukraine }
+\author{Sachinthani Premathilake}  \affiliation{ University of Virginia, Charlottesville, VA    }
+\author{Andrew Puckett} \affiliation{ University of Connecticut, Storrs, CT    }
+\author{Vina Punjabi} \affiliation{ Norfolk State University      }
+\author{Ron Ransome} \affiliation{ Rutgers University, New Brunswick, NJ    }
+\author{Paul Reimer} \affiliation{ Argonne National Laboratory, Argonne, IL    }
+\author{Seamus Riordan} \affiliation{ University of Massachusetts, Amherst, MA    }
+\author{Julie Roche} \affiliation{ Ohio University, Athens, OH     }
+\author{Brad Sawatzky} \affiliation{ Thomas Jefferson National Accelerator Facility, Newport News  }
+\author{Efrain Segarra} \affiliation{ Massachusetts Institute of Technology, Cambridge, MA   }
+\author{Albert Shahinyan} \affiliation{ Artem Alikhanian National Laboratory (AANL).    }
+\author{Simon Sirca} \affiliation{ University of Ljubljana      }
+\author{Nikos Sparveris} \affiliation{ Tel Aviv University      }
+\author{Tong Su} \affiliation{ KENT STATE DEPT OF PHYSICS KENT, OHIO  }
+\author{Riad Suleiman} \affiliation{ Jefferson Lab       }
+\author{Holly Szumila-Vance} \affiliation{ Jefferson Lab       }
+\author{Arun Tadepalli} \affiliation{ Rutgers University, New Brunswick, NJ    }
+\author{Liguang Tang} \affiliation{ Jefferson Lab       }
+\author{Will Tireman} \affiliation{ Northern Michigan University      }
+\author{Francesco Tortorici} \affiliation{ INFN Sezione di Catania     }
+\author{Yuichi Toyama} \affiliation{ Tohoku University, Sendai, Japan     }
+\author{Guido Urciuoli} \affiliation{ INFN, Rome       }
+\author{Bogdan Wojtsekhowski} \affiliation{ Thomas Jefferson National Accelerator Facility, Newport News  }
+\author{Stephen Wood} \affiliation{ Thomas Jefferson National Accelerator Facility, Newport News  }
+\author{Zhenyu Ye} \affiliation{ University of Illinois-Chicago, IL     }
+\author{Jinlong Zhang} \affiliation{ Stony Brook, State University of New York  }
