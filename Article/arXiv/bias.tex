@@ -1,4 +1,5 @@
 
+%
 % Prepared for Phys. Rev. X
 % Topics: Nuclear Physics & Statistical Physics 
 %
@@ -37,14 +38,17 @@
 \affiliation{Duke University, Durham, NC 27708}
 
 \begin{abstract}
-Intuitively, a scientist might assume that a more complex model will necessarily yield a better
-predictive model of experimental data.   Herein, we disprove this notion in the context of extracting 
-the proton charge radius from charge form factor data.   Using Monte Carlo techniques, we will show that 
-for a given set of data, a simpler model can have greater predictive power than a 
-more-complex model.   Perhaps even more surprising, we will also show that in certain cases the simple model 
-can even be a better predictive model than the true function.   While illustrated for the case of proton
-radius extraction from electron scattering data, this result exemplifies the concept that 
-a scientist cannot achieve a better result by over-parameterization or over-elaboration. 
+Intuitively, a scientist might assume that a more complex regression will necessarily yield a better predictive 
+model of experimental data. Herein, we disprove this notion in the context of extracting the proton charge radius 
+from charge form factor data. Using a simple Monte Carlo, we will show that for a given set of data, a simpler 
+regression model can in fact be the better predictive model. The import point is having a clear technique for 
+selecting the appropriate model, such as AIC or BIC, which ideally is determined prior to analysis of the data. 
+Also, one must go beyond just checking a single criteria and make plots such as quantile-quantile plot to see 
+if the data are normally distributed. Using these techniques and carefully analyzing low four-momentum transfer 
+cross section data, we find a proton radius that is consistent with the muonic Lamb shift results. While 
+illustrated for the case of proton radius extraction from electron scattering data, this result exemplifies 
+the concept of balancing bias and variance and validating the results, ideas that are at the heart of modern 
+machine learning algorithms.
 \end{abstract}
 
 \maketitle
@@ -88,7 +92,7 @@ these results is how the normalization of the experimental data is handled.
 
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{Figure/ScatteringResults.pdf}
+\includegraphics[width=\columnwidth]{ScatteringResults.pdf}
 \caption{Shown are the radii extracted from electron scattering data~\cite{Horbatsch:2016ilr,
 Higinbotham:2015rja, Griffioen:2015hta, Lee:2015jqa, Arrington:2015ria, Graczyk:2014lba,
 Lorenz:2014yda,Lorenz:2014vha, Lorenz:2012tm, Adamuscin:2012zz, Sick:2012zz, Zhan:2011ji,
@@ -227,7 +231,7 @@ where the sigma of the results is shown along with the bias and is
 graphically represented in Fig.~\ref{mc-results}. 
 
 \begin{figure}[htbp]
-\includegraphics[width=\columnwidth]{Figure/zresult.png}
+\includegraphics[width=\columnwidth]{zresult.png}
 \caption{A graphic representation of the Monte Carlo results showing how the linear fits tend to have a relatively
 high bias though a low variance, while the quadratic fits tend to have a relatively low bias but a large variance.}
 \label{mc-results}
@@ -285,7 +289,7 @@ Thus to quantify the goodness of the fits, we use Root Mean Square Error (RMSE)~
 \end{equation}
 
 \begin{figure}[htbp]
-\includegraphics[width=\columnwidth]{Figure/PlotBiasVariance-2.eps}
+\includegraphics[width=\columnwidth]{PlotBiasVariance-2-eps-converted-to.pdf}
 \caption{A graphic showing how as one goes to higher and higher $Q^2$ the same point-to-point uncertainty of spacing 
          an ever more complex model is needed to represent the data.}
 \label{mihaplot}
@@ -299,7 +303,7 @@ This is in contrast to the conclusion one draws when one only considers bias as 
 though consistent with the observation that the optimal specific form of the parameterization 
 may depend on the $Q^2$ region being fit~\cite{Alberico:2008sz}.
 \begin{figure}
-\includegraphics[width=\columnwidth]{Figure/biasvariance-clean.pdf}
+\includegraphics[width=\columnwidth]{biasvariance-clean.pdf}
 \caption{An illustration of the trade-off between bias and variance when selecting a statistical model.   Simple models
 will have low variance but high bias (under-fitting) while complex models will have low bias but high variance (over-fitting).   
 It is this trade-off that one seeks to balance.   While with repeated  Monte Carlo simulations it is trivial to find the optimal
@@ -333,7 +337,7 @@ problem with our knowledge of the magnetic form factor and/or the functional for
 form factors.
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{Figure/zoptimized.png}
+\includegraphics[width=\columnwidth]{zoptimized.png}
 \caption{The result of a million simulations and fits of linear fits over the $Q^2$ range 
 of 0.1 -- 0.8~fm$^{-2}$ and quadratic fits over 0.1 -- 1.6~fm$^{-2}$, both with 31 uniformly 
 spaced data points.    Using root mean
@@ -400,7 +404,7 @@ Points & Error    &       & [fm]   &   [fm]     & [fm]   &  [fm] &  [fm]  &     
 \end{table*}
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{Figure/linearVSquadratic-band.pdf}
+\includegraphics[width=\columnwidth]{linearVSquadratic-band.pdf}
 \caption{Illustration of the effect of renormalizing data.  The
 black points show one set of pseudo data, with absolute 0.3\% random point-to-point 
 uncertainty and 0.01 fm$^{-2}$ spacing that have been renormalized
@@ -413,7 +417,7 @@ an animation in the supplemental material~\cite{Supplement}.}
 \end{figure}
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{Figure/frequentist-band.pdf}
+\includegraphics[width=\columnwidth]{frequentist-band.pdf}
 \caption{Instead of immediately applying the prior that $Q^2$ = 0 as done in Fig.~\ref{linearVSquadratic}, 
 it is more intuitive to simple fit the data allowing the end-point to float.  
 In fact, a frequentest would correctly simply check that the function reasonably points to one within
@@ -524,7 +528,7 @@ We note that this figure looks oddly similar to the pseudo data in Fig.~\ref{lin
 so it is not clear which curves are shifted with respect to the true reduced cross section values.
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{Figure/RealData.pdf} 
+\includegraphics[width=\columnwidth]{RealData.pdf} 
 \caption{Shown is one set of modern cross section data to illustrate the current tension between 
 different models and the effect of the normalization parameter.   In electron scattering data, the
 point-to-point uncertainties can be rather small, compared to the typical normalization uncertainty
@@ -677,7 +681,7 @@ visualizations of the data can quickly reveal if there are any major problems.  
 be mindful that a single outlier can skew the results.
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{Figure/NewVsOld.pdf}
+\includegraphics[width=\columnwidth]{NewVsOld.pdf}
 \caption{The cross section data and the quadratic fit curve are shown in the upper plot and the residual, the difference between
 the data and fit, are shown in the lower plot.    If an appropriate fit function was used, the residuals should be randomly
 dispersed around the horizontal axis.}
@@ -685,7 +689,7 @@ dispersed around the horizontal axis.}
 \end{figure}
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{Figure/NormQQ.pdf}
+\includegraphics[width=\columnwidth]{NormQQ.pdf}
 \caption{In order to check if the distribution of the residuals are plausibly normally distributed, one can make a normal
  quantile-quantile, Q-Q, plot.
 This is done by sorting the residuals from lowest to highest and plotting the ordered residuals against a theoretical 
@@ -753,14 +757,14 @@ rational  & 103 &  67.1    & 0.652     &$-42.43$&$-34.44$& 1.007(3)  & 0.936(55)
 \end{table*}
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{Figure/BestLow.pdf}
+\includegraphics[width=\columnwidth]{BestLow.pdf}
 \caption{The cross section data and the quadratic fit curve are shown in the upper plot and the residual, the difference between
 the data and fit, are shown in the lower plot.}
 \label{residual-lowest}
 \end{figure}
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{Figure/LowNormQQ.pdf}
+\includegraphics[width=\columnwidth]{LowNormQQ.pdf}
 \caption{
 The low $Q^2$ data quite as normally distributed residuals though still reasonable close to what one would expect.}
 \label{normqq-lowest}
@@ -943,7 +947,7 @@ the fits are all equally good; but by simply graphing one can see that only the 
 of data is distributed in an ideal way around the fit function~\ref{SameChi2}.   
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{Figure/SameChi2.pdf}
+\includegraphics[width=\columnwidth]{SameChi2.pdf}
 \caption{Graphs of the four sets of data.}
 \label{SameChi2}
 \end{figure}
@@ -1043,7 +1047,7 @@ are tried by adding and removing terms, in order to find the best performing pre
 of the fit is illustrated in Fig.~\ref{R-stepwise} and code to preform the fits can be found on github~\cite{Higinbotham:2016github}.
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{Figure/R-stepwise.png}
+\includegraphics[width=\columnwidth]{R-stepwise.png}
 \caption{The $G_E$ data of~\cite{Griffioen:2015hta} shown along with a residual of the best fit using forward stepwise regression.}
 \label{R-stepwise}
 \end{figure}
@@ -1075,8 +1079,8 @@ avoid the effects of poles when doing polynomial regressions, though it is worth
 that rational functions also have that property~\cite{NR}.
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{Figure/z-q2-sd.pdf}
-\includegraphics[width=\columnwidth]{Figure/z-q2-sd-zoomed.pdf}
+\includegraphics[width=\columnwidth]{z-q2-sd.pdf}
+\includegraphics[width=\columnwidth]{z-q2-sd-zoomed.pdf}
 \caption{Illustration of the result of performing the z transformation on the standard dipole function. 
 For the standard dipole at low $Q^2$, this turns a slightly concave function into a convex function.
 As described in the text, this same effect is seen with real $G_E$ data.}
@@ -1145,7 +1149,7 @@ F-statistic: 2.41e+04 on 2 and 330 DF, p-value: < 2.2e-16
 \end{Verbatim}
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{Figure/ztransform-R-fit.png}
+\includegraphics[width=\columnwidth]{ztransform-R-fit.png}
 \caption{The z-transformed $G_E$ data shown along with a residual of the best fit.}
 \end{figure}
 
@@ -1165,6 +1169,1136 @@ probabilities~\cite{Rasmussen:2005}.
 
 \end{appendix}
 
-\bibliography{elastic}
+%\bibliography{elastic}
 
+%merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+%Control: key (0)
+%Control: author (72) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (-1) disabled
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{101}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{http://dx.doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Pohl}\ \emph {et~al.}(2010)\citenamefont {Pohl} \emph
+  {et~al.}}]{Pohl:2010zza}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Pohl}} \emph {et~al.},\ }\href {\doibase 10.1038/nature09250} {\bibfield
+  {journal} {\bibinfo  {journal} {Nature}\ }\textbf {\bibinfo {volume} {466}},\
+  \bibinfo {pages} {213} (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+%%CITATION = NATUA,466,213;%%
+\bibitem [{\citenamefont {Antognini}\ \emph {et~al.}(2013)\citenamefont
+  {Antognini} \emph {et~al.}}]{Antognini:1900ns}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Antognini}} \emph {et~al.},\ }\href {\doibase 10.1126/science.1230016}
+  {\bibfield  {journal} {\bibinfo  {journal} {Science}\ }\textbf {\bibinfo
+  {volume} {339}},\ \bibinfo {pages} {417} (\bibinfo {year}
+  {2013})}\BibitemShut {NoStop}%
+%%CITATION = SCIEA,339,417;%%
+\bibitem [{\citenamefont {Mohr}\ \emph {et~al.}(2016)\citenamefont {Mohr},
+  \citenamefont {Newell},\ and\ \citenamefont {Taylor}}]{Mohr:2015ccw}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.~J.}\ \bibnamefont
+  {Mohr}}, \bibinfo {author} {\bibfnamefont {D.~B.}\ \bibnamefont {Newell}}, \
+  and\ \bibinfo {author} {\bibfnamefont {B.~N.}\ \bibnamefont {Taylor}},\
+  }\href {\doibase 10.1103/RevModPhys.88.035009} {\bibfield  {journal}
+  {\bibinfo  {journal} {Rev. Mod. Phys.}\ }\textbf {\bibinfo {volume} {88}},\
+  \bibinfo {pages} {035009} (\bibinfo {year} {2016})},\ \Eprint
+  {http://arxiv.org/abs/1507.07956} {arXiv:1507.07956 [physics.atom-ph]}
+  \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1507.07956;%%
+\bibitem [{\citenamefont {Boshier}\ \emph {et~al.}(1989)\citenamefont
+  {Boshier}, \citenamefont {Baird}, \citenamefont {Foot}, \citenamefont
+  {Hinds}, \citenamefont {Plimmer}, \citenamefont {Stacey}, \citenamefont
+  {Swan}, \citenamefont {Tate}, \citenamefont {Warrington},\ and\ \citenamefont
+  {Woodgate}}]{Boshier:1989zz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~G.}\ \bibnamefont
+  {Boshier}}, \bibinfo {author} {\bibfnamefont {P.~E.~G.}\ \bibnamefont
+  {Baird}}, \bibinfo {author} {\bibfnamefont {C.~J.}\ \bibnamefont {Foot}},
+  \bibinfo {author} {\bibfnamefont {E.~A.}\ \bibnamefont {Hinds}}, \bibinfo
+  {author} {\bibfnamefont {M.~D.}\ \bibnamefont {Plimmer}}, \bibinfo {author}
+  {\bibfnamefont {D.~N.}\ \bibnamefont {Stacey}}, \bibinfo {author}
+  {\bibfnamefont {J.~B.}\ \bibnamefont {Swan}}, \bibinfo {author}
+  {\bibfnamefont {D.~A.}\ \bibnamefont {Tate}}, \bibinfo {author}
+  {\bibfnamefont {D.~M.}\ \bibnamefont {Warrington}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {G.~K.}\ \bibnamefont {Woodgate}},\ }\href {\doibase
+  10.1103/PhysRevA.40.6169} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev.}\ }\textbf {\bibinfo {volume} {A40}},\ \bibinfo {pages} {6169} (\bibinfo
+  {year} {1989})}\BibitemShut {NoStop}%
+%%CITATION = PHRVA,A40,6169;%%
+\bibitem [{\citenamefont {Weitz}\ \emph {et~al.}(1994)\citenamefont {Weitz},
+  \citenamefont {Huber}, \citenamefont {Schmidt-Kaler}, \citenamefont
+  {Leibfried},\ and\ \citenamefont {Hansch}}]{Weitz:1994zz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Weitz}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Huber}},
+  \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Schmidt-Kaler}}, \bibinfo
+  {author} {\bibfnamefont {D.}~\bibnamefont {Leibfried}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {T.~W.}\ \bibnamefont {Hansch}},\ }\href {\doibase
+  10.1103/PhysRevLett.72.328} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. Lett.}\ }\textbf {\bibinfo {volume} {72}},\ \bibinfo {pages} {328}
+  (\bibinfo {year} {1994})}\BibitemShut {NoStop}%
+%%CITATION = PRLTA,72,328;%%
+\bibitem [{\citenamefont {Berkeland}\ \emph {et~al.}(1995)\citenamefont
+  {Berkeland}, \citenamefont {Hinds},\ and\ \citenamefont
+  {Boshier}}]{Berkeland:1995dyd}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont
+  {Berkeland}}, \bibinfo {author} {\bibfnamefont {E.~A.}\ \bibnamefont
+  {Hinds}}, \ and\ \bibinfo {author} {\bibfnamefont {M.~G.}\ \bibnamefont
+  {Boshier}},\ }\href {\doibase 10.1103/PhysRevLett.75.2470} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo
+  {volume} {75}},\ \bibinfo {pages} {2470} (\bibinfo {year}
+  {1995})}\BibitemShut {NoStop}%
+%%CITATION = PRLTA,75,2470;%%
+\bibitem [{\citenamefont {Bourzeix}\ \emph {et~al.}(1996)\citenamefont
+  {Bourzeix}, \citenamefont {de~Beauvoir}, \citenamefont {Nez}, \citenamefont
+  {Plimmer}, \citenamefont {de~Tomasi}, \citenamefont {Julien}, \citenamefont
+  {Biraben},\ and\ \citenamefont {Stacey}}]{Bourzeix:1996zz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Bourzeix}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {de~Beauvoir}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Nez}},
+  \bibinfo {author} {\bibfnamefont {M.~D.}\ \bibnamefont {Plimmer}}, \bibinfo
+  {author} {\bibfnamefont {F.}~\bibnamefont {de~Tomasi}}, \bibinfo {author}
+  {\bibfnamefont {L.}~\bibnamefont {Julien}}, \bibinfo {author} {\bibfnamefont
+  {F.}~\bibnamefont {Biraben}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {D.~N.}\ \bibnamefont {Stacey}},\ }\href {\doibase
+  10.1103/PhysRevLett.76.384} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. Lett.}\ }\textbf {\bibinfo {volume} {76}},\ \bibinfo {pages} {384}
+  (\bibinfo {year} {1996})}\BibitemShut {NoStop}%
+%%CITATION = PRLTA,76,384;%%
+\bibitem [{\citenamefont {Udem}\ \emph {et~al.}(1997)\citenamefont {Udem},
+  \citenamefont {Huber}, \citenamefont {Gross}, \citenamefont {Reichert},
+  \citenamefont {Prevedelli}, \citenamefont {Weitz},\ and\ \citenamefont
+  {Hansch}}]{Udem:1997zz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Udem}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Huber}},
+  \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Gross}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Reichert}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Prevedelli}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Weitz}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {T.~W.}\ \bibnamefont {Hansch}},\ }\href {\doibase
+  10.1103/PhysRevLett.79.2646} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {79}},\ \bibinfo {pages}
+  {2646} (\bibinfo {year} {1997})}\BibitemShut {NoStop}%
+%%CITATION = PRLTA,79,2646;%%
+\bibitem [{\citenamefont {Pohl}\ \emph {et~al.}(2013)\citenamefont {Pohl},
+  \citenamefont {Gilman}, \citenamefont {Miller},\ and\ \citenamefont
+  {Pachucki}}]{Pohl:2013yb}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Pohl}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Gilman}},
+  \bibinfo {author} {\bibfnamefont {G.~A.}\ \bibnamefont {Miller}}, \ and\
+  \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Pachucki}},\ }\href
+  {\doibase 10.1146/annurev-nucl-102212-170627} {\bibfield  {journal} {\bibinfo
+   {journal} {Ann. Rev. Nucl. Part. Sci.}\ }\textbf {\bibinfo {volume} {63}},\
+  \bibinfo {pages} {175} (\bibinfo {year} {2013})},\ \Eprint
+  {http://arxiv.org/abs/1301.0905} {arXiv:1301.0905 [physics.atom-ph]}
+  \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1301.0905;%%
+\bibitem [{\citenamefont {Carlson}(2015)}]{Carlson:2015jba}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~E.}\ \bibnamefont
+  {Carlson}},\ }\href {\doibase 10.1016/j.ppnp.2015.01.002} {\bibfield
+  {journal} {\bibinfo  {journal} {Prog. Part. Nucl. Phys.}\ }\textbf {\bibinfo
+  {volume} {82}},\ \bibinfo {pages} {59} (\bibinfo {year} {2015})},\ \Eprint
+  {http://arxiv.org/abs/1502.05314} {arXiv:1502.05314 [hep-ph]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1502.05314;%%
+\bibitem [{\citenamefont {Gao}\ \emph {et~al.}(2015)\citenamefont {Gao},
+  \citenamefont {Liu}, \citenamefont {Peng}, \citenamefont {Ye},\ and\
+  \citenamefont {Zhao}}]{Gao:2015aax}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Gao}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Liu}}, \bibinfo
+  {author} {\bibfnamefont {C.}~\bibnamefont {Peng}}, \bibinfo {author}
+  {\bibfnamefont {Z.}~\bibnamefont {Ye}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {Z.}~\bibnamefont {Zhao}},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {The Universe}\ }\textbf {\bibinfo {volume}
+  {3}},\ \bibinfo {pages} {18} (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
+%%CITATION = INSPIRE-1418528;%%
+\bibitem [{\citenamefont {Pohl}(2016)}]{Pohl:2016tqq}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Pohl}} (\bibinfo {collaboration} {CREMA}),\ }\href {\doibase
+  10.7566/JPSJ.85.091003} {\bibfield  {journal} {\bibinfo  {journal} {J. Phys.
+  Soc. Jap.}\ }\textbf {\bibinfo {volume} {85}},\ \bibinfo {pages} {091003}
+  (\bibinfo {year} {2016})}\BibitemShut {NoStop}%
+%%CITATION = JUPSA,85,091003;%%
+\bibitem [{\citenamefont {Nez}\ \emph {et~al.}(2011)\citenamefont {Nez} \emph
+  {et~al.}}]{Nez:2011zz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Nez}} \emph {et~al.},\ }\href {\doibase 10.1098/rsta.2011.0233} {\bibfield
+  {journal} {\bibinfo  {journal} {Phil. Trans. Roy. Soc. Lond.}\ }\textbf
+  {\bibinfo {volume} {A369}},\ \bibinfo {pages} {4064} (\bibinfo {year}
+  {2011})}\BibitemShut {NoStop}%
+%%CITATION = PTRSA,A369,4064;%%
+\bibitem [{\citenamefont {Krauth}\ \emph {et~al.}(2017)\citenamefont {Krauth}
+  \emph {et~al.}}]{Krauth:2017ijq}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~J.}\ \bibnamefont
+  {Krauth}} \emph {et~al.},\ }\href@noop {} {\  (\bibinfo {year} {2017})},\
+  \Eprint {http://arxiv.org/abs/1706.00696} {arXiv:1706.00696
+  [physics.atom-ph]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1706.00696;%%
+\bibitem [{\citenamefont {Kelkar}\ \emph {et~al.}(2016)\citenamefont {Kelkar},
+  \citenamefont {Mart},\ and\ \citenamefont {Nowakowski}}]{Kelkar:2016tcx}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~G.}\ \bibnamefont
+  {Kelkar}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Mart}}, \ and\
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Nowakowski}},\ }\href
+  {\doibase 10.7454/mss.v20i3.6242} {\  (\bibinfo {year} {2016}),\
+  10.7454/mss.v20i3.6242},\ \Eprint {http://arxiv.org/abs/1609.04456}
+  {arXiv:1609.04456 [hep-ph]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1609.04456;%%
+\bibitem [{\citenamefont {Beyer}\ \emph {et~al.}(2017)\citenamefont {Beyer},
+  \citenamefont {Maisenbacher}, \citenamefont {Matveev}, \citenamefont {Pohl},
+  \citenamefont {Khabarova}, \citenamefont {Grinin}, \citenamefont {Lamour},
+  \citenamefont {Yost}, \citenamefont {H{\"a}nsch}, \citenamefont
+  {Kolachevsky},\ and\ \citenamefont {Udem}}]{Beyer79}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Beyer}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Maisenbacher}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Matveev}}, \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Pohl}}, \bibinfo {author}
+  {\bibfnamefont {K.}~\bibnamefont {Khabarova}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Grinin}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Lamour}}, \bibinfo {author} {\bibfnamefont {D.~C.}\
+  \bibnamefont {Yost}}, \bibinfo {author} {\bibfnamefont {T.~W.}\ \bibnamefont
+  {H{\"a}nsch}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Kolachevsky}}, \ and\ \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Udem}},\ }\href {\doibase 10.1126/science.aah6677} {\bibfield  {journal}
+  {\bibinfo  {journal} {Science}\ }\textbf {\bibinfo {volume} {358}},\ \bibinfo
+  {pages} {79} (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fleurbaey}(2017)}]{fleurbaey:tel-01633631}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Fleurbaey}},\ }\emph {\bibinfo {title} {{Frequency metrology of the 1S-3S
+  transition of hydrogen: contribution to the proton charge radius puzzle}}},\
+  \href {https://tel.archives-ouvertes.fr/tel-01633631} {\bibinfo {type}
+  {Theses}},\ \bibinfo  {school} {{Universit{\'e} Pierre et Marie Curie
+  (UPMC)}} (\bibinfo {year} {2017})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fleurbaey}\ \emph {et~al.}(2018)\citenamefont
+  {Fleurbaey}, \citenamefont {Galtier}, \citenamefont {Thomas}, \citenamefont
+  {Bonnaud}, \citenamefont {Julien}, \citenamefont {Biraben}, \citenamefont
+  {Nez}, \citenamefont {Abgrall},\ and\ \citenamefont
+  {Guéna}}]{Fleurbaey:2018fih}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Fleurbaey}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Galtier}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Thomas}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Bonnaud}}, \bibinfo {author}
+  {\bibfnamefont {L.}~\bibnamefont {Julien}}, \bibinfo {author} {\bibfnamefont
+  {F.}~\bibnamefont {Biraben}}, \bibinfo {author} {\bibfnamefont
+  {F.}~\bibnamefont {Nez}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Abgrall}}, \ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Guéna}},\ }\href {\doibase 10.1103/PhysRevLett.120.183001} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo
+  {volume} {120}},\ \bibinfo {pages} {183001} (\bibinfo {year} {2018})},\
+  \Eprint {http://arxiv.org/abs/1801.08816} {arXiv:1801.08816
+  [physics.atom-ph]} \BibitemShut {NoStop}%
+%%CITATION = PRLTA,120,183001;%%
+\bibitem [{\citenamefont {Horbatsch}\ and\ \citenamefont
+  {Hessels}(2016)}]{Horbatsch:2015qda}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Horbatsch}}\ and\ \bibinfo {author} {\bibfnamefont {E.~A.}\ \bibnamefont
+  {Hessels}},\ }\href {\doibase 10.1103/PhysRevC.93.015204} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume}
+  {C93}},\ \bibinfo {pages} {015204} (\bibinfo {year} {2016})},\ \Eprint
+  {http://arxiv.org/abs/1509.05644} {arXiv:1509.05644 [nucl-ex]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1509.05644;%%
+\bibitem [{\citenamefont {Rosenfelder}(2000)}]{Rosenfelder:1999cd}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Rosenfelder}},\ }\href {\doibase 10.1016/S0370-2693(00)00316-6} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Lett.}\ }\textbf {\bibinfo {volume}
+  {B479}},\ \bibinfo {pages} {381} (\bibinfo {year} {2000})},\ \Eprint
+  {http://arxiv.org/abs/nucl-th/9912031} {arXiv:nucl-th/9912031 [nucl-th]}
+  \BibitemShut {NoStop}%
+%%CITATION = NUCL-TH/9912031;%%
+\bibitem [{\citenamefont {Griffioen}\ \emph {et~al.}(2016)\citenamefont
+  {Griffioen}, \citenamefont {Carlson},\ and\ \citenamefont
+  {Maddox}}]{Griffioen:2015hta}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Griffioen}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Carlson}},
+  \ and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Maddox}},\ }\href
+  {\doibase 10.1103/PhysRevC.93.065207} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {C93}},\ \bibinfo {pages}
+  {065207} (\bibinfo {year} {2016})},\ \Eprint
+  {http://arxiv.org/abs/1509.06676} {arXiv:1509.06676 [nucl-ex]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1509.06676;%%
+\bibitem [{\citenamefont {Higinbotham}\ \emph {et~al.}(2016)\citenamefont
+  {Higinbotham}, \citenamefont {Kabir}, \citenamefont {Lin}, \citenamefont
+  {Meekins}, \citenamefont {Norum},\ and\ \citenamefont
+  {Sawatzky}}]{Higinbotham:2015rja}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~W.}\ \bibnamefont
+  {Higinbotham}}, \bibinfo {author} {\bibfnamefont {A.~A.}\ \bibnamefont
+  {Kabir}}, \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Lin}}, \bibinfo
+  {author} {\bibfnamefont {D.}~\bibnamefont {Meekins}}, \bibinfo {author}
+  {\bibfnamefont {B.}~\bibnamefont {Norum}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {B.}~\bibnamefont {Sawatzky}},\ }\href {\doibase
+  10.1103/PhysRevC.93.055207} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev.}\ }\textbf {\bibinfo {volume} {C93}},\ \bibinfo {pages} {055207}
+  (\bibinfo {year} {2016})},\ \Eprint {http://arxiv.org/abs/1510.01293}
+  {arXiv:1510.01293 [nucl-ex]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1510.01293;%%
+\bibitem [{\citenamefont {Bernauer}\ \emph {et~al.}(2010)\citenamefont
+  {Bernauer} \emph {et~al.}}]{Bernauer:2010wm}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~C.}\ \bibnamefont
+  {Bernauer}} \emph {et~al.} (\bibinfo {collaboration} {A1}),\ }\href {\doibase
+  10.1103/PhysRevLett.105.242001} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {105}},\ \bibinfo {pages}
+  {242001} (\bibinfo {year} {2010})},\ \Eprint {http://arxiv.org/abs/1007.5076}
+  {arXiv:1007.5076 [nucl-ex]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1007.5076;%%
+\bibitem [{\citenamefont {Bernauer}\ \emph {et~al.}(2014)\citenamefont
+  {Bernauer} \emph {et~al.}}]{Bernauer:2013tpr}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~C.}\ \bibnamefont
+  {Bernauer}} \emph {et~al.} (\bibinfo {collaboration} {A1}),\ }\href {\doibase
+  10.1103/PhysRevC.90.015206} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev.}\ }\textbf {\bibinfo {volume} {C90}},\ \bibinfo {pages} {015206}
+  (\bibinfo {year} {2014})},\ \Eprint {http://arxiv.org/abs/1307.6227}
+  {arXiv:1307.6227 [nucl-ex]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1307.6227;%%
+\bibitem [{\citenamefont {Lee}\ \emph {et~al.}(2015)\citenamefont {Lee},
+  \citenamefont {Arrington},\ and\ \citenamefont {Hill}}]{Lee:2015jqa}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Lee}}, \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont {Arrington}},
+  \ and\ \bibinfo {author} {\bibfnamefont {R.~J.}\ \bibnamefont {Hill}},\
+  }\href {\doibase 10.1103/PhysRevD.92.013013} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D92}},\ \bibinfo {pages}
+  {013013} (\bibinfo {year} {2015})},\ \Eprint
+  {http://arxiv.org/abs/1505.01489} {arXiv:1505.01489 [hep-ph]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1505.01489;%%
+\bibitem [{\citenamefont {Graczyk}\ and\ \citenamefont
+  {Juszczak}(2014)}]{Graczyk:2014lba}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~M.}\ \bibnamefont
+  {Graczyk}}\ and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Juszczak}},\ }\href {\doibase 10.1103/PhysRevC.90.054334} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume}
+  {C90}},\ \bibinfo {pages} {054334} (\bibinfo {year} {2014})},\ \Eprint
+  {http://arxiv.org/abs/1408.0150} {arXiv:1408.0150 [hep-ph]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1408.0150;%%
+\bibitem [{\citenamefont {Lorenz}\ and\ \citenamefont
+  {Meißner}(2014)}]{Lorenz:2014vha}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~T.}\ \bibnamefont
+  {Lorenz}}\ and\ \bibinfo {author} {\bibfnamefont {U.-G.}\ \bibnamefont
+  {Meißner}},\ }\href {\doibase 10.1016/j.physletb.2014.08.010} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Lett.}\ }\textbf {\bibinfo {volume}
+  {B737}},\ \bibinfo {pages} {57} (\bibinfo {year} {2014})},\ \Eprint
+  {http://arxiv.org/abs/1406.2962} {arXiv:1406.2962 [hep-ph]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1406.2962;%%
+\bibitem [{\citenamefont {Hohler}\ \emph {et~al.}(1976)\citenamefont {Hohler},
+  \citenamefont {Pietarinen}, \citenamefont {Sabba~Stefanescu}, \citenamefont
+  {Borkowski}, \citenamefont {Simon}, \citenamefont {Walther},\ and\
+  \citenamefont {Wendling}}]{Hohler:1976ax}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Hohler}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Pietarinen}},
+  \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Sabba~Stefanescu}},
+  \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Borkowski}}, \bibinfo
+  {author} {\bibfnamefont {G.~G.}\ \bibnamefont {Simon}}, \bibinfo {author}
+  {\bibfnamefont {V.~H.}\ \bibnamefont {Walther}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {R.~D.}\ \bibnamefont {Wendling}},\ }\href {\doibase
+  10.1016/0550-3213(76)90449-1} {\bibfield  {journal} {\bibinfo  {journal}
+  {Nucl. Phys.}\ }\textbf {\bibinfo {volume} {B114}},\ \bibinfo {pages} {505}
+  (\bibinfo {year} {1976})}\BibitemShut {NoStop}%
+%%CITATION = NUPHA,B114,505;%%
+\bibitem [{\citenamefont {Belushkin}\ \emph {et~al.}(2007)\citenamefont
+  {Belushkin}, \citenamefont {Hammer},\ and\ \citenamefont
+  {Meissner}}]{Belushkin:2006qa}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~A.}\ \bibnamefont
+  {Belushkin}}, \bibinfo {author} {\bibfnamefont {H.~W.}\ \bibnamefont
+  {Hammer}}, \ and\ \bibinfo {author} {\bibfnamefont {U.~G.}\ \bibnamefont
+  {Meissner}},\ }\href {\doibase 10.1103/PhysRevC.75.035202} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume}
+  {C75}},\ \bibinfo {pages} {035202} (\bibinfo {year} {2007})},\ \Eprint
+  {http://arxiv.org/abs/hep-ph/0608337} {arXiv:hep-ph/0608337 [hep-ph]}
+  \BibitemShut {NoStop}%
+%%CITATION = HEP-PH/0608337;%%
+\bibitem [{\citenamefont {Horbatsch}\ \emph {et~al.}(2017)\citenamefont
+  {Horbatsch}, \citenamefont {Hessels},\ and\ \citenamefont
+  {Pineda}}]{Horbatsch:2016ilr}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Horbatsch}}, \bibinfo {author} {\bibfnamefont {E.~A.}\ \bibnamefont
+  {Hessels}}, \ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Pineda}},\ }\href {\doibase 10.1103/PhysRevC.95.035203} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume}
+  {C95}},\ \bibinfo {pages} {035203} (\bibinfo {year} {2017})},\ \Eprint
+  {http://arxiv.org/abs/1610.09760} {arXiv:1610.09760 [nucl-th]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1610.09760;%%
+\bibitem [{\citenamefont {Arrington}\ and\ \citenamefont
+  {Sick}(2015)}]{Arrington:2015ria}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Arrington}}\ and\ \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Sick}},\ }\href {\doibase 10.1063/1.4921430} {\bibfield  {journal} {\bibinfo
+   {journal} {J. Phys. Chem. Ref. Data}\ }\textbf {\bibinfo {volume} {44}},\
+  \bibinfo {pages} {031204} (\bibinfo {year} {2015})},\ \Eprint
+  {http://arxiv.org/abs/1505.02680} {arXiv:1505.02680 [nucl-ex]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1505.02680;%%
+\bibitem [{\citenamefont {Lorenz}\ \emph {et~al.}(2015)\citenamefont {Lorenz},
+  \citenamefont {Meißner}, \citenamefont {Hammer},\ and\ \citenamefont
+  {Dong}}]{Lorenz:2014yda}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~T.}\ \bibnamefont
+  {Lorenz}}, \bibinfo {author} {\bibfnamefont {U.-G.}\ \bibnamefont
+  {Meißner}}, \bibinfo {author} {\bibfnamefont {H.~W.}\ \bibnamefont
+  {Hammer}}, \ and\ \bibinfo {author} {\bibfnamefont {Y.~B.}\ \bibnamefont
+  {Dong}},\ }\href {\doibase 10.1103/PhysRevD.91.014023} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D91}},\
+  \bibinfo {pages} {014023} (\bibinfo {year} {2015})},\ \Eprint
+  {http://arxiv.org/abs/1411.1704} {arXiv:1411.1704 [hep-ph]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1411.1704;%%
+\bibitem [{\citenamefont {Lorenz}\ \emph {et~al.}(2012)\citenamefont {Lorenz},
+  \citenamefont {Hammer},\ and\ \citenamefont {Meissner}}]{Lorenz:2012tm}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~T.}\ \bibnamefont
+  {Lorenz}}, \bibinfo {author} {\bibfnamefont {H.~W.}\ \bibnamefont {Hammer}},
+  \ and\ \bibinfo {author} {\bibfnamefont {U.-G.}\ \bibnamefont {Meissner}},\
+  }\href {\doibase 10.1140/epja/i2012-12151-1} {\bibfield  {journal} {\bibinfo
+  {journal} {Eur. Phys. J.}\ }\textbf {\bibinfo {volume} {A48}},\ \bibinfo
+  {pages} {151} (\bibinfo {year} {2012})},\ \Eprint
+  {http://arxiv.org/abs/1205.6628} {arXiv:1205.6628 [hep-ph]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1205.6628;%%
+\bibitem [{\citenamefont {Adamuscin}\ \emph {et~al.}(2012)\citenamefont
+  {Adamuscin}, \citenamefont {Dubnicka},\ and\ \citenamefont
+  {Dubnickova}}]{Adamuscin:2012zz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Adamuscin}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Dubnicka}},
+  \ and\ \bibinfo {author} {\bibfnamefont {A.~Z.}\ \bibnamefont {Dubnickova}},\
+  }\bibfield  {booktitle} {\emph {\bibinfo {booktitle} {{From quarks and gluons
+  to hadrons and nuclei. Proceedings, International Workshop on Nuclear
+  Physics, 33rd course, Erice, Italy, September 16-24, 2011}}},\ }\href
+  {\doibase 10.1016/j.ppnp.2012.01.014} {\bibfield  {journal} {\bibinfo
+  {journal} {Prog. Part. Nucl. Phys.}\ }\textbf {\bibinfo {volume} {67}},\
+  \bibinfo {pages} {479} (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+%%CITATION = PPNPD,67,479;%%
+\bibitem [{\citenamefont {Sick}(2012)}]{Sick:2012zz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Sick}},\ }\bibfield  {booktitle} {\emph {\bibinfo {booktitle} {{From quarks
+  and gluons to hadrons and nuclei. Proceedings, International Workshop on
+  Nuclear Physics, 33rd course, Erice, Italy, September 16-24, 2011}}},\ }\href
+  {\doibase 10.1016/j.ppnp.2012.01.013} {\bibfield  {journal} {\bibinfo
+  {journal} {Prog. Part. Nucl. Phys.}\ }\textbf {\bibinfo {volume} {67}},\
+  \bibinfo {pages} {473} (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+%%CITATION = PPNPD,67,473;%%
+\bibitem [{\citenamefont {Zhan}\ \emph {et~al.}(2011)\citenamefont {Zhan} \emph
+  {et~al.}}]{Zhan:2011ji}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {X.}~\bibnamefont
+  {Zhan}} \emph {et~al.},\ }\href {\doibase 10.1016/j.physletb.2011.10.002}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Lett.}\ }\textbf {\bibinfo
+  {volume} {B705}},\ \bibinfo {pages} {59} (\bibinfo {year} {2011})},\ \Eprint
+  {http://arxiv.org/abs/1102.0318} {arXiv:1102.0318 [nucl-ex]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1102.0318;%%
+\bibitem [{\citenamefont {Ron}\ \emph {et~al.}(2011)\citenamefont {Ron} \emph
+  {et~al.}}]{Ron:2011rd}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Ron}} \emph {et~al.} (\bibinfo {collaboration} {Jefferson Lab Hall A}),\
+  }\href {\doibase 10.1103/PhysRevC.84.055204} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {C84}},\ \bibinfo {pages}
+  {055204} (\bibinfo {year} {2011})},\ \Eprint {http://arxiv.org/abs/1103.5784}
+  {arXiv:1103.5784 [nucl-ex]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1103.5784;%%
+\bibitem [{\citenamefont {Borisyuk}(2010)}]{Borisyuk:2009mg}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Borisyuk}},\ }\href {\doibase 10.1016/j.nuclphysa.2010.05.054} {\bibfield
+  {journal} {\bibinfo  {journal} {Nucl. Phys.}\ }\textbf {\bibinfo {volume}
+  {A843}},\ \bibinfo {pages} {59} (\bibinfo {year} {2010})},\ \Eprint
+  {http://arxiv.org/abs/0911.4091} {arXiv:0911.4091 [hep-ph]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:0911.4091;%%
+\bibitem [{\citenamefont {Hill}\ and\ \citenamefont {Paz}(2010)}]{Hill:2010yb}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~J.}\ \bibnamefont
+  {Hill}}\ and\ \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Paz}},\
+  }\href {\doibase 10.1103/PhysRevD.82.113005} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D82}},\ \bibinfo {pages}
+  {113005} (\bibinfo {year} {2010})},\ \Eprint {http://arxiv.org/abs/1008.4619}
+  {arXiv:1008.4619 [hep-ph]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1008.4619;%%
+\bibitem [{\citenamefont {Blunden}\ and\ \citenamefont
+  {Sick}(2005)}]{Blunden:2005jv}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.~G.}\ \bibnamefont
+  {Blunden}}\ and\ \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Sick}},\
+  }\href {\doibase 10.1103/PhysRevC.72.057601} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {C72}},\ \bibinfo {pages}
+  {057601} (\bibinfo {year} {2005})},\ \Eprint
+  {http://arxiv.org/abs/nucl-th/0508037} {arXiv:nucl-th/0508037 [nucl-th]}
+  \BibitemShut {NoStop}%
+%%CITATION = NUCL-TH/0508037;%%
+\bibitem [{\citenamefont {Kelly}(2004)}]{Kelly:2004hm}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~J.}\ \bibnamefont
+  {Kelly}},\ }\href {\doibase 10.1103/PhysRevC.70.068202} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {C70}},\
+  \bibinfo {pages} {068202} (\bibinfo {year} {2004})}\BibitemShut {NoStop}%
+%%CITATION = PHRVA,C70,068202;%%
+\bibitem [{\citenamefont {Sick}(2003)}]{Sick:2003gm}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Sick}},\ }\href {\doibase 10.1016/j.physletb.2003.09.092} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Lett.}\ }\textbf {\bibinfo {volume}
+  {B576}},\ \bibinfo {pages} {62} (\bibinfo {year} {2003})},\ \Eprint
+  {http://arxiv.org/abs/nucl-ex/0310008} {arXiv:nucl-ex/0310008 [nucl-ex]}
+  \BibitemShut {NoStop}%
+%%CITATION = NUCL-EX/0310008;%%
+\bibitem [{\citenamefont {Gough~Eschrich}\ \emph {et~al.}(2001)\citenamefont
+  {Gough~Eschrich} \emph {et~al.}}]{GoughEschrich:2001ji}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~M.}\ \bibnamefont
+  {Gough~Eschrich}} \emph {et~al.} (\bibinfo {collaboration} {SELEX}),\ }\href
+  {\doibase 10.1016/S0370-2693(01)01285-0} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Lett.}\ }\textbf {\bibinfo {volume} {B522}},\ \bibinfo
+  {pages} {233} (\bibinfo {year} {2001})},\ \Eprint
+  {http://arxiv.org/abs/hep-ex/0106053} {arXiv:hep-ex/0106053 [hep-ex]}
+  \BibitemShut {NoStop}%
+%%CITATION = HEP-EX/0106053;%%
+\bibitem [{\citenamefont {Mergell}\ \emph {et~al.}(1996)\citenamefont
+  {Mergell}, \citenamefont {Meissner},\ and\ \citenamefont
+  {Drechsel}}]{Mergell:1995bf}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Mergell}}, \bibinfo {author} {\bibfnamefont {U.~G.}\ \bibnamefont
+  {Meissner}}, \ and\ \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Drechsel}},\ }\href {\doibase 10.1016/0375-9474(95)00339-8} {\bibfield
+  {journal} {\bibinfo  {journal} {Nucl. Phys.}\ }\textbf {\bibinfo {volume}
+  {A596}},\ \bibinfo {pages} {367} (\bibinfo {year} {1996})},\ \Eprint
+  {http://arxiv.org/abs/hep-ph/9506375} {arXiv:hep-ph/9506375 [hep-ph]}
+  \BibitemShut {NoStop}%
+%%CITATION = HEP-PH/9506375;%%
+\bibitem [{\citenamefont {Wong}(1994)}]{Wong:1994sy}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~W.}\ \bibnamefont
+  {Wong}},\ }\href {\doibase 10.1142/S0218301394000255} {\bibfield  {journal}
+  {\bibinfo  {journal} {Int. J. Mod. Phys.}\ }\textbf {\bibinfo {volume}
+  {E3}},\ \bibinfo {pages} {821} (\bibinfo {year} {1994})}\BibitemShut
+  {NoStop}%
+%%CITATION = IMPAE,E3,821;%%
+\bibitem [{\citenamefont {McCord}\ \emph {et~al.}(1991)\citenamefont {McCord},
+  \citenamefont {Crannell}, \citenamefont {Fagg}, \citenamefont {O'Brien},
+  \citenamefont {Sober}, \citenamefont {Lightbody}, \citenamefont {Maruyama},\
+  and\ \citenamefont {Treado}}]{McCord:1991sd}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {McCord}}, \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Crannell}},
+  \bibinfo {author} {\bibfnamefont {L.~W.}\ \bibnamefont {Fagg}}, \bibinfo
+  {author} {\bibfnamefont {J.~T.}\ \bibnamefont {O'Brien}}, \bibinfo {author}
+  {\bibfnamefont {D.~I.}\ \bibnamefont {Sober}}, \bibinfo {author}
+  {\bibfnamefont {J.~W.}\ \bibnamefont {Lightbody}}, \bibinfo {author}
+  {\bibfnamefont {X.~K.}\ \bibnamefont {Maruyama}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {P.~A.}\ \bibnamefont {Treado}},\ }\bibfield  {booktitle}
+  {\emph {\bibinfo {booktitle} {{Application of accelerators in research and
+  industry. Proceedings, 11th International Conference, Denton, USA, November
+  5-8, 1990}}},\ }\href {\doibase 10.1016/0168-583X(91)96079-Z} {\bibfield
+  {journal} {\bibinfo  {journal} {Nucl. Instrum. Meth.}\ }\textbf {\bibinfo
+  {volume} {B56/57}},\ \bibinfo {pages} {496} (\bibinfo {year}
+  {1991})}\BibitemShut {NoStop}%
+%%CITATION = NUIMA,B56/57,496;%%
+\bibitem [{\citenamefont {Simon}\ \emph {et~al.}(1980)\citenamefont {Simon},
+  \citenamefont {Schmitt}, \citenamefont {Borkowski},\ and\ \citenamefont
+  {Walther}}]{Simon:1980hu}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.~G.}\ \bibnamefont
+  {Simon}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Schmitt}},
+  \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Borkowski}}, \ and\
+  \bibinfo {author} {\bibfnamefont {V.~H.}\ \bibnamefont {Walther}},\ }\href
+  {\doibase 10.1016/0375-9474(80)90104-9} {\bibfield  {journal} {\bibinfo
+  {journal} {Nucl. Phys.}\ }\textbf {\bibinfo {volume} {A333}},\ \bibinfo
+  {pages} {381} (\bibinfo {year} {1980})}\BibitemShut {NoStop}%
+%%CITATION = NUPHA,A333,381;%%
+\bibitem [{\citenamefont {Borkowski}\ \emph
+  {et~al.}(1975{\natexlab{a}})\citenamefont {Borkowski}, \citenamefont {Simon},
+  \citenamefont {Walther},\ and\ \citenamefont {Wendling}}]{Borkowski:1975ume}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Borkowski}}, \bibinfo {author} {\bibfnamefont {G.~G.}\ \bibnamefont
+  {Simon}}, \bibinfo {author} {\bibfnamefont {V.~H.}\ \bibnamefont {Walther}},
+  \ and\ \bibinfo {author} {\bibfnamefont {R.~D.}\ \bibnamefont {Wendling}},\
+  }\href {\doibase 10.1007/BF01409496} {\bibfield  {journal} {\bibinfo
+  {journal} {Z. Phys.}\ }\textbf {\bibinfo {volume} {A275}},\ \bibinfo {pages}
+  {29} (\bibinfo {year} {1975}{\natexlab{a}})}\BibitemShut {NoStop}%
+%%CITATION = ZEPYA,A275,29;%%
+\bibitem [{\citenamefont {Borkowski}\ \emph {et~al.}(1974)\citenamefont
+  {Borkowski}, \citenamefont {Peuser}, \citenamefont {Simon}, \citenamefont
+  {Walther},\ and\ \citenamefont {Wendling}}]{Borkowski:1974tm}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Borkowski}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Peuser}},
+  \bibinfo {author} {\bibfnamefont {G.~G.}\ \bibnamefont {Simon}}, \bibinfo
+  {author} {\bibfnamefont {V.~H.}\ \bibnamefont {Walther}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {R.~D.}\ \bibnamefont {Wendling}},\ }\href {\doibase
+  10.1016/0375-9474(74)90392-3} {\bibfield  {journal} {\bibinfo  {journal}
+  {Nucl. Phys.}\ }\textbf {\bibinfo {volume} {A222}},\ \bibinfo {pages} {269}
+  (\bibinfo {year} {1974})}\BibitemShut {NoStop}%
+%%CITATION = NUPHA,A222,269;%%
+\bibitem [{\citenamefont {Borkowski}\ \emph
+  {et~al.}(1975{\natexlab{b}})\citenamefont {Borkowski}, \citenamefont
+  {Peuser}, \citenamefont {Simon}, \citenamefont {Walther},\ and\ \citenamefont
+  {Wendling}}]{Borkowski:1974mb}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Borkowski}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Peuser}},
+  \bibinfo {author} {\bibfnamefont {G.~G.}\ \bibnamefont {Simon}}, \bibinfo
+  {author} {\bibfnamefont {V.~H.}\ \bibnamefont {Walther}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {R.~D.}\ \bibnamefont {Wendling}},\ }\href {\doibase
+  10.1016/0550-3213(75)90514-3} {\bibfield  {journal} {\bibinfo  {journal}
+  {Nucl. Phys.}\ }\textbf {\bibinfo {volume} {B93}},\ \bibinfo {pages} {461}
+  (\bibinfo {year} {1975}{\natexlab{b}})}\BibitemShut {NoStop}%
+%%CITATION = NUPHA,B93,461;%%
+\bibitem [{\citenamefont {Akimov}\ \emph {et~al.}(1972)\citenamefont {Akimov}
+  \emph {et~al.}}]{Akimov:1972nu}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {{\relax Yu}.~K.}\
+  \bibnamefont {Akimov}} \emph {et~al.},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {Sov. Phys. JETP}\ }\textbf {\bibinfo {volume} {35}},\
+  \bibinfo {pages} {651} (\bibinfo {year} {1972})},\ \bibinfo {note} {[Zh.
+  Eksp. Teor. Fiz.62,1231(1972)]}\BibitemShut {NoStop}%
+%%CITATION = SPHJA,35,651;%%
+\bibitem [{\citenamefont {Murphy}\ \emph {et~al.}(1974)\citenamefont {Murphy},
+  \citenamefont {Shin},\ and\ \citenamefont {Skopik}}]{Murphy:1974zz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~J.}\ \bibnamefont
+  {Murphy}}, \bibinfo {author} {\bibfnamefont {Y.~M.}\ \bibnamefont {Shin}}, \
+  and\ \bibinfo {author} {\bibfnamefont {D.~M.}\ \bibnamefont {Skopik}},\
+  }\href {\doibase 10.1103/PhysRevC.9.2125, 10.1103/PhysRevC.10.2111}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo
+  {volume} {C9}},\ \bibinfo {pages} {2125} (\bibinfo {year} {1974})},\ \bibinfo
+  {note} {[Erratum: Phys. Rev. {\bf{C10}}, 2111 (1974)]}\BibitemShut {NoStop}%
+%%CITATION = PHRVA,C9,2125;%%
+\bibitem [{\citenamefont {Frerejacque}\ \emph {et~al.}(1966)\citenamefont
+  {Frerejacque}, \citenamefont {Benaksas},\ and\ \citenamefont
+  {Drickey}}]{Frerejacque:1965ic}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Frerejacque}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Benaksas}}, \ and\ \bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont
+  {Drickey}},\ }\href {\doibase 10.1103/PhysRev.141.1308} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {141}},\
+  \bibinfo {pages} {1308} (\bibinfo {year} {1966})}\BibitemShut {NoStop}%
+%%CITATION = PHRVA,141,1308;%%
+\bibitem [{\citenamefont {Hand}\ \emph {et~al.}(1963)\citenamefont {Hand},
+  \citenamefont {Miller},\ and\ \citenamefont {Wilson}}]{Hand:1963zz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.~N.}\ \bibnamefont
+  {Hand}}, \bibinfo {author} {\bibfnamefont {D.~G.}\ \bibnamefont {Miller}}, \
+  and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Wilson}},\ }\href
+  {\doibase 10.1103/RevModPhys.35.335} {\bibfield  {journal} {\bibinfo
+  {journal} {Rev. Mod. Phys.}\ }\textbf {\bibinfo {volume} {35}},\ \bibinfo
+  {pages} {335} (\bibinfo {year} {1963})}\BibitemShut {NoStop}%
+%%CITATION = RMPHA,35,335;%%
+\bibitem [{\citenamefont {Sick}\ and\ \citenamefont
+  {Trautmann}(2017)}]{Sick:2017aor}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Sick}}\ and\ \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Trautmann}},\ }\href {\doibase 10.1103/PhysRevC.95.012501} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume}
+  {C95}},\ \bibinfo {pages} {012501} (\bibinfo {year} {2017})},\ \Eprint
+  {http://arxiv.org/abs/1701.01809} {arXiv:1701.01809 [nucl-ex]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1701.01809;%%
+\bibitem [{\citenamefont {Sick}(2018)}]{Sick:2018fzn}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Sick}},\ }\href {\doibase 10.3390/atoms6010002} {\bibfield  {journal}
+  {\bibinfo  {journal} {Atoms}\ }\textbf {\bibinfo {volume} {6}} (\bibinfo
+  {year} {2018}),\ 10.3390/atoms6010002},\ \Eprint
+  {http://arxiv.org/abs/1801.01746} {arXiv:1801.01746 [nucl-ex]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1801.01746;%%
+\bibitem [{\citenamefont {Shmueli}(2010)}]{Shmueli:2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Shmueli}},\ }\href {\doibase 10.1214/10-STS330} {\bibfield  {journal}
+  {\bibinfo  {journal} {Statist. Sci.}\ }\textbf {\bibinfo {volume} {25}},\
+  \bibinfo {pages} {289} (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Box}(1976)}]{Box76}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.~E.~P.}\
+  \bibnamefont {Box}},\ }\href {http://www.jstor.org/stable/2286841} {\bibfield
+   {journal} {\bibinfo  {journal} {Journal of the American Statistical
+  Association}\ }\textbf {\bibinfo {volume} {71}},\ \bibinfo {pages} {791}
+  (\bibinfo {year} {1976})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hastie}\ \emph {et~al.}(2009)\citenamefont {Hastie},
+  \citenamefont {Tibshirani},\ and\ \citenamefont {Friedman}}]{Hastie:2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Hastie}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Tibshirani}},
+  \ and\ \bibinfo {author} {\bibfnamefont {J.~H.}\ \bibnamefont {Friedman}},\
+  }\href@noop {} {\emph {\bibinfo {title} {The elements of statistical
+  learning: data mining, inference, and prediction, 2nd Edition}}},\ Springer
+  series in statistics\ (\bibinfo  {publisher} {Springer},\ \bibinfo {year}
+  {2009})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {James}\ \emph {et~al.}(2014)\citenamefont {James},
+  \citenamefont {Witten}, \citenamefont {Hastie},\ and\ \citenamefont
+  {Tibshirani}}]{James:2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {James}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Witten}},
+  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Hastie}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Tibshirani}},\ }\href@noop {}
+  {\emph {\bibinfo {title} {An Introduction to Statistical Learning: With
+  Applications in R}}}\ (\bibinfo  {publisher} {Springer Publishing Company,
+  Incorporated},\ \bibinfo {year} {2014})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Alberico}\ \emph {et~al.}(2009)\citenamefont
+  {Alberico}, \citenamefont {Bilenky}, \citenamefont {Giunti},\ and\
+  \citenamefont {Graczyk}}]{Alberico:2008sz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.~M.}\ \bibnamefont
+  {Alberico}}, \bibinfo {author} {\bibfnamefont {S.~M.}\ \bibnamefont
+  {Bilenky}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Giunti}}, \
+  and\ \bibinfo {author} {\bibfnamefont {K.~M.}\ \bibnamefont {Graczyk}},\
+  }\href {\doibase 10.1103/PhysRevC.79.065204} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {C79}},\ \bibinfo {pages}
+  {065204} (\bibinfo {year} {2009})},\ \Eprint {http://arxiv.org/abs/0812.3539}
+  {arXiv:0812.3539 [hep-ph]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:0812.3539;%%
+\bibitem [{\citenamefont {Alarcón}\ and\ \citenamefont
+  {Weiss}(2018{\natexlab{a}})}]{Alarcon:2017lhg}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont
+  {Alarcón}}\ and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Weiss}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev.}\ }\textbf {\bibinfo {volume} {C97}},\ \bibinfo {pages} {055203}
+  (\bibinfo {year} {2018}{\natexlab{a}})},\ \Eprint
+  {http://arxiv.org/abs/1710.06430} {arXiv:1710.06430 [hep-ph]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1710.06430;%%
+\bibitem [{Sup()}]{Supplement}%
+  \BibitemOpen
+  \href@noop {} {}\bibinfo {note} {See Supplemental Material at [URL will be
+  inserted by publisher] for animations of select images.}\BibitemShut {Stop}%
+\bibitem [{\citenamefont {Bevington}\ and\ \citenamefont
+  {Robinson}(2003)}]{Bevington:2003}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.~R.}\ \bibnamefont
+  {Bevington}}\ and\ \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Robinson}},\ }\href@noop {} {\emph {\bibinfo {title} {{D}ata {R}eduction and
+  {E}rror {A}nalysis for the {P}hysical {S}ciences}}}\ (\bibinfo  {publisher}
+  {McGraw-Hill},\ \bibinfo {year} {2003})\ \bibinfo {note} {3rd
+  Edition}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {James}(2006)}]{James:2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {James}},\ }\href@noop {} {\emph {\bibinfo {title} {{S}tatistical {M}ethods
+  in {E}xperimental {P}hysics}}}\ (\bibinfo  {publisher} {World Scientific},\
+  \bibinfo {year} {2006})\ \bibinfo {note} {2nd Edition}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{\v{S}}irca}(2016)}]{Sirca:2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {{\v{S}}irca}},\ }\href {https://books.google.com/books?id=mqmPjwEACAAJ}
+  {\emph {\bibinfo {title} {Probability for Physicists}}},\ Graduate Texts in
+  Physics\ (\bibinfo  {publisher} {Springer International Publishing},\
+  \bibinfo {year} {2016})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Akaike}(1974)}]{Akaike:1974}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Akaike}},\ }\href {\doibase 10.1109/TAC.1974.1100705} {\bibfield  {journal}
+  {\bibinfo  {journal} {IEEE Transactions on Automatic Control}\ }\textbf
+  {\bibinfo {volume} {19}},\ \bibinfo {pages} {716} (\bibinfo {year}
+  {1974})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Schwarz}(1978)}]{Schwarz:1978}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Schwarz}},\ }\href {\doibase 10.1214/aos/1176344136} {\bibfield  {journal}
+  {\bibinfo  {journal} {Ann. Statist.}\ }\textbf {\bibinfo {volume} {6}},\
+  \bibinfo {pages} {461} (\bibinfo {year} {1978})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wit}\ \emph {et~al.}(2012)\citenamefont {Wit},
+  \citenamefont {Heuvel},\ and\ \citenamefont {Romeijn}}]{Ernst:2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Wit}}, \bibinfo {author} {\bibfnamefont {E.~v.~d.}\ \bibnamefont {Heuvel}},
+  \ and\ \bibinfo {author} {\bibfnamefont {J.-W.}\ \bibnamefont {Romeijn}},\
+  }\href {\doibase 10.1111/j.1467-9574.2012.00530.x} {\bibfield  {journal}
+  {\bibinfo  {journal} {Statistica Nederlandica}\ }\textbf {\bibinfo {volume}
+  {66}},\ \bibinfo {pages} {217} (\bibinfo {year} {2012})}\BibitemShut
+  {NoStop}%
+\bibitem [{Note1()}]{Note1}%
+  \BibitemOpen
+  \bibinfo {note} {Data from Mainz spectrometer B with a beam energy of 315 MeV
+  with radiative and Coulomb corrections~\cite {Bernauer:2013tpr}.}\BibitemShut
+  {Stop}%
+\bibitem [{\citenamefont {Ye}\ \emph {et~al.}(2018)\citenamefont {Ye},
+  \citenamefont {Arrington}, \citenamefont {Hill},\ and\ \citenamefont
+  {Lee}}]{Ye:2017gyb}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont
+  {Ye}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Arrington}},
+  \bibinfo {author} {\bibfnamefont {R.~J.}\ \bibnamefont {Hill}}, \ and\
+  \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Lee}},\ }\href {\doibase
+  10.1016/j.physletb.2017.11.023} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Lett.}\ }\textbf {\bibinfo {volume} {B777}},\ \bibinfo {pages} {8}
+  (\bibinfo {year} {2018})},\ \Eprint {http://arxiv.org/abs/1707.09063}
+  {arXiv:1707.09063 [nucl-ex]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1707.09063;%%
+\bibitem [{\citenamefont {Puckett}\ \emph {et~al.}(2017)\citenamefont {Puckett}
+  \emph {et~al.}}]{Puckett:2017flj}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~J.~R.}\
+  \bibnamefont {Puckett}} \emph {et~al.},\ }\href {\doibase
+  10.1103/PhysRevC.96.055203} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev.}\ }\textbf {\bibinfo {volume} {C96}},\ \bibinfo {pages} {055203}
+  (\bibinfo {year} {2017})},\ \Eprint {http://arxiv.org/abs/1707.08587}
+  {arXiv:1707.08587 [nucl-ex]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1707.08587;%%
+\bibitem [{\citenamefont {Gutsche}\ \emph {et~al.}(2018)\citenamefont
+  {Gutsche}, \citenamefont {Lyubovitskij},\ and\ \citenamefont
+  {Schmidt}}]{Gutsche:2017lyu}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Gutsche}}, \bibinfo {author} {\bibfnamefont {V.~E.}\ \bibnamefont
+  {Lyubovitskij}}, \ and\ \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Schmidt}},\ }\href {\doibase 10.1103/PhysRevD.97.054011} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume}
+  {D97}},\ \bibinfo {pages} {054011} (\bibinfo {year} {2018})},\ \Eprint
+  {http://arxiv.org/abs/1712.08410} {arXiv:1712.08410 [hep-ph]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1712.08410;%%
+\bibitem [{\citenamefont {Efron}(1979)}]{Efron:1979}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Efron}},\ }\href {\doibase 10.1214/aos/1176344552} {\bibfield  {journal}
+  {\bibinfo  {journal} {Ann. Statist.}\ }\textbf {\bibinfo {volume} {7}},\
+  \bibinfo {pages} {1} (\bibinfo {year} {1979})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Andrae}}\ \emph {et~al.}(2010)\citenamefont
+  {{Andrae}}, \citenamefont {{Schulze-Hartung}},\ and\ \citenamefont
+  {{Melchior}}}]{Andrae:2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {{Andrae}}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {{Schulze-Hartung}}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {{Melchior}}},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {ArXiv e-prints}\ } (\bibinfo {year} {2010})},\ \Eprint
+  {http://arxiv.org/abs/1012.3754} {arXiv:1012.3754 [astro-ph.IM]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Anscombe}(1973)}]{Anscombe:1973}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.~J.}\ \bibnamefont
+  {Anscombe}},\ }\href {http://www.jstor.org/stable/2682899} {\bibfield
+  {journal} {\bibinfo  {journal} {The American Statistician}\ }\textbf
+  {\bibinfo {volume} {27}},\ \bibinfo {pages} {17} (\bibinfo {year}
+  {1973})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wilk}\ and\ \citenamefont
+  {Gnanadesikan}(1968)}]{Wilk:1968}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~B.}\ \bibnamefont
+  {Wilk}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Gnanadesikan}},\ }\href {\doibase 10.1093/biomet/55.1.1} {\bibfield
+  {journal} {\bibinfo  {journal} {Biometrika}\ }\textbf {\bibinfo {volume}
+  {55}},\ \bibinfo {pages} {1} (\bibinfo {year} {1968})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gasparian}(2014)}]{Gasparian:2014rna}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Gasparian}} (\bibinfo {collaboration} {PRad at JLab}),\ }\bibfield
+  {booktitle} {\emph {\bibinfo {booktitle} {{Proceedings, 13th International
+  Conference on Meson-Nucleon Physics and the Structure of the Nucleon (MENU
+  2013): Rome, Italy, September 30-October 4, 2013}}},\ }\href {\doibase
+  10.1051/epjconf/20147307006} {\bibfield  {journal} {\bibinfo  {journal} {EPJ
+  Web Conf.}\ }\textbf {\bibinfo {volume} {73}},\ \bibinfo {pages} {07006}
+  (\bibinfo {year} {2014})}\BibitemShut {NoStop}%
+%%CITATION = 00776,73,07006;%%
+\bibitem [{\citenamefont {Peng}\ and\ \citenamefont
+  {Gao}(2016)}]{Peng:2016szv}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Peng}}\ and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Gao}},\
+  }\bibfield  {booktitle} {\emph {\bibinfo {booktitle} {{Proceedings, 21st
+  International Conference on Few-Body Problems in Physics (FB21): Chicago, IL,
+  USA, May 18-22, 2015}}},\ }\href {\doibase 10.1051/epjconf/201611303007}
+  {\bibfield  {journal} {\bibinfo  {journal} {EPJ Web Conf.}\ }\textbf
+  {\bibinfo {volume} {113}},\ \bibinfo {pages} {03007} (\bibinfo {year}
+  {2016})}\BibitemShut {NoStop}%
+%%CITATION = 00776,113,03007;%%
+\bibitem [{\citenamefont {Mihovilovi\v{c}}\ \emph {et~al.}(2017)\citenamefont
+  {Mihovilovi\v{c}} \emph {et~al.}}]{Mihovilovic:2016rkr}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Mihovilovi\v{c}}} \emph {et~al.},\ }\href {\doibase
+  10.1016/j.physletb.2017.05.031} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Lett.}\ }\textbf {\bibinfo {volume} {B771}},\ \bibinfo {pages} {194}
+  (\bibinfo {year} {2017})},\ \Eprint {http://arxiv.org/abs/1612.06707}
+  {arXiv:1612.06707 [nucl-ex]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1612.06707;%%
+\bibitem [{\citenamefont {Alarcón}\ and\ \citenamefont
+  {Weiss}(2018{\natexlab{b}})}]{Alarcon:2018irp}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont
+  {Alarcón}}\ and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Weiss}},\ }\href@noop {} {\  (\bibinfo {year} {2018}{\natexlab{b}})},\
+  \Eprint {http://arxiv.org/abs/1803.09748} {arXiv:1803.09748 [hep-ph]}
+  \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1803.09748;%%
+\bibitem [{\citenamefont {Daee}\ \emph {et~al.}(2018)\citenamefont {Daee},
+  \citenamefont {Peltola}, \citenamefont {Vehtari},\ and\ \citenamefont
+  {Kaski}}]{Daee:2018:UMA:3172944.3172989}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Daee}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Peltola}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Vehtari}}, \ and\
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Kaski}},\ }in\ \href
+  {\doibase 10.1145/3172944.3172989} {\emph {\bibinfo {booktitle} {23rd
+  International Conference on Intelligent User Interfaces}}},\ \bibinfo {series
+  and number} {IUI '18}\ (\bibinfo  {publisher} {ACM},\ \bibinfo {address} {New
+  York, NY, USA},\ \bibinfo {year} {2018})\ pp.\ \bibinfo {pages}
+  {305--310}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Brighton}\ and\ \citenamefont
+  {Gigerenzer}(2015)}]{Brighton:2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Brighton}}\ and\ \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Gigerenzer}},\ }\href {\doibase
+  https://doi.org/10.1016/j.jbusres.2015.01.061} {\bibfield  {journal}
+  {\bibinfo  {journal} {Journal of Business Research}\ }\textbf {\bibinfo
+  {volume} {68}},\ \bibinfo {pages} {1772 } (\bibinfo {year} {2015})},\
+  \bibinfo {note} {special Issue on Simple Versus Complex
+  Forecasting}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Cawley}\ and\ \citenamefont
+  {Talbot}(2010)}]{Cawley:2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.~C.}\ \bibnamefont
+  {Cawley}}\ and\ \bibinfo {author} {\bibfnamefont {N.~L.}\ \bibnamefont
+  {Talbot}},\ }\href {http://dl.acm.org/citation.cfm?id=1756006.1859921}
+  {\bibfield  {journal} {\bibinfo  {journal} {J. Mach. Learn. Res.}\ }\textbf
+  {\bibinfo {volume} {11}},\ \bibinfo {pages} {2079} (\bibinfo {year}
+  {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Feynman}(2008)}]{Feynman:2008}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~P.}\ \bibnamefont
+  {Feynman}},\ }\enquote {\bibinfo {title} {The computing machines in the
+  future},}\ in\ \href {\doibase 10.1007/978-4-431-77056-5_6} {\emph {\bibinfo
+  {booktitle} {Nishina Memorial Lectures: Creators of Modern Physics}}}\
+  (\bibinfo  {publisher} {Springer Japan},\ \bibinfo {address} {Tokyo},\
+  \bibinfo {year} {2008})\ pp.\ \bibinfo {pages} {99--114}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {{Silver}}\ \emph {et~al.}(2016)\citenamefont
+  {{Silver}}, \citenamefont {{Huang}}, \citenamefont {{Maddison}},
+  \citenamefont {{Guez}}, \citenamefont {{Sifre}}, \citenamefont {{van den
+  Driessche}}, \citenamefont {{Schrittwieser}}, \citenamefont {{Antonoglou}},
+  \citenamefont {{Panneershelvam}}, \citenamefont {{Lanctot}}, \citenamefont
+  {{Dieleman}}, \citenamefont {{Grewe}}, \citenamefont {{Nham}}, \citenamefont
+  {{Kalchbrenner}}, \citenamefont {{Sutskever}}, \citenamefont {{Lillicrap}},
+  \citenamefont {{Leach}}, \citenamefont {{Kavukcuoglu}}, \citenamefont
+  {{Graepel}},\ and\ \citenamefont {{Hassabis}}}]{Silver:2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {{Silver}}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {{Huang}}},
+  \bibinfo {author} {\bibfnamefont {C.~J.}\ \bibnamefont {{Maddison}}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {{Guez}}}, \bibinfo
+  {author} {\bibfnamefont {L.}~\bibnamefont {{Sifre}}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {{van den Driessche}}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {{Schrittwieser}}}, \bibinfo {author}
+  {\bibfnamefont {I.}~\bibnamefont {{Antonoglou}}}, \bibinfo {author}
+  {\bibfnamefont {V.}~\bibnamefont {{Panneershelvam}}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {{Lanctot}}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {{Dieleman}}}, \bibinfo {author}
+  {\bibfnamefont {D.}~\bibnamefont {{Grewe}}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {{Nham}}}, \bibinfo {author} {\bibfnamefont
+  {N.}~\bibnamefont {{Kalchbrenner}}}, \bibinfo {author} {\bibfnamefont
+  {I.}~\bibnamefont {{Sutskever}}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {{Lillicrap}}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {{Leach}}}, \bibinfo {author} {\bibfnamefont
+  {K.}~\bibnamefont {{Kavukcuoglu}}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {{Graepel}}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {{Hassabis}}},\ }\href {\doibase 10.1038/nature16961}
+  {\bibfield  {journal} {\bibinfo  {journal} {\nat}\ }\textbf {\bibinfo
+  {volume} {529}},\ \bibinfo {pages} {484} (\bibinfo {year}
+  {2016})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Barradas-Bautista}}\ and\ \citenamefont
+  {{Alvarado}}(2018)}]{Barradas:2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {{Barradas-Bautista}}}\ and\ \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {{Alvarado}}},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {ArXiv e-prints}\ } (\bibinfo {year} {2018})},\ \Eprint
+  {http://arxiv.org/abs/1803.05983} {arXiv:1803.05983 [cs.AI]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Newville}\ \emph {et~al.}(2014)\citenamefont
+  {Newville}, \citenamefont {Stensitzki}, \citenamefont {Allen},\ and\
+  \citenamefont {Ingargiola}}]{Newville:2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Newville}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Stensitzki}}, \bibinfo {author} {\bibfnamefont {D.~B.}\ \bibnamefont
+  {Allen}}, \ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Ingargiola}},\ }\href {\doibase 10.5281/zenodo.11813} {\enquote {\bibinfo
+  {title} {{LMFIT: Non-Linear Least-Square Minimization and Curve-Fitting for
+  Python¶}},}\ } (\bibinfo {year} {2014})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Jones}\ \emph {et~al.}(01  )\citenamefont {Jones},
+  \citenamefont {Oliphant}, \citenamefont {Peterson} \emph
+  {et~al.}}]{Jones:2001}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Jones}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Oliphant}},
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Peterson}},  \emph
+  {et~al.},\ }\href {http://www.scipy.org/} {\enquote {\bibinfo {title}
+  {{SciPy}: Open source scientific tools for {Python}},}\ } (\bibinfo {year}
+  {2001--})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Levenberg}(1944)}]{Levenberg:1944}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Levenberg}},\ }\href {\doibase 10.1090/qam/10666} {\bibfield  {journal}
+  {\bibinfo  {journal} {Quart. Appl. Math.}\ }\textbf {\bibinfo {volume} {2}},\
+  \bibinfo {pages} {164} (\bibinfo {year} {1944})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Marquardt}(1963)}]{Marquardt:1963}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~W.}\ \bibnamefont
+  {Marquardt}},\ }\href {\doibase 10.1137/0111030} {\bibfield  {journal}
+  {\bibinfo  {journal} {Journal of the Society for Industrial and Applied
+  Mathematics}\ }\textbf {\bibinfo {volume} {11}},\ \bibinfo {pages} {431}
+  (\bibinfo {year} {1963})},\ \Eprint
+  {http://arxiv.org/abs/https://doi.org/10.1137/0111030}
+  {https://doi.org/10.1137/0111030} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tufte}(1986)}]{Tufte:1986}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.~R.}\ \bibnamefont
+  {Tufte}},\ }\href@noop {} {\emph {\bibinfo {title} {The Visual Display of
+  Quantitative Information}}}\ (\bibinfo  {publisher} {Graphics Press},\
+  \bibinfo {address} {Cheshire, CT, USA},\ \bibinfo {year} {1986})\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Tufte}(1990)}]{Tufte:1990}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Tufte}},\ }\href@noop {} {\emph {\bibinfo {title} {Envisioning
+  Information}}}\ (\bibinfo  {publisher} {Graphics Press},\ \bibinfo {address}
+  {Cheshire, CT, USA},\ \bibinfo {year} {1990})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tufte}(1997)}]{Tufte:1997}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.~R.}\ \bibnamefont
+  {Tufte}},\ }\href@noop {} {\emph {\bibinfo {title} {Visual Explanations:
+  Images and Quantities, Evidence and Narrative}}}\ (\bibinfo  {publisher}
+  {Graphics Press},\ \bibinfo {address} {Cheshire, CT, USA},\ \bibinfo {year}
+  {1997})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tufte}(2006)}]{Tufte:2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.~R.}\ \bibnamefont
+  {Tufte}},\ }\href@noop {} {\emph {\bibinfo {title} {Beautiful Evidence}}}\
+  (\bibinfo  {publisher} {Graphics Press},\ \bibinfo {address} {Cheshire, CT},\
+  \bibinfo {year} {2006})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {\v{S}irca}\ and\ \citenamefont
+  {Horvat}(2012)}]{Sirca:2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {\v{S}irca}}\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Horvat}},\ }\href@noop {} {\emph {\bibinfo {title} {Computational Methods
+  for Physicists}}}\ (\bibinfo  {publisher} {Springer},\ \bibinfo {year}
+  {2012})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{R Core Team}}(2013)}]{R}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{R Core Team}}},\
+  }\href {http://www.R-project.org/} {\emph {\bibinfo {title} {R: A Language
+  and Environment for Statistical Computing}}},\ \bibinfo {organization} {R
+  Foundation for Statistical Computing},\ \bibinfo {address} {Vienna, Austria}
+  (\bibinfo {year} {2013})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fox}\ and\ \citenamefont {Weisberg}(2011)}]{car}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Fox}}\ and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Weisberg}},\
+  }\href {http://socserv.socsci.mcmaster.ca/jfox/Books/Companion} {\emph
+  {\bibinfo {title} {An {R} Companion to Applied Regression}}},\ \bibinfo
+  {edition} {2nd}\ ed.\ (\bibinfo  {publisher} {Sage},\ \bibinfo {address}
+  {Thousand Oaks {CA}},\ \bibinfo {year} {2011})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Higinbotham}(2016)}]{Higinbotham:2016github}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Higinbotham}},\ }\href@noop {} {\enquote {\bibinfo {title} {Project
+  title},}\ }\bibinfo {howpublished}
+  {\url{https://github.com/JeffersonLab/model-selection}} (\bibinfo {year}
+  {2016})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Press}\ \emph {et~al.}(2007)\citenamefont {Press},
+  \citenamefont {Teukolsky}, \citenamefont {Vetterling},\ and\ \citenamefont
+  {Flannery}}]{NR}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.~H.}\ \bibnamefont
+  {Press}}, \bibinfo {author} {\bibfnamefont {S.~A.}\ \bibnamefont
+  {Teukolsky}}, \bibinfo {author} {\bibfnamefont {W.~T.}\ \bibnamefont
+  {Vetterling}}, \ and\ \bibinfo {author} {\bibfnamefont {B.~P.}\ \bibnamefont
+  {Flannery}},\ }\href@noop {} {\emph {\bibinfo {title} {Numerical Recipes 3rd
+  Edition: The Art of Scientific Computing}}},\ \bibinfo {edition} {3rd}\ ed.\
+  (\bibinfo  {publisher} {Cambridge University Press},\ \bibinfo {address} {New
+  York, NY, USA},\ \bibinfo {year} {2007})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Rasmussen}\ and\ \citenamefont
+  {Williams}(2005)}]{Rasmussen:2005}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~E.}\ \bibnamefont
+  {Rasmussen}}\ and\ \bibinfo {author} {\bibfnamefont {C.~K.~I.}\ \bibnamefont
+  {Williams}},\ }\href@noop {} {\emph {\bibinfo {title} {Gaussian Processes for
+  Machine Learning (Adaptive Computation and Machine Learning)}}}\ (\bibinfo
+  {publisher} {The MIT Press},\ \bibinfo {year} {2005})\BibitemShut {NoStop}%
+\end{thebibliography}%
 \end{document}
